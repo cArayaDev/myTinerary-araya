@@ -1,0 +1,33 @@
+/* .imgContainer{
+    width: 100%;
+    height: 100vh;
+}
+@keyframes movimiento{
+    from{
+        background-position: bottom left;
+    }to{
+        background-position: top right;
+    }
+}
+Nav.Link {
+    color: white;
+}
+.container {
+    width: 100%;
+    height: 50vh;
+    background: url(../assets/images/santorini.jpg);
+    background-size: 200%;
+    animation: movimiento 90s infinite linear alternate;
+} */
+/* .container_main { */
+    /* height: 90vh; */
+    /* width: 100%; */
+    /* margin-top: 25rem; */
+    /* margin-left: 35rem; */
+/* } */
+/* .container_main h1 {
+    color: white;
+}
+.container_main h2 {
+    color: orange;
+} */
