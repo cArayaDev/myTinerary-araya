@@ -1,6 +1,6 @@
 import React from 'react'
 import Carousel from 'react-bootstrap/Carousel'
-import washington from '../assets/images/washington.jpg'
+import washington from '../assets/images/santorini5.jpg'
 import copenhague from '../assets/images/copenhague.jpg'
 import jerusalem from '../assets/images/jerusalem.jpg'
 import '../styles/style.css'
@@ -9,8 +9,8 @@ export const Carrousel = () => {
     return (
           <Carousel fade>
             <Carousel.Item>
-              <img
-                className="d-block w-100"
+            <img
+                className="d-block w-50 center"
                 src={washington}
                 alt="First slide"
               />
@@ -21,7 +21,7 @@ export const Carrousel = () => {
             </Carousel.Item>
             <Carousel.Item>
               <img
-                className="d-block w-100"
+                className="d-block w-50"
                 src={jerusalem}
                 alt="Second slide"
               />
@@ -32,7 +32,7 @@ export const Carrousel = () => {
             </Carousel.Item>
             <Carousel.Item>
               <img
-                className="d-block w-100"
+                className="d-block w-50"
                 src={copenhague}
                 alt="Third slide"
               />
