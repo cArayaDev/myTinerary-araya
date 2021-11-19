@@ -1,9 +1,8 @@
 import React from 'react';
-// import { Main } from '../components/Main';
 import { Header } from '../components/Header';
 import { Carrousel } from '../components/Carrousel';
-// import { SideNav } from '../components/SideNav';
 import { Footer } from '../components/Footer';
+import ciudades from '../components/Ciudades';
 
 class Home extends React.Component{
     render(){
@@ -15,13 +14,14 @@ class Home extends React.Component{
                 {/* <div className="capa-gradient"></div> */}
                   {/* <div className="container_details"> */}
                       {/* <div className="details"> */}
-                        <h1>MyTinerai</h1>
+                        <h1>MyTinerary</h1>
                         <h2>Find your perfect trip,designed by insiders who know and love their cities!.</h2>
                       {/* </div> */}
                   {/* </div> */}
+                  <span></span>
               </div>
             </div>
-            <div className="call">
+            <div className="callAction">
             </div>
             <div className="div_burbujas">
               {/* <div className="burbujas">
@@ -38,7 +38,6 @@ class Home extends React.Component{
               </div> */}
             </div>
             <div className="div_carrusel">
-
                   <Carrousel />
             </div>
                 <Footer />

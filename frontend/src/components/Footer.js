@@ -1,9 +1,10 @@
 import React from 'react'
+import { SideNav } from './SideNav'
 
 export const Footer = () => {
     return (
         <footer>
-            <h2>Soy el footer</h2>
+            <SideNav />
         </footer>
     )
 }

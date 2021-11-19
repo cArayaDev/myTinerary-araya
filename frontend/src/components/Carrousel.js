@@ -1,9 +1,11 @@
 import React from 'react'
 import Slider from "react-slick";
 import Carousel from 'react-bootstrap/Carousel'
-import washington from '../assets/images/santorini5.jpg'
-import copenhague from '../assets/images/copenhague.jpg'
-import jerusalem from '../assets/images/jerusalem.jpg'
+import washington from '../assets/ciudades/washington.jpg'
+import copenhague from '../assets/ciudades/copenhague.jpg'
+import jerusalem from '../assets/ciudades/jerusalem.jpg'
+import barcelona from '../assets/ciudades/barcelona.jpg'
+import paris from '../assets/ciudades/paris.jpg'
 import '../styles/style.css'
 
 export const Carrousel = () => {
@@ -20,41 +22,45 @@ export const Carrousel = () => {
       };
       return (
         <Slider {...settings}>
-          <div className="divContainer">
-            <img className="d-block w-70 center" src={washington} alt="First slide" />
+          <div className="row">
+            <img className="d-block w-100 center transition" src={washington} alt="First slide" />
+            <h2>Washington</h2>
           </div>
-          <div>
-            <img className="d-block w-70 center" src={washington} alt="First slide" />
+          <div className="row">
+            <img className="d-block w-100 center transition" src={paris} alt="First slide" />
+            <h2>Paris</h2>
           </div>
-          <div>
-            <img className="d-block w-70 center" src={washington} alt="First slide" />
+          <div className="row">
+            <img className="d-block w-100 center transition" src={barcelona} alt="First slide" />
+            <h2>Barcelona</h2>
           </div>
-          <div>
-            <img className="d-block w-70 center" src={washington} alt="First slide" />
+          <div className="row">
+            <img className="d-block w-100 center transition" src={jerusalem} alt="First slide" />
+            <h2>Jerusalem</h2>
           </div>
-          <div>
-            <img className="d-block w-50 center" src={copenhague} alt="First slide" />
+          <div className="row">
+            <img className="d-block w-100 center transition" src={copenhague} alt="First slide" />
           </div>
-          <div>
-          <img className="d-block w-50 center" src={copenhague} alt="First slide" />
+          <div className="row">
+          <img className="d-block w-100 center transition" src={washington} alt="First slide" />
           </div>
-          <div>
-          <img className="d-block w-50 center" src={copenhague} alt="First slide" />
+          <div className="row">
+          <img className="d-block w-100 center transition" src={jerusalem} alt="First slide" />
           </div>
-          <div>
-          <img className="d-block w-50 center" src={copenhague} alt="First slide" />
+          <div className="row">
+          <img className="d-block w-100 center transition" src={copenhague} alt="First slide" />
           </div>
-          <div>
-          <img className="d-block w-50 center" src={jerusalem} alt="First slide" />
+          <div className="row">
+          <img className="d-block w-100 center transition" src={jerusalem} alt="First slide" />
           </div>
-          <div>
-          <img className="d-block w-50 center" src={jerusalem} alt="First slide" />
+          <div className="row">
+          <img className="d-block w-100 center transition" src={washington} alt="First slide" />
           </div> 
-          <div>
-          <img className="d-block w-50 center" src={jerusalem} alt="First slide" />
+          <div className="row">
+          <img className="d-block w-100 center transition" src={copenhague} alt="First slide" />
           </div>
-          <div>
-          <img className="d-block w-50 center" src={jerusalem} alt="First slide" />
+          <div className="row">
+          <img className="d-block w-100 center transition" src={jerusalem} alt="First slide" />
           </div>       
         </Slider>
       );
