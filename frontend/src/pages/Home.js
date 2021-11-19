@@ -10,17 +10,17 @@ class Home extends React.Component{
         return (
           <>
             <Header />
-            <main className="main">
+            <div className="main">
               <div className="container">
-                <div className="capa-gradient"></div>
+                {/* <div className="capa-gradient"></div> */}
                   {/* <div className="container_details"> */}
-                      <div className="details">
+                      {/* <div className="details"> */}
                         <h1>MyTinerai</h1>
                         <h2>Find your perfect trip,designed by insiders who know and love their cities!.</h2>
-                      </div>
+                      {/* </div> */}
                   {/* </div> */}
               </div>
-            </main>
+            </div>
             <div className="call">
             </div>
             <div className="div_burbujas">
