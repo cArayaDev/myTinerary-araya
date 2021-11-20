@@ -1,14 +1,16 @@
 import React from 'react'
 import Slider from "react-slick";
-import Carousel from 'react-bootstrap/Carousel'
-import washington from '../assets/ciudades/washington.jpg'
-import copenhague from '../assets/ciudades/copenhague.jpg'
-import jerusalem from '../assets/ciudades/jerusalem.jpg'
-import barcelona from '../assets/ciudades/barcelona.jpg'
-import paris from '../assets/ciudades/paris.jpg'
+// import Carousel from 'react-bootstrap/Carousel'
+// import washington from '../assets/ciudades/washington.jpg'
+// import copenhague from '../assets/ciudades/copenhague.jpg'
+// import jerusalem from '../assets/ciudades/jerusalem.jpg'
+// import barcelona from '../assets/ciudades/barcelona.jpg'
+// import paris from '../assets/ciudades/paris.jpg'
 import '../styles/style.css'
 
-export const Carrousel = () => {
+export const Carrousel = ({ciudades}) => {
+  // let img = require(`../assets/ciudades/`)
+  // console.log(ciudades)
     var settings = {
         dots: true,
         infinite: true,
@@ -22,46 +24,18 @@ export const Carrousel = () => {
       };
       return (
         <Slider {...settings}>
-          <div className="row">
-            <img className="d-block w-100 center transition" src={washington} alt="First slide" />
-            <h2>Washington</h2>
-          </div>
-          <div className="row">
-            <img className="d-block w-100 center transition" src={paris} alt="First slide" />
-            <h2>Paris</h2>
-          </div>
-          <div className="row">
-            <img className="d-block w-100 center transition" src={barcelona} alt="First slide" />
-            <h2>Barcelona</h2>
-          </div>
-          <div className="row">
-            <img className="d-block w-100 center transition" src={jerusalem} alt="First slide" />
-            <h2>Jerusalem</h2>
-          </div>
-          <div className="row">
-            <img className="d-block w-100 center transition" src={copenhague} alt="First slide" />
-          </div>
-          <div className="row">
-          <img className="d-block w-100 center transition" src={washington} alt="First slide" />
-          </div>
-          <div className="row">
-          <img className="d-block w-100 center transition" src={jerusalem} alt="First slide" />
-          </div>
-          <div className="row">
-          <img className="d-block w-100 center transition" src={copenhague} alt="First slide" />
-          </div>
-          <div className="row">
-          <img className="d-block w-100 center transition" src={jerusalem} alt="First slide" />
-          </div>
-          <div className="row">
-          <img className="d-block w-100 center transition" src={washington} alt="First slide" />
-          </div> 
-          <div className="row">
-          <img className="d-block w-100 center transition" src={copenhague} alt="First slide" />
-          </div>
-          <div className="row">
-          <img className="d-block w-100 center transition" src={jerusalem} alt="First slide" />
-          </div>       
+            {
+              ciudades.map((elem, i) => {
+                let imagen = require(`../assets/ciudades/${elem.ruta}`)
+                console.log(imagen.default)
+                return (
+                      <div className="row" key={i}>
+                          <img className="d-block w-100 center transition" src={require(`../assets/ciudades/${elem.ruta}`)} alt="First slide" />
+                          <h2>{elem.nombre}</h2>
+                      </div>                  
+                )
+              })
+            }
         </Slider>
       );
    

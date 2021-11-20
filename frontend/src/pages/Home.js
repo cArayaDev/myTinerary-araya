@@ -5,7 +5,8 @@ import { Footer } from '../components/Footer';
 import ciudades from '../components/Ciudades';
 
 class Home extends React.Component{
-    render(){
+  render(){
+      // console.log(this.state[0].nombre)
         return (
           <>
             <Header />
@@ -38,7 +39,7 @@ class Home extends React.Component{
               </div> */}
             </div>
             <div className="div_carrusel">
-                  <Carrousel />
+                  <Carrousel ciudades={ciudades} />
             </div>
                 <Footer />
             {/* <Main /> */}
