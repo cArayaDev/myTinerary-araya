@@ -1,16 +1,9 @@
 import React from 'react'
 import Slider from "react-slick";
-// import Carousel from 'react-bootstrap/Carousel'
-// import washington from '../assets/ciudades/washington.jpg'
-// import copenhague from '../assets/ciudades/copenhague.jpg'
-// import jerusalem from '../assets/ciudades/jerusalem.jpg'
-// import barcelona from '../assets/ciudades/barcelona.jpg'
-// import paris from '../assets/ciudades/paris.jpg'
 import '../styles/style.css'
 
+
 export const Carrousel = ({ciudades}) => {
-  // let img = require(`../assets/ciudades/`)
-  // console.log(ciudades)
     var settings = {
         dots: true,
         infinite: true,
@@ -27,7 +20,6 @@ export const Carrousel = ({ciudades}) => {
             {
               ciudades.map((elem, i) => {
                 let imagen = require(`../assets/ciudades/${elem.ruta}`)
-                console.log(imagen.default)
                 return (
                       <div className="row" key={i}>
                           <img className="d-block w-100 center transition" src={require(`../assets/ciudades/${elem.ruta}`)} alt="First slide" />
