@@ -12,19 +12,21 @@ export const Carrousel = ({ciudades}) => {
         slidesToScroll: 4,
         autoplay: true,
         autoplaySpeed: 4000,
-        pauseOnHover: true
+        pauseOnHover: true,
+        // arrows: true,
   
       };
       return (
         <Slider {...settings}>
             {
               ciudades.map((elem, i) => {
-                let imagen = require(`../assets/ciudades/${elem.ruta}`)
-                return (
+                  return (
                       <div className="row" key={i}>
+                        <a className="test">
                           <img className="d-block w-100 center transition" src={require(`../assets/ciudades/${elem.ruta}`)} alt="First slide" />
+                        </a>
                           <h2>{elem.nombre}</h2>
-                      </div>                  
+                  </div>
                 )
               })
             }

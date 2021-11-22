@@ -1,10 +1,12 @@
 import React from 'react'
-import { SideNav } from './SideNav'
 
 export const Footer = () => {
     return (
         <footer>
-            <SideNav />
+            <div className="container_footer">
+            <h1>SOY EL FOOTER</h1>
+
+            </div>
         </footer>
     )
 }

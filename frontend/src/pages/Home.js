@@ -1,4 +1,5 @@
 import React from 'react';
+// import {Container, Row, Grid} from 'react-bootstrap'
 import { Header } from '../components/Header';
 import { Carrousel } from '../components/Carrousel';
 import { Footer } from '../components/Footer';
@@ -11,34 +12,22 @@ class Home extends React.Component{
         return (
           <>
             <Header />
-            <div className="main">
-              <div className="container">
-                  <h1>MyTinerary</h1>
-                  <h2>Find your perfect trip,designed by insiders who know and love their cities!.</h2>
-              </div>
+            <div className="main animate__animated animate__backInRight">
+                    <div className="container">
+                        <h1 className="animate__animated animate__backInLeft" id="mytinerary">MyTinerary</h1>
+                        <h2 className="animate__animated animate__backInRight">Find your perfect trip,designed by insiders who know and love their cities!.</h2>
+                    </div>
+                    <a href="#call">click here</a>
             </div>
-            <div className="callAction">
+            <div className="callAction" id="call">
               <Hero />
+            <a href="#carrusel">click here</a>
             </div>
-            <div className="div_burbujas">
-              {/* <div className="burbujas">
-                  <div className="burbuja"></div>
-                  <div className="burbuja"></div>
-                  <div className="burbuja"></div>
-                  <div className="burbuja"></div>
-                  <div className="burbuja"></div>
-                  <div className="burbuja"></div>
-                  <div className="burbuja"></div>
-                  <div className="burbuja"></div>
-                  <div className="burbuja"></div>
-                  <div className="burbuja"></div>
-              </div> */}
-            </div>
-            <div className="div_carrusel">
+            <div className="div_carrusel" id="carrusel">
+              <h1>Popular MyTineraries</h1>
                   <Carrousel ciudades={ciudades} />
             </div>
                 <Footer />
-            {/* <Main /> */}
           </> 
             )
     }

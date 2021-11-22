@@ -18,6 +18,11 @@ html*{
   background: url(../src/assets/images/santorini10.jpg);
   background-size: 120%;
   animation: movimiento 25s infinite linear alternate;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
 }
   @keyframes movimiento{
     from{
@@ -26,9 +31,38 @@ html*{
         background-position: top right;
     }
 }
+@media (min-width: 768px) and (max-width: 991.98px) {
+  .main{
+    background-size: 520%;
+  }  
+}
+@media (min-width: 576px) and (max-width: 767.98px) {
+  .main{
+    background-size: 720%;
+  }  
+}
+@media (max-width: 575.98px) {
+  .main{
+    background-size: 920%;
+  } 
+  #mytinerary {
+    font-size: 40px;
+  } 
+}
+@media (max-width: 575.98px) {
+  .mapa {
+  width: 150px;
+  height: 150px;
+  }
+    .callAction {
+    background-image:linear-gradient(165deg, transparent 1%, rgba(248, 245, 245, 0.445) 5%, rgba(211, 241, 102, 0.609) 100%, transparent 100%), url(../src/assets/ciudades/coquimbo.jpg);
+    height: 52rem;
+    /* text-align: center; */
+    padding-top: 10rem;
+    padding-left: 0;
+  }
+}
 .container {
-  height: 15rem;
-  margin-top: 20rem;
   border-style: solid; 
   border-width: 2px; 
   border-color: rgb(245, 124, 10);
@@ -36,27 +70,23 @@ html*{
   background-image: linear-gradient(165deg, transparent 1%, rgba(248, 245, 245, 0.041) 5%, rgba(255, 255, 255, .6) 100%, transparent 100%);
 }
 .container:hover {
-  height: 15rem;
-  margin-top: 20rem;
   border-style: solid; 
   border-width: 2px; 
   border-color: rgb(245, 124, 10);
   border-radius: 3rem;
   background-image: linear-gradient(165deg, transparent 1%, rgba(248, 245, 245, 0.445) 5%, rgba(255, 255, 255, 0.65) 100%, transparent 100%);
 }
-.container h2 {
-  color: rgb(248, 119, 33);
-  margin-top: 1.5rem;
-  font-size: 2.3rem;
-  text-shadow: 0.06em 0.06em rgb(5, 5, 5)
-
-}
 .container h1 {
+  text-align: center;
   color: rgba(2, 2, 2, 0.986);
-  margin-top: 2rem;
-  margin-left: 32rem;
   font-size: 3.9rem;
   text-shadow: 0.03em 0.03em rgb(243, 236, 236)
+}
+.container h2 {
+  text-align: center;
+  color: rgb(248, 119, 33);
+  font-size: 2.3rem;
+  text-shadow: 0.06em 0.06em rgb(5, 5, 5)
 }
 #navbarScroll {
   position: absolute;
@@ -65,19 +95,20 @@ html*{
 }
 .callAction {
   background-image:linear-gradient(165deg, transparent 1%, rgba(248, 245, 245, 0.445) 5%, rgba(211, 241, 102, 0.609) 100%, transparent 100%), url(../src/assets/ciudades/coquimbo.jpg);
-  height: 52rem;
+  height: 58rem;
   /* text-align: center; */
   padding-top: 10rem;
-  padding-left: 46rem;
+  /* padding-left: 46rem; */
 }
 .div_carrusel {
-  /* align-items: center; */
-  margin-top: 10rem;
-  margin: 0.5rem;
-  height: 30rem;
+  text-align: center;
+  align-items: center;
+  margin-top: 2rem;
+  margin-left: 1.5rem;
+  height: 40rem;
 }
 .div_carrusel h1 {
-  margin: 2rem 0 2rem 46rem;
+  /* margin: 2rem 0 2rem 46rem; */
 }
 #navbar {
   height: 95px;
@@ -93,7 +124,10 @@ html*{
 #navLink {
   color: aliceblue;
 }
-
+#navLink2 {
+  color: aliceblue;
+  margin-left: 4rem;
+}
 .divContainer {
   /* margin-top: 1rem; */
   margin-left: 0.8rem;
@@ -109,14 +143,12 @@ html*{
     transform: rotateY(0deg);
    }
 }
-
-
-/* ================================================ */
 .row {
+  padding-left: 1rem;
   height: 23rem;
 }
 .row h2 {
-  margin-top: -7vh;
+  margin-top: -8vh;
   margin-left: 5rem;
   color: rgba(244, 246, 247, 0.849);
   font-size: 2.8rem;
@@ -130,37 +162,39 @@ html*{
   transition: transform 8s;
   margin: 50px auto 0;
 }
-.transition:hover{
+.test:active .transition{
     transform: scale(2.3);
     width: 10%;
     height: 15rem;
     position: relative;
     z-index: 90;
-    }
+}
+.test:hover transition{
+  background-color: brown;
+}
 .click {
   width: 152px;
   height: 152px;
   position: absolute;
  }
- .click img {
-   /* position: relative; */
-   /* z-index: 20; */
-   border-radius: 50%;
- }
- 
- .img_click {
-   margin-top: 11rem;
-   margin-left: 11.5rem;
- }
- .img_click:hover {
-  content: url('./assets//images/click2.jpeg');
+ .container_mapa {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
  }
  .mapa {
-   width: 500px;
+   /* width: 200px; */
    height: 500px;
-   background: url(./assets/images/mapamundi4.jpg);
+   background: url(./assets/images/mapamundi3.jpg);
    background-size: cover;
-   position: absolute;
+   text-align: center;   
+   display: flex;
+   flex-direction: row;
+   flex-wrap: wrap;
+   justify-content: center;
+   align-items: center;
    border-radius: 50%;
    box-shadow: -50px -50px 0 0 rgba(0,0,0,.1) inset,
                 -90px -70px 0 0 rgba(0,0,0,.1) inset,
@@ -176,125 +210,25 @@ html*{
 
    }
  }
-/* ================================================== */
-
-/* ==================================================== */
-/* .App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 40vmin;
-  pointer-events: none;
-  border-radius: 25rem;
-}
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
-.click {
-  margin-left: 3rem;
-} */
-/* ================================================ */
-
-
-/* ANIMACION BURBUJAS */
-
-/* .burbuja {
-  width: 80px;
-  height: 80px;
+ .img_click {
+  /* margin-top: 11rem; */
+  /* margin-left: 11.5rem; */
   border-radius: 50%;
-  background: #fff;
-  opacity: .3;
-  position: absolute;
-  bottom: 0;
-  
-  animation: burbujas 3s linear infinite;
 }
-.burbuja:nth-child(1){
-  width: 80px;
-  height: 80px;
-  left: 5%;
-  animation-duration: 3s;
-  animation-delay: 3s;
+.img_click:hover {
+ content: url('./assets//images/click2.jpeg');
 }
-.burbuja:nth-child(2){
-  width: 100px;
-  height: 100px;
-  left: 25%;
-  animation-duration: 3s;
-  animation-delay: 5s;
+.container_footer {
+  height: 40vh;
 }
-.burbuja:nth-child(3){
-  width: 20px;
-  height: 20px;
-  left: 15%;
-  animation-duration: 3s;
-  animation-delay: 7s;
+
+/* ================================================= */
+.slick-prev {
+  left: 3% !important;
+  z-index: 1;
 }
-.burbuja:nth-child(4){
-  width: 90px;
-  height: 90px;
-  left: 90%;
-  animation-duration: 3s;
-  animation-delay: 3s;
+.slick-next {
+  right: 3% !important;
+  z-index: 1;
 }
-.burbuja:nth-child(5){
-  width: 70px;
-  height: 70px;
-  left: 65%;
-  animation-duration: 3s;
-  animation-delay: 1s;
-}
-.burbuja:nth-child(6){
-  width: 20px;
-  height: 20px;
-  left: 85%;
-  animation-duration: 3s;
-  animation-delay: 5s;
-}
-.burbuja:nth-child(7){
-  width: 20px;
-  height: 20px;
-  left: 42%;
-  animation-duration: 3s;
-  animation-delay: 5s;
-}
-.burbuja:nth-child(8){
-  width: 100px;
-  height: 100px;
-  left: 52%;
-  animation-duration: 3s;
-  animation-delay: 5s;
-}
-.burbuja:nth-child(9){
-  width: 65px;
-  height: 65px;
-  left: 75%;
-  animation-duration: 3s;
-  animation-delay: 2s;
-}
-.burbuja:nth-child(10){
-  width: 40px;
-  height: 40px;
-  left: 35%;
-  animation-duration: 3s;
-  animation-delay: 4s;
-}
-@keyframes burbujas {
-  0%{
-    bottom: 0;
-    opacity: 0;
-  }
-  30%{
-    transform: translateX(30px);
-  }
-  50%{
-    opacity: .4;
-  }
-  100%{
-    bottom: 50vh;
-    opacity: 0;
-  }
-} */
+
