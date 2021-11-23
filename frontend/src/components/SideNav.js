@@ -12,7 +12,7 @@ export const SideNav = () => {
   <Container fluid>
      <img src={logo} id="logo" alt="logo"/> 
     <Navbar id="navbarScroll">
-      <Nav className="me-auto my-2 my-lg-0" navbarScroll>
+      <Nav className="me-auto my-2 my-lg-0 navMenu" navbarScroll>
         <Nav.Link ><Link to="/"><h3 id="navLink">Home</h3></Link></Nav.Link>
         <Nav.Link ><Link to="cities"><h3 id="navLink2">Cities</h3></Link></Nav.Link> 
       </Nav>

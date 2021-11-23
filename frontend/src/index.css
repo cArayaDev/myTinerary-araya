@@ -226,6 +226,18 @@ html*{
     padding-top: 10rem;
     padding-left: 0;
   }
+  #logo {
+    display: none;
+  }
+  #navLink2 {
+    margin-left: 0;
+  }
+  .navMenu {
+    margin-left: 6rem;
+  }
+  .main {
+    border-color: #0D6EFD;
+  }
 }
 .container_footer {
   background-color: rgb(177, 179, 179);
@@ -236,7 +248,7 @@ html*{
   align-items: center;
 
 }
-.div_der{
+.div_izq{
   /* background-color: red; */
   height: 15rem;
   display: flex;
@@ -250,24 +262,60 @@ html*{
   height: 15rem;
   text-align: center;
 }
-.div_izq {
+.div_der {
   /* background-color: green; */
   height: 15rem;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  align-items: center;
+  
 }
 .div_copy {
-  /* background-color: burlywood; */
+  background-color: rgb(139, 136, 131);
   height: 5rem;
   text-align: center;
   color: white;
+  padding-top: 1rem;
 }
 .insta {
   background: url(./assets/images/insta1.png);
   width: 50px;
   height: 50px;
+  border-radius: 2rem;
+  margin-right: 1rem;
+}
+.twiter {
+  background: url(./assets/images/twiter.jpg);
+  width: 50px;
+  height: 50px;
+  border-radius: 2rem;
+  margin-right: 1rem;
+}
+.face {
+  background: url(./assets/images/face.png);
+  width: 55px;
+  height: 55px;
   border-radius: 1rem;
+  margin-right: 1rem;
+}
+.watsaap {
+  background: url(./assets/images/whatsapp.png);
+  width: 55px;
+  height: 55px;
+  border-radius: 2rem;
+  margin-right: 1rem;
 }
 .container_cities {
   width: 100%;
   height: 100vh;
-  background: url(./assets/images/suiza.jpg) no-repeat;
+  background: url(./assets/images/suiza.jpg) no-repeat fixed center;
+  background-size: cover; 
+  text-align: center;
 }
+.container_cities h1 {
+  color: white;
+  padding-top: 5rem;
+}
+

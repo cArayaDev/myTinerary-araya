@@ -7,7 +7,7 @@ export default class Cities extends Component {
             <div>
                 <SideNav />
                 <div className="container_cities">
-                    <h1>Cities</h1>
+                    <h1>Welcome to Cities</h1>
                 </div>
             </div>
         )
