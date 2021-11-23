@@ -90,7 +90,7 @@ html*{
   height: 50rem;
 }
 #navLink {
-  color: aliceblue;
+  color: white;
   text-decoration: none;
 }
 #navLink2 {
@@ -263,9 +263,6 @@ html*{
     margin-left: 5rem;
   }
 }
-.call_b {
-  padding-left: .4rem;
-}
 .container_footer {
   background-color: rgb(177, 179, 179);
   display: flex;
@@ -288,6 +285,14 @@ html*{
   /* background-color: aqua; */
   height: 15rem;
   text-align: center;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  align-items: center;
+}
+.div_cen h2 {
+  color: orangered;
 }
 .div_der {
   /* background-color: green; */
@@ -295,16 +300,21 @@ html*{
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  justify-content: space-around;
+  justify-content: center;
   align-items: center;
   
 }
+#navLinkFooter {
+  color: white;
+  padding-right: 5rem;
+}
 .div_copy {
   background-color: rgb(139, 136, 131);
-  height: 5rem;
+  /* height: 5rem; */
   text-align: center;
   color: white;
   padding-top: 1rem;
+  margin-bottom: -1.9rem;
 }
 .insta {
   background: url(./assets/images/insta1.png);

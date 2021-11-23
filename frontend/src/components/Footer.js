@@ -13,7 +13,7 @@ export const Footer = () => {
                 </div>
                 <div className="col-4 div_cen"><h2>MyTinerary</h2></div>
                 <div className="col-4 div_der">
-                    <Link to="/" style={{ textDecoration: 'none' }}><h3 id="navLink">Home</h3></Link>
+                    <Link to="/" style={{ textDecoration: 'none' }}><h3 id="navLinkFooter">Home</h3></Link>
                     <Link to="cities" style={{ textDecoration: 'none' }}><h3 id="navLink">Cities</h3></Link>
                 </div>
                 <div className="col-12 div_copy"><h3>Mytinerary | © All Rights reserved</h3></div>

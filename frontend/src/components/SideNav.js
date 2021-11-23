@@ -2,7 +2,7 @@ import React from 'react'
 import {Navbar, Nav, Container, Dropdown} from 'react-bootstrap'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import '../styles/style.css'
-import logo from '../assets/images/logo20.png'
+import logo from '../assets/images/logo30.jpg'
 import usuario from '../assets/images/usuario1.png'
 import { Link } from 'react-router-dom'
 

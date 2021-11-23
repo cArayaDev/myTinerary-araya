@@ -21,7 +21,6 @@ class Home extends React.Component{
             </div>
             <div className="callAction" id="call">
               <Hero />
-            <a href="#carrusel">down</a>
             </div>
             <div className="div_carrusel" id="carrusel">
               <h1>Popular MyTineraries</h1>
