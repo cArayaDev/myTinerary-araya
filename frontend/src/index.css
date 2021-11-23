@@ -57,7 +57,7 @@ html*{
     transform: translatex(-50%);
 }
 .callAction {
-  background-image:linear-gradient(165deg, transparent 1%, rgba(248, 245, 245, 0.445) 5%, rgba(211, 241, 102, 0.609) 100%, transparent 100%), url(../src/assets/ciudades/coquimbo.jpg);
+  background-image:linear-gradient(165deg, transparent 1%, rgba(248, 245, 245, 0.445) 5%, rgba(211, 241, 102, 0.609) 100%, transparent 100%), url(../src/assets/images/santorini2.jpg);
   height: 58rem;
   padding-top: 10rem;
 }
@@ -91,10 +91,12 @@ html*{
 }
 #navLink {
   color: aliceblue;
+  text-decoration: none;
 }
 #navLink2 {
   color: aliceblue;
   margin-left: 4rem;
+  text-decoration: none;
 }
 .divContainer {
   margin-left: 0.8rem;
@@ -177,6 +179,10 @@ html*{
 .img_click:hover {
  content: url('./assets//images/click2.jpeg');
 }
+.call_a, .call_b {
+  color: orangered;
+  text-align: center;
+}
 .container_footer {
   height: 40vh;
 }
@@ -190,20 +196,28 @@ html*{
   right: 3% !important;
   z-index: 1;
 }
-
-
-
+@media only screen and (min-device-width : 992px) and (max-device-width : 1024px) {
+  .mapa{
+    height: 400;
+    width: 350px;
+  }
+}
 @media (min-width: 768px) and (max-width: 991.98px) {
   .main{
     background-size: 520%;
   }  
+  .mapa{
+    height: 350px;
+    width: 350px;
+  } 
 }
 @media (min-width: 576px) and (max-width: 767.98px) {
   .main{
     background-size: 720%;
   } 
   .mapa{
-    height: 50px;
+    height: 250px;
+    width: 350px;
   } 
 }
 @media (max-width: 575.98px) {
@@ -216,11 +230,14 @@ html*{
 }
 @media (max-width: 575.98px) {
   .mapa {
-    width: 250px;
-    height: 250px;
+    /* display: none; */
+    width: 0;
+    height: 0;
+    margin-top: 10rem;
+    margin-right: 4rem;
   }
     .callAction {
-    background-image:linear-gradient(165deg, transparent 1%, rgba(248, 245, 245, 0.445) 5%, rgba(245, 60, 4, 0.609) 100%, transparent 100%), url(../src/assets/ciudades/coquimbo.jpg);
+    background:linear-gradient(165deg, transparent 1%, rgba(248, 245, 245, 0.445) 5%, rgba(245, 60, 4, 0.609) 100%, transparent 100%);
     height: 52rem;
     /* text-align: center; */
     padding-top: 10rem;
@@ -231,6 +248,7 @@ html*{
   }
   #navLink2 {
     margin-left: 0;
+    padding-left: 1rem;
   }
   .navMenu {
     margin-left: 6rem;
@@ -238,6 +256,15 @@ html*{
   .main {
     border-color: #0D6EFD;
   }
+  .call_b {
+    display: none;
+  }
+  .call_a h1 {
+    margin-left: 5rem;
+  }
+}
+.call_b {
+  padding-left: .4rem;
 }
 .container_footer {
   background-color: rgb(177, 179, 179);
@@ -309,7 +336,7 @@ html*{
 }
 .container_cities {
   width: 100%;
-  height: 100vh;
+  height: 89.7vh;
   background: url(./assets/images/suiza.jpg) no-repeat fixed center;
   background-size: cover; 
   text-align: center;

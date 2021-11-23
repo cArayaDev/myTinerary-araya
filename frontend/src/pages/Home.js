@@ -17,11 +17,11 @@ class Home extends React.Component{
                         <h1 className="animate__animated animate__backInLeft" id="mytinerary">MyTinerary</h1>
                         <h2 className="animate__animated animate__backInRight">Find your perfect trip,designed by insiders who know and love their cities!.</h2>
                     </div>
-                    <a href="#call">click here</a>
+                    <a href="#call">down</a>
             </div>
             <div className="callAction" id="call">
               <Hero />
-            <a href="#carrusel">click here</a>
+            <a href="#carrusel">down</a>
             </div>
             <div className="div_carrusel" id="carrusel">
               <h1>Popular MyTineraries</h1>
