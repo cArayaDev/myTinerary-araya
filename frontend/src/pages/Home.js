@@ -25,6 +25,9 @@ class Home extends React.Component{
             <div className="div_carrusel" id="carrusel">
               <h1>Popular MyTineraries</h1>
                   <Carrousel ciudades={ciudades} />
+            <div className="container_up">
+                  <div><a href="#call" id="up">Up</a></div><div><a href="#call" id="up2">Up</a></div>
+            </div>
             </div>
                 <Footer />
           </> 
