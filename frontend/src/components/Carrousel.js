@@ -1,6 +1,6 @@
 import React from 'react'
 import Slider from "react-slick";
-import '../styles/style.css'
+
 
 
 export const Carrousel = ({ciudades}) => {

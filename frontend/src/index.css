@@ -32,47 +32,29 @@ html*{
   font-size: 1.2rem;
   text-shadow: 0.03em 0.03em rgb(10, 10, 10)
 }
-#down, #up, #up2 {
-  text-decoration: none;
-  color: white;
-  font-size: 1.2rem;
-  text-shadow: 0.03em 0.03em rgb(10, 10, 10)
-}
-.container_up {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  align-items: center;
-  margin-top: 2rem;
-}
-#up {
-  margin-left: 2rem;
-}
-#up2{
-  margin-right: 2rem;
-}
-.container {
+
+.container_home {
+  height: 18vh;
   border-style: solid; 
   border-width: 2px; 
   border-color: rgb(245, 124, 10);
   border-radius: 3rem;
   background-image: linear-gradient(165deg, transparent 1%, rgba(248, 245, 245, 0.041) 5%, rgba(255, 255, 255, .6) 100%, transparent 100%);
 }
-.container:hover {
+.container_home:hover {
   border-style: solid; 
   border-width: 2px; 
   border-color: rgb(245, 124, 10);
   border-radius: 3rem;
   background-image: linear-gradient(165deg, transparent 1%, rgba(248, 245, 245, 0.445) 5%, rgba(255, 255, 255, 0.65) 100%, transparent 100%);
 }
-.container h1 {
+.container_home h1 {
   text-align: center;
   color: rgba(2, 2, 2, 0.986);
   font-size: 3.9rem;
   text-shadow: 0.03em 0.03em rgb(243, 236, 236)
 }
-.container h2 {
+.container_home h2 {
   text-align: center;
   color: rgb(248, 119, 33);
   font-size: 2.3rem;
@@ -223,7 +205,7 @@ html*{
 @media only screen and (min-device-width : 992px) and (max-device-width : 1024px) {
   .mapa{
     height: 400;
-    width: 350px;
+    width: 480px;
   }
 }
 @media (min-width: 768px) and (max-width: 991.98px) {
@@ -232,7 +214,7 @@ html*{
   }  
   .mapa{
     height: 350px;
-    width: 350px;
+    width: 320px;
   } 
 }
 @media (min-width: 576px) and (max-width: 767.98px) {
@@ -241,7 +223,7 @@ html*{
   } 
   .mapa{
     height: 250px;
-    width: 350px;
+    width: 250px;
   } 
 }
 @media (max-width: 575.98px) {
@@ -255,14 +237,15 @@ html*{
 @media (max-width: 575.98px) {
   .mapa {
     /* display: none; */
-    width: 0;
+    width: 100%;
     height: 0;
     margin-top: 10rem;
-    margin-right: 4rem;
+    margin-right: 7rem;
+    background: coral;
   }
     .callAction {
     background:linear-gradient(165deg, transparent 1%, rgba(248, 245, 245, 0.445) 5%, rgba(245, 60, 4, 0.609) 100%, transparent 100%);
-    height: 52rem;
+    height: 32rem;
     /* text-align: center; */
     padding-top: 10rem;
     padding-left: 0;
@@ -284,7 +267,20 @@ html*{
     display: none;
   }
   .call_a h1 {
-    margin-left: 5rem;
+    padding-left: 6rem;
+    /* margin-left: 5rem; */
+  }
+  .call_a {
+    width: 100%;
+  }
+  .div_cen h2{
+    display: none;
+  }
+  .img_click {
+    padding-right: 1rem;
+  }
+  .container_mapa {
+    height: 10vh;
   }
 }
 .container_footer {
@@ -294,7 +290,6 @@ html*{
   flex-wrap: wrap;
   justify-content: center;
   align-items: center;
-
 }
 .div_izq{
   /* background-color: red; */
@@ -330,7 +325,7 @@ html*{
 }
 #navLinkFooter {
   color: white;
-  padding-right: 5rem;
+  /* padding-right: 5rem; */
 }
 .div_copy {
   background-color: rgb(139, 136, 131);
@@ -371,12 +366,12 @@ html*{
 .container_cities {
   width: 100%;
   height: 89.7vh;
-  background: url(./assets/images/suiza.jpg) no-repeat fixed center;
+  background-image:linear-gradient(165deg, transparent 1%, rgba(248, 245, 245, 0.411) 5%, rgba(211, 241, 102, 0.342) 100%, transparent 100%),  url(./assets/images/suiza.jpg);
   background-size: cover; 
-  text-align: center;
+  /* text-align: center; */
+  display: flex;
+  /* flex-direction: column; */
+  /* flex-wrap: wrap; */
+  /* justify-content: center; */
+  /* align-items: center;  */
 }
-.container_cities h1 {
-  color: white;
-  padding-top: 5rem;
-}
-

@@ -13,11 +13,10 @@ class Home extends React.Component{
           <>
             <Header />
             <div className="main animate__animated animate__backInRight">
-                    <div className="container">
+                    <div className="container_home">
                         <h1 className="animate__animated animate__backInLeft" id="mytinerary">MyTinerary</h1>
                         <h2 className="animate__animated animate__backInRight">Find your perfect trip,designed by insiders who know and love their cities!.</h2>
                     </div>
-                    <a href="#call">down</a>
             </div>
             <div className="callAction" id="call">
               <Hero />
@@ -26,7 +25,6 @@ class Home extends React.Component{
               <h1>Popular MyTineraries</h1>
                   <Carrousel ciudades={ciudades} />
             <div className="container_up">
-                  <div><a href="#call" id="up">Up</a></div><div><a href="#call" id="up2">Up</a></div>
             </div>
             </div>
                 <Footer />
