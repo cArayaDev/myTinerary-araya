@@ -368,10 +368,22 @@ html*{
   height: 89.7vh;
   background-image:linear-gradient(165deg, transparent 1%, rgba(248, 245, 245, 0.411) 5%, rgba(211, 241, 102, 0.342) 100%, transparent 100%),  url(./assets/images/suiza.jpg);
   background-size: cover; 
-  /* text-align: center; */
+  text-align: center;
   display: flex;
-  /* flex-direction: column; */
+  flex-direction: column;
   /* flex-wrap: wrap; */
   /* justify-content: center; */
   /* align-items: center;  */
+}
+/* .container_img {
+  width: 30vw;
+  height: 60vh;
+} */
+.welcome {
+  width: 100%;
+  height: 10vh;
+}
+.img {
+  width: 30vw;
+  height: 40vh;
 }

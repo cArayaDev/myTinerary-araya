@@ -18,21 +18,23 @@ export default class Cities extends Component {
             <div>
                 <SideNav />
                 <div className="container_cities">
-                    {
-                        this.state.dataCities.map((elem, i) => {
-                            return (
-                                <Container key={i}>
-                                    <Row>
-                                       <Col>
-                                          <img className="d-block w-100 center transition" src={require(`../assets/ciudades/${elem.img}`)} alt="First slide" />
-                                       </Col>
-                                        <h2 id="ciudad">{elem.name}</h2>
-                                    </Row>
-                                </Container>
-                        )
-                        })                        
-                    }
+                    <div className="welcome">
                     <h1>Welcome to Cities</h1>
+                    </div>
+                    <div>
+                        {
+                            this.state.dataCities.map((elem, i) => {
+                                return (
+                                    <div className="row align-items-start" key={i}>
+                                        <div className="col">
+                                        <img className="img" src={require(`../assets/ciudades/${elem.img}`)} alt="First slide" />
+                                        </div>
+                                        <h2 id="ciudad">{elem.name}</h2>
+                                    </div>
+                                    )
+                            })                        
+                        }
+                    </div>
                 </div>
             </div>
         )
