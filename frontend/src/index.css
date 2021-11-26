@@ -215,6 +215,9 @@ html*{
   .mapa{
     height: 350px;
     width: 320px;
+  }
+  #img_usuario {
+    margin:.5px;
   } 
 }
 @media (min-width: 576px) and (max-width: 767.98px) {
@@ -225,6 +228,9 @@ html*{
     height: 250px;
     width: 250px;
   } 
+  #img_usuario {
+    margin:.5px;
+  }
 }
 @media (max-width: 575.98px) {
   .main{
@@ -363,14 +369,64 @@ html*{
   border-radius: 2rem;
   margin-right: 1rem;
 }
-.container_cities {
+.welcome {
+  padding-top: 2rem;
+  padding-bottom: 8rem;
+}
+.div_input {
+  width: 50%;
+
+}
+.input {
+  width: 10vw;
+  height: 10vh;
+}
+
+
+
+.grid-items {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.3s ease-in-out;
+  border: solid 1px rgb(243, 236, 236);
+}
+.grid-items:hover {
+filter: opacity(0.9);
+transform: scale(1.04);
+}
+.grid-container {
+  margin-top: 2rem;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-auto-rows: 500px;
+  gap: 20px;
+  padding: 20px;
+}
+/* .grid-items { */
+  /* grid-column: 1 / -1; */
+/* } */
+.img {
   width: 100%;
-  height: 89.7vh;
+  height: 50vh;
+  /* object-fit:none; */
+  /* object-position: center center; */
+}
+
+
+
+
+
+
+.container_cities {
+  /* background-color: blue; */
+  /* width: auto; */
+  /* height: 100vh; */
   background-image:linear-gradient(165deg, transparent 1%, rgba(248, 245, 245, 0.411) 5%, rgba(211, 241, 102, 0.342) 100%, transparent 100%),  url(./assets/images/suiza.jpg);
   background-size: cover; 
   text-align: center;
-  display: flex;
-  flex-direction: column;
+  /* display: flex; */
+  /* flex-direction: column; */
   /* flex-wrap: wrap; */
   /* justify-content: center; */
   /* align-items: center;  */
@@ -379,11 +435,3 @@ html*{
   width: 30vw;
   height: 60vh;
 } */
-.welcome {
-  width: 100%;
-  height: 10vh;
-}
-.img {
-  width: 30vw;
-  height: 40vh;
-}
