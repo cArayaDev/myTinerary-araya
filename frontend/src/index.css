@@ -1,13 +1,13 @@
-html*{
+html* {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
-.main{
+.main {
   width: 100%;
   height: 91vh;
-  border-top-style: solid; 
-  border-width: 6px; 
+  border-top-style: solid;
+  border-width: 6px;
   border-color: rgb(26, 14, 3);
   background: url(../src/assets/images/santorini10.jpg);
   background-size: 120%;
@@ -18,55 +18,75 @@ html*{
   justify-content: center;
   align-items: center;
 }
-@keyframes movimiento{
-    from{
-        background-position: bottom left;
-    }to{
-        background-position: top right;
-    }
+@keyframes movimiento {
+  from {
+    background-position: bottom left;
+  }
+  to {
+    background-position: top right;
+  }
 }
 .main a {
   text-decoration: none;
   color: white;
   margin-right: 2rem;
   font-size: 1.2rem;
-  text-shadow: 0.03em 0.03em rgb(10, 10, 10)
+  text-shadow: 0.03em 0.03em rgb(10, 10, 10);
 }
 
 .container_home {
   height: 18vh;
-  border-style: solid; 
-  border-width: 2px; 
+  border-style: solid;
+  border-width: 2px;
   border-color: rgb(245, 124, 10);
   border-radius: 3rem;
-  background-image: linear-gradient(165deg, transparent 1%, rgba(248, 245, 245, 0.041) 5%, rgba(255, 255, 255, .6) 100%, transparent 100%);
+  background-image: linear-gradient(
+    165deg,
+    transparent 1%,
+    rgba(248, 245, 245, 0.041) 5%,
+    rgba(255, 255, 255, 0.6) 100%,
+    transparent 100%
+  );
 }
 .container_home:hover {
-  border-style: solid; 
-  border-width: 2px; 
+  border-style: solid;
+  border-width: 2px;
   border-color: rgb(245, 124, 10);
   border-radius: 3rem;
-  background-image: linear-gradient(165deg, transparent 1%, rgba(248, 245, 245, 0.445) 5%, rgba(255, 255, 255, 0.65) 100%, transparent 100%);
+  background-image: linear-gradient(
+    165deg,
+    transparent 1%,
+    rgba(248, 245, 245, 0.445) 5%,
+    rgba(255, 255, 255, 0.65) 100%,
+    transparent 100%
+  );
 }
 .container_home h1 {
   text-align: center;
   color: rgba(2, 2, 2, 0.986);
   font-size: 3.9rem;
-  text-shadow: 0.03em 0.03em rgb(243, 236, 236)
+  text-shadow: 0.03em 0.03em rgb(243, 236, 236);
 }
 .container_home h2 {
   text-align: center;
   color: rgb(248, 119, 33);
   font-size: 2.3rem;
-  text-shadow: 0.06em 0.06em rgb(5, 5, 5)
+  text-shadow: 0.06em 0.06em rgb(5, 5, 5);
 }
 #navbarScroll {
   position: absolute;
-    left: 50%;
-    transform: translatex(-50%);
+  left: 50%;
+  transform: translatex(-50%);
 }
 .callAction {
-  background-image:linear-gradient(165deg, transparent 1%, rgba(248, 245, 245, 0.445) 5%, rgba(211, 241, 102, 0.609) 100%, transparent 100%), url(../src/assets/images/santorini2.jpg);
+  background-image: linear-gradient(
+      165deg,
+      transparent 1%,
+      rgba(248, 245, 245, 0.445) 5%,
+      rgba(211, 241, 102, 0.609) 100%,
+      transparent 100%
+    ),
+    url(../src/assets/images/santorini2.jpg);
   height: 58rem;
   padding-top: 10rem;
 }
@@ -74,7 +94,14 @@ html*{
   text-align: center;
   align-items: center;
   height: 38rem;
-  background-image:linear-gradient(165deg, transparent 1%, rgba(248, 245, 245, 0.445) 5%, rgba(244, 245, 240, 0.719) 100%, transparent 100%), url(./assets/images/santorini2.jpg);
+  background-image: linear-gradient(
+      165deg,
+      transparent 1%,
+      rgba(248, 245, 245, 0.445) 5%,
+      rgba(244, 245, 240, 0.719) 100%,
+      transparent 100%
+    ),
+    url(./assets/images/santorini2.jpg);
 }
 .div_carrusel h1 {
   padding-top: 2rem;
@@ -83,14 +110,14 @@ html*{
   height: 95px;
 }
 #dropdown-basic {
-  background-color: #0D6EFD;
+  background-color: #0d6efd;
   /* height: 10vh; */
 }
 #img_usuario {
   margin-top: -20px;
   margin-right: 1rem;
   animation: animName 18s linear infinite;
-  margin:5px;
+  margin: 5px;
 }
 .divCarrusel {
   height: 50rem;
@@ -110,12 +137,12 @@ html*{
   height: 50vh;
 }
 @keyframes animName {
- 0%{
+  0% {
     transform: rotateY(360deg);
-   }
-100%{
+  }
+  100% {
     transform: rotateY(0deg);
-   }
+  }
 }
 .row {
   padding-left: 1rem;
@@ -123,23 +150,23 @@ html*{
 }
 .row h2 {
   margin-top: -8vh;
-  margin-left: .5rem;
+  margin-left: 0.5rem;
   color: rgba(244, 246, 247, 0.849);
   font-size: 2rem;
-  text-shadow: 0.06em 0.06em rgb(5, 5, 5)
+  text-shadow: 0.06em 0.06em rgb(5, 5, 5);
 }
 .transition {
   transition: transform 8s;
   margin: 5px auto 0;
 }
-.test:active .transition{
-    transform: scale(2.3);
-    width: 10%;
-    height: 15rem;
-    position: relative;
-    z-index: 90;
+.test:active .transition {
+  transform: scale(2.3);
+  width: 10%;
+  height: 15rem;
+  position: relative;
+  z-index: 90;
 }
-.test:hover transition{
+.test:hover transition {
   background-color: brown;
 }
 .click {
@@ -155,37 +182,38 @@ html*{
   align-items: center;
 }
 .mapa {
-   height: 500px;
-   width: 500px;
-   background: url(./assets/images/mapamundi3.jpg);
-   background-size: cover;
-   text-align: center;   
-   display: flex;
-   flex-direction: row;
-   flex-wrap: wrap;
-   justify-content: center;
-   align-items: center;
-   border-radius: 50%;
-   box-shadow: -50px -50px 0 0 rgba(0,0,0,.1) inset,
-                -90px -70px 0 0 rgba(0,0,0,.1) inset,
-                5px 5px 0 0 rgba(255,255,255,.2)inset;
+  height: 500px;
+  width: 500px;
+  background: url(./assets/images/mapamundi3.jpg);
+  background-size: cover;
+  text-align: center;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  box-shadow: -50px -50px 0 0 rgba(0, 0, 0, 0.1) inset,
+    -90px -70px 0 0 rgba(0, 0, 0, 0.1) inset,
+    5px 5px 0 0 rgba(255, 255, 255, 0.2) inset;
   animation: tierra-girando 15s infinite linear;
- }
- @keyframes tierra-girando {
-   from {
-      background-position: left center;
-   }
-   to {
+}
+@keyframes tierra-girando {
+  from {
+    background-position: left center;
+  }
+  to {
     background-position: -1009px center;
-   }
+  }
 }
 .img_click {
   border-radius: 50%;
 }
 .img_click:hover {
- content: url('./assets//images/click2.jpeg');
+  content: url("./assets//images/click2.jpeg");
 }
-.call_a, .call_b {
+.call_a,
+.call_b {
   color: orangered;
   text-align: center;
 }
@@ -202,43 +230,43 @@ html*{
   right: 3% !important;
   z-index: 1;
 }
-@media only screen and (min-device-width : 992px) and (max-device-width : 1024px) {
-  .mapa{
+@media only screen and (min-device-width: 992px) and (max-device-width: 1024px) {
+  .mapa {
     height: 400;
     width: 480px;
   }
 }
 @media (min-width: 768px) and (max-width: 991.98px) {
-  .main{
+  .main {
     background-size: 520%;
-  }  
-  .mapa{
+  }
+  .mapa {
     height: 350px;
     width: 320px;
   }
   #img_usuario {
-    margin:.5px;
-  } 
+    margin: 0.5px;
+  }
 }
 @media (min-width: 576px) and (max-width: 767.98px) {
-  .main{
+  .main {
     background-size: 720%;
-  } 
-  .mapa{
+  }
+  .mapa {
     height: 250px;
     width: 250px;
-  } 
+  }
   #img_usuario {
-    margin:.5px;
+    margin: 0.5px;
   }
 }
 @media (max-width: 575.98px) {
-  .main{
+  .main {
     background-size: 920%;
-  } 
+  }
   #mytinerary {
     font-size: 40px;
-  } 
+  }
 }
 @media (max-width: 575.98px) {
   .mapa {
@@ -249,8 +277,14 @@ html*{
     margin-right: 7rem;
     background: coral;
   }
-    .callAction {
-    background:linear-gradient(165deg, transparent 1%, rgba(248, 245, 245, 0.445) 5%, rgba(245, 60, 4, 0.609) 100%, transparent 100%);
+  .callAction {
+    background: linear-gradient(
+      165deg,
+      transparent 1%,
+      rgba(248, 245, 245, 0.445) 5%,
+      rgba(245, 60, 4, 0.609) 100%,
+      transparent 100%
+    );
     height: 32rem;
     /* text-align: center; */
     padding-top: 10rem;
@@ -267,7 +301,7 @@ html*{
     margin-left: 6rem;
   }
   .main {
-    border-color: #0D6EFD;
+    border-color: #0d6efd;
   }
   .call_b {
     display: none;
@@ -279,7 +313,7 @@ html*{
   .call_a {
     width: 100%;
   }
-  .div_cen h2{
+  .div_cen h2 {
     display: none;
   }
   .img_click {
@@ -297,7 +331,7 @@ html*{
   justify-content: center;
   align-items: center;
 }
-.div_izq{
+.div_izq {
   /* background-color: red; */
   height: 15rem;
   display: flex;
@@ -327,7 +361,6 @@ html*{
   flex-wrap: wrap;
   justify-content: center;
   align-items: center;
-  
 }
 #navLinkFooter {
   color: white;
@@ -375,15 +408,21 @@ html*{
 }
 .div_input {
   width: 50%;
-
 }
 .input {
   width: 10vw;
   height: 10vh;
 }
-
-
-
+.grid-container {
+  padding-bottom: 3rem;
+  padding-top: 1rem;
+  margin-top: 2rem;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-auto-rows: 500px;
+  gap: 20px;
+  padding: 20px;
+}
 .grid-items {
   display: flex;
   align-items: center;
@@ -392,46 +431,62 @@ html*{
   border: solid 1px rgb(243, 236, 236);
 }
 .grid-items:hover {
-filter: opacity(0.9);
-transform: scale(1.04);
+  filter: opacity(0.9);
+  transform: scale(1.04);
 }
-.grid-container {
-  margin-top: 2rem;
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  grid-auto-rows: 500px;
-  gap: 20px;
-  padding: 20px;
+.grid-items {
+  position: relative;
+  cursor: pointer;
+  overflow: hidden;
 }
-/* .grid-items { */
-  /* grid-column: 1 / -1; */
-/* } */
+.grid-items::before {
+  content: "";
+  transition: transform .2s;
+  transform: scaleY(0);
+}
+.grid-itemsss:hover::before {
+  content: attr(ciudad);
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: rgba(245, 124, 10, 0.308);
+  transform: scale(0);
+  transition: transform 0.4s;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem; 
+  font-weight: 400; 
+  transform: scaleY(1);
+}
+
+@media (max-width: 768px) {
+  .grid-items::before {
+    font-size: 1rem;
+  }
+  .grid-container {
+    grid-template-columns: repeat(1, 1fr);
+  }
+  
+}
 .img {
   width: 100%;
-  height: 50vh;
-  /* object-fit:none; */
-  /* object-position: center center; */
+  height: 53vh;
+  object-fit: cover;
 }
-
-
-
-
-
 
 .container_cities {
-  /* background-color: blue; */
-  /* width: auto; */
-  /* height: 100vh; */
-  background-image:linear-gradient(165deg, transparent 1%, rgba(248, 245, 245, 0.411) 5%, rgba(211, 241, 102, 0.342) 100%, transparent 100%),  url(./assets/images/suiza.jpg);
-  background-size: cover; 
+  background-image: linear-gradient(
+      165deg,
+      transparent 1%,
+      rgba(248, 245, 245, 0.411) 5%,
+      rgba(211, 241, 102, 0.342) 100%,
+      transparent 100%
+    ),
+    url(./assets/images/suiza.jpg);
+  background-size: cover;
   text-align: center;
-  /* display: flex; */
-  /* flex-direction: column; */
-  /* flex-wrap: wrap; */
-  /* justify-content: center; */
-  /* align-items: center;  */
 }
-/* .container_img {
-  width: 30vw;
-  height: 60vh;
-} */
