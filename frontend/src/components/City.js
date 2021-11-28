@@ -18,6 +18,7 @@ export const City = () => {
             <SideNav />
             <h1>Bienvenido a City</h1>
             {
+                city &&
                 city.map((elem, i) => {
                     return (
                         <div className="grid-items" key={i} ciudad={elem.name}>

@@ -5,8 +5,16 @@ const cors = require("cors")
 const Router = require('./routes/routes')
 require('./config/database')
 
-
 const app = express()
+
+/* Se agrego estos 3 items para mostrar los datos */
+const bodyparser = require('body-parser');
+app.use(bodyparser.json());
+app.use(bodyparser.urlencoded({extended: true}));
+
+
+
+
 
 
 app.use(cors())
