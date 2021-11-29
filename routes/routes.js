@@ -12,5 +12,4 @@ Router.route('/city/:id')
 .delete(deleteCity)
 .put(updateCity)
 
-
 module.exports = Router
