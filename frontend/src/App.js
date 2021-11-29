@@ -3,7 +3,10 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Home from './pages/Home';
 import Cities from './pages/Cities';
 import { City } from './components/City';
+import axios from 'axios'
+
 function App() {
+ 
   return (
     <Router>
         <Routes>

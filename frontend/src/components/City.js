@@ -3,7 +3,7 @@ import { useParams } from "react-router";
 import axios from 'axios'
 import { SideNav } from './SideNav';
 import { Link } from 'react-router-dom';
-import Button from '@restart/ui/esm/Button';
+import { Footer } from '../components/Footer';
 
 export const City = () => {
     const [city, setCity] = useState({})
@@ -23,6 +23,7 @@ export const City = () => {
             </div>
             <Link to="/cities" className="btn_back"><button className="btn_back">Back to Cities</button></Link>
             <h1>Under construction</h1>
+            <Footer />
         </div>
     )
 }

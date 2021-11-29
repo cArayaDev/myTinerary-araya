@@ -404,7 +404,11 @@ html* {
 }
 .welcome {
   padding-top: 2rem;
-  padding-bottom: 8rem;
+  padding-bottom: 6rem;
+}
+.welcome h1 {
+  /* margin-top: 10rem; */
+  color: #0d6efd;
 }
 .div_input {
   /* width: 50%; */
@@ -413,7 +417,7 @@ html* {
   flex-wrap: wrap;
   justify-content: center;
   align-items: center;
-  margin-bottom: 10rem;
+  margin-bottom: 5rem;
 }
 .div_input form {
   width: 40%;
@@ -421,7 +425,7 @@ html* {
 .input {
   width: 20%;
   height: 8vh;
-}
+ }
 .grid-container {
   padding-bottom: 3rem;
   padding-top: 1rem;
@@ -436,7 +440,7 @@ html* {
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: transform 0.3s ease-in-out;
+  transition: transform 0.7s ease-in-out;
   border: solid 1px rgb(243, 236, 236);
 }
 .grid-items:hover {
@@ -450,7 +454,7 @@ html* {
 }
 .grid-items::before {
   content: "";
-  transition: transform 0.2s;
+  transition: transform 0.4s;
   transform: scaleY(0);
 }
 .grid-items:hover::before {
@@ -487,11 +491,12 @@ html* {
 }
 
 .container_cities {
+  height: 50.3vh;
   background-image: linear-gradient(
       165deg,
-      transparent 1%,
-      rgba(248, 245, 245, 0.411) 5%,
-      rgba(211, 241, 102, 0.342) 100%,
+      transparent 0.1%,
+      rgba(248, 245, 245, 0.541) 5%,
+      rgba(211, 241, 102, 0.431) 100%,
       transparent 100%
     ),
     url(./assets/images/suiza.jpg);
@@ -504,6 +509,7 @@ html* {
   justify-content: center;
   align-items: center;
   text-align: center;
+  background-color: aqua;
 }
 .btn_back {
   background-color: aquamarine;

@@ -19,7 +19,7 @@ export default class Cities extends Component {
     componentDidMount(){
         axios.get('http://localhost:4000/api/cities')
         .then(res => this.setState({dataCities: res.data.response}))
-        }
+    }
     
     handleSearch(e) {
         let filterCity = this.handleFilter(this.state.dataCities, this.inputValue.current.value)
@@ -29,17 +29,15 @@ export default class Cities extends Component {
         let dataFilter = city.filter((elem) => { return elem.name.toLowerCase().startsWith(valor.trim().toLowerCase())})
         this.setState({dataFilterCities: dataFilter})
     }
-
-
-
+    
     render() {
-        console.log(this.dataFilterCities)
+
         return (
             <div>
                 <SideNav />
                 <div className="container_cities">
                     <div className="welcome">
-                       <h1>Welcome to Cities</h1>
+                       <h1>MyTinerary</h1>
                     </div>
                     <div className="div_input">
                        <form onChange={this.handleSearch}>
@@ -48,8 +46,8 @@ export default class Cities extends Component {
                     </div>
                     <div className="grid-container">
                         {
-                            
-                            this.state.dataCities.map((elem, i) => {
+                            this.state.dataFilterCities &&
+                            this.state.dataFilterCities.map((elem, i) => {
                                 return (
                                     <div className="grid-items" key={i} ciudad={elem.name}>
                                         <Link to={`/city/${elem._id}`} className="link_items"><img className="img" src={require(`../assets/ciudades/${elem.img}`)} alt="First slide" /></Link>
