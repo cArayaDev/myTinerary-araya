@@ -11,27 +11,35 @@ export default class Cities extends Component {
             dataCities: [],
             dataFilterCities: [],
             inputValue: '',
-            
+            isActive: null
         } 
         this.inputValue = React.createRef();
         this.handleSearch = this.handleSearch.bind(this);
     }
     componentDidMount(){
-        axios.get('http://localhost:4000/api/cities')
-        .then(res => this.setState({dataCities: res.data.response}))
+         axios.get('http://localhost:4000/api/cities')
+        .then((res) => {
+            this.setState({dataCities: res.data.response})
+            this.setState({dataFilterCities: res.data.response})
+        })
     }
-    
-    handleSearch(e) {
+    handleSearch() {
         let filterCity = this.handleFilter(this.state.dataCities, this.inputValue.current.value)
+        this.setState({dataFilterCities: filterCity})
+        // this.setState({isActivo: })
+        // (filterCity.length === 0) && this.setState({isActivo: false}) 
+ 
+        console.log(filterCity.length)
     }
 
     handleFilter(city, valor) {
         let dataFilter = city.filter((elem) => { return elem.name.toLowerCase().startsWith(valor.trim().toLowerCase())})
-        this.setState({dataFilterCities: dataFilter})
+        return dataFilter
     }
-    
-    render() {
 
+    render() {
+ 
+        console.log(this.state.isActive)
         return (
             <div>
                 <SideNav />
@@ -46,14 +54,15 @@ export default class Cities extends Component {
                     </div>
                     <div className="grid-container">
                         {
-                            this.state.dataFilterCities &&
-                            this.state.dataFilterCities.map((elem, i) => {
+                           this.state.dataFilterCities &&
+                           (this.state.dataFilterCities.length != 0) ? 
+                           this.state.dataFilterCities.map((elem, i) => {
                                 return (
                                     <div className="grid-items" key={i} ciudad={elem.name}>
                                         <Link to={`/city/${elem._id}`} className="link_items"><img className="img" src={require(`../assets/ciudades/${elem.img}`)} alt="First slide" /></Link>
                                     </div>
                                     )
-                            })                        
+                            }) : <h2>No data......</h2>
                         }
                     </div>
                 </div>
