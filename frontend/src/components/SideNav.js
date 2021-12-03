@@ -18,7 +18,7 @@ export const SideNav = () => {
     </Navbar>
     <Dropdown id="dropdown">
       <Dropdown.Toggle variant="success" id="dropdown-basic">
-      <img src={usuario} id="img_usuario"/>
+      <img src={usuario} id="img_usuario" alt="imagen usuario"/>
       </Dropdown.Toggle>
       <Dropdown.Menu>
         <Dropdown.Item href="#/action-1">Sign Up</Dropdown.Item>

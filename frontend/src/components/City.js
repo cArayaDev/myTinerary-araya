@@ -1,29 +1,38 @@
 import React, { useEffect, useState } from 'react'
 import { useParams } from "react-router";
-import axios from 'axios'
 import { SideNav } from './SideNav';
 import { Link } from 'react-router-dom';
 import { Footer } from '../components/Footer';
+import { Itineraries } from './Itineraries';
+import { connect } from 'react-redux'
 
-export const City = () => {
-    const [city, setCity] = useState({})
+const City = ({cities}) => {
+    const [city, setCity] = useState({cities})
     let { id } = useParams();
     
     useEffect(() => {
-        axios.get('http://localhost:4000/api/city/'+id)
-        .then(res => setCity(res.data.response))
+        const cityFilter = cities.filter((elem) => {
+            if(elem._id === id){
+                setCity(elem)
+            }
+        })
     },[])
    return (
-       city &&
-        <div className="container_city">
+        cities &&
+       <div className="container_city">
             <SideNav />
-            {/* <h1>Bienvenido a City</h1> */}
             <div className="grid-items" ciudad={ city.name}>
                { city.img && <img className="img" src={require('../assets/ciudades/'+city.img)} alt="First slide" /> }
             </div>
+           <Itineraries />
             <Link to="/cities" className="btn_back"><button className="btn_back">Back to Cities</button></Link>
-            <h1>Under construction</h1>
             <Footer />
         </div>
     )
 }
+const mapStateToProps = (state) => {
+    return { cities:state.cityReducer.cities }
+    // console.log(state)
+  }
+
+export default connect(mapStateToProps)(City)
