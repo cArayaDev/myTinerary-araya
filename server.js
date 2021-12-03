@@ -11,17 +11,13 @@ const app = express()
 const bodyparser = require('body-parser');
 app.use(bodyparser.json());
 app.use(bodyparser.urlencoded({extended: true}));
-
-
-
-
-
-
 app.use(cors())
-app.get("/pruebas/datos", (req, res) => {
-    console.log('me llego un pedido get...')
-    res.json({respuesta:'holiiii'})
-})
+
+
+// app.get("/pruebas/datos", (req, res) => {
+//     console.log('me llego un pedido get...')
+//     res.json({respuesta:'holiiii'})
+// })
 
 // app.get("/api/cities", (req, res) => {
 //     res.json({response: cities})
