@@ -10,7 +10,7 @@ const cityActions = {
     },
     filterCities: (cities, value) => {
         return (dispatch, getState) => {
-            console.log(cities, value)
+           // console.log(cities, value)
             const filterCities = cities.filter((city => city.name.toLowerCase().startsWith(value.trim().toLowerCase())))
             dispatch({type:'filter', payload: filterCities})
         }

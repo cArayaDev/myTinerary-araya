@@ -5,34 +5,45 @@ import { Link } from 'react-router-dom';
 import { Footer } from '../components/Footer';
 import { Itineraries } from './Itineraries';
 import { connect } from 'react-redux'
+import itineraryActions from '../redux/actions/itineraryActions';
 
-const City = ({cities}) => {
+const City = ({cities, dataItinerary, itineraries}) => {
     const [city, setCity] = useState({cities})
     let { id } = useParams();
     
     useEffect(() => {
+        dataItinerary()
         const cityFilter = cities.filter((elem) => {
             if(elem._id === id){
                 setCity(elem)
             }
         })
     },[])
+    // console.log(itineraries)
    return (
-        cities &&
+         cities &&
        <div className="container_city">
             <SideNav />
-            <div className="grid-items" ciudad={ city.name}>
-               { city.img && <img className="img" src={require('../assets/ciudades/'+city.img)} alt="First slide" /> }
+            <div className="" ciudad={ city.name}>
+               { city.img && <img className="img_city" src={require('../assets/ciudades/'+city.img)} alt="First slide" /> }
             </div>
-           <Itineraries />
+           <Itineraries itineraries={ itineraries }/>
             <Link to="/cities" className="btn_back"><button className="btn_back">Back to Cities</button></Link>
             <Footer />
         </div>
     )
 }
+const mapDispatchToProps = {
+    dataItinerary: itineraryActions.getItineraries
+}
+
 const mapStateToProps = (state) => {
-    return { cities:state.cityReducer.cities }
+    // console.log(state)
+    return { 
+        cities: state.cityReducer.cities, 
+        itineraries: state.itineraryReducer.itineraries 
+    }
     // console.log(state)
   }
 
-export default connect(mapStateToProps)(City)
+export default connect(mapStateToProps, mapDispatchToProps)(City)

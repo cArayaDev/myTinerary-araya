@@ -19,9 +19,12 @@ Router.route('/itineraries')
 .post(inserOneItinerary)
 
 Router.route('/itinerary/:id')
-.get(getOneItinerary)
+// .get(getOneItinerary)
 .delete(deleteItinerary)
 .put(updateItinerary)
+
+Router.route('/itinerary/:idCiudad')
+.get(getOneItinerary)
 
 
 module.exports = Router

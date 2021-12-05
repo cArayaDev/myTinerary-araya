@@ -9,7 +9,8 @@ const cityReducer = (state = initialState, action) => {
               return {
                   cities: action.payload,
                   auxCities: action.payload
-              }
+                }
+                // console.log(cities)
         case 'filter':
               return {
                   ...state,
@@ -20,6 +21,4 @@ const cityReducer = (state = initialState, action) => {
     }
     // return state
 }
-
-
 export default cityReducer

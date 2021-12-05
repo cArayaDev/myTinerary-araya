@@ -1,5 +1,5 @@
  const ciudades = [
-        {nombre:"Madrid", ruta:"montecarlo.jpg"},
+        {nombre:"Los Angeles", ruta:"losangeles.jpg"},
         {nombre:"Barcelona", ruta:"barcelona.jpg"},
         {nombre:"Budapest", ruta:"budapest.jpg"},
         {nombre:"Chicago", ruta:"chicago.jpg"},

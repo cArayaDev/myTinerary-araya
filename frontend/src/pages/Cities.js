@@ -6,9 +6,9 @@ import { connect } from 'react-redux'
 import cityActions from '../redux/actions/cityActions';
 
 class Cities extends Component {
-    constructor(props){
-        super(props)
-    }
+    // constructor(props){
+    //     super(props)
+    // }
     componentDidMount(){
         this.props.dataCities()
     }
@@ -58,8 +58,6 @@ const mapDispatchToProps = {
     return { cities:state.cityReducer.cities,
              auxCities: state.cityReducer.auxCities
             }
-
-   
     // console.log(state)
   }
 

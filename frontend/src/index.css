@@ -9,7 +9,7 @@ html* {
   border-top-style: solid;
   border-width: 6px;
   border-color: rgb(26, 14, 3);
-  background: url(../src/assets/images/santorini10.jpg);
+  background: url(../src/assets/images/santorini13.jpg);
   background-size: 120%;
   animation: movimiento 25s infinite linear alternate;
   display: flex;
@@ -411,10 +411,10 @@ html* {
 }
 .welcome {
   padding-top: 2rem;
-  padding-bottom: 6rem;
+  padding-bottom: 4rem;
 }
 .welcome h1 {
-  color: #0d6efd;
+  color: rgba(2, 2, 2, 0.986);
 }
 .div_input {
   display: flex;
@@ -431,6 +431,20 @@ html* {
   width: 20%;
   height: 8vh;
  }
+ .centerTitle {
+   width: 100%;
+   height: 8vh;
+   position: absolute;
+   background-color: rgba(245, 124, 10, 0.507);
+   top:0;
+   color: white;
+   border-top-right-radius: 3rem;
+   border-top-left-radius: 3rem;
+  }
+  .centerTitle h2 {
+   font-size: 4rem;
+  
+ }
 .grid-container {
   padding-bottom: 3rem;
   padding-top: 1rem;
@@ -441,30 +455,24 @@ html* {
   gap: 20px;
   padding: 20px;
 }
-.grid-items {
+.img {
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: transform 0.7s ease-in-out;
-  border-radius: 3rem;
-  border: solid 3px rgb(31, 82, 250);
+  transition: transform 1.5s ease-in-out;
+  border-radius: 1rem;
 }
-.centerTitle {
-  width: 100%;
-  height: 8vh;
-  position: absolute;
-  background-color: rgb(31, 82, 250);
-  top:0;
-  color: white;
-}
-.grid-items:hover {
+.img:hover {
   filter: opacity(0.9);
   transform: scale(1.04);
+  border-radius: 3rem;
 }
 .grid-items {
   position: relative;
   cursor: pointer;
   overflow: hidden;
+  border-radius: 4rem;
+  border: solid 5px rgba(245, 124, 10, 0.507);
 }
 .grid-items::before {
   content: "";
@@ -513,10 +521,10 @@ html* {
       rgba(211, 241, 102, 0.431) 100%,
       transparent 100%
     ),
-    url(./assets/images/suiza.jpg);
+    url(./assets/images/love.jpg);
   background-size: cover;
   text-align: center;
-  padding: 5rem 3rem 5rem 3rem;
+  padding: 2rem 3rem 5rem 3rem;
 }
 .container_city {
   flex-direction: row;
@@ -525,6 +533,10 @@ html* {
   align-items: center;
   text-align: center;
   background-color: aqua;
+}
+.img_city {
+  width: 100%;
+  height: 65vh;
 }
 .btn_back {
   background-color: aquamarine;
@@ -551,6 +563,8 @@ html* {
 .no_data h2 {
   color: aqua;
 }
+/*=========== ITINERARIES ===========*/
+
 .Container_iti {
   display: flex;
   flex-direction: row;
@@ -582,7 +596,7 @@ background-color: orangered;
 .title {
   /* width: 20%; */
   height: 20vh;
-  background-color: blue;
+  background-color: rgb(0, 0, 255);
 }
 .price {
   background-color: burlywood;
