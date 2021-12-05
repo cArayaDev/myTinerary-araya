@@ -28,7 +28,7 @@ const City = ({cities, dataItinerary, itineraries}) => {
                { city.img && <img className="img_city" src={require('../assets/ciudades/'+city.img)} alt="First slide" /> }
             </div>
            <Itineraries itineraries={ itineraries }/>
-            <Link to="/cities" className="btn_back"><button className="btn_back">Back to Cities</button></Link>
+            <Link to="/cities" className="link_btn"><div><button className="btn_back">Back to Cities</button></div></Link>
             <Footer />
         </div>
     )
