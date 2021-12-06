@@ -10,19 +10,20 @@ import cityActions from '../redux/actions/cityActions'
 
 const City = ({cities, dataCities, dataItinerary, itineraries}) => {
     const [city, setCity] = useState(cities)
-    const [isControl, setControl] = useState(true)
+    // const [isControl, setIsControl] = useState(false)
     let { id } = useParams();
-    // console.log(itineraries)
+    let isControl = null
     useEffect(() => {
         dataItinerary()
         dataCities()
-        const cityFilter = cities.filter((elem) => {
+        cities.filter((elem) => {
             if(elem._id === id){
                 setCity(elem)
             }
         })
     },[])
-   return (
+
+    return (
          cities &&
        <div className="container_city">
             <SideNav />
@@ -34,15 +35,8 @@ const City = ({cities, dataCities, dataItinerary, itineraries}) => {
                 itineraries.map((elem, i) => {
                     if(elem.city[0]._id === id){
                      return   <Itineraries itineraries={ elem } key={i}/>
-                        // console.log(elem)
-                    }else{
-                       
-                       return null
-                       
                     }
-        
                 })
-
             }
             <Link to="/cities" className="link_btn"><div><button className="btn_back">Back to Cities</button></div></Link>
             <Footer />

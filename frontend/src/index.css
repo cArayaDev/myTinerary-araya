@@ -480,13 +480,13 @@ html* {
   transform: scaleY(0);
 }
 .grid-items:hover::before {
-  content: attr(ciudad);
+  /* content: attr(ciudad); */
   position: absolute;
   top: 400px;
   bottom: 0;
   left: 0;
   right: 0;
-  background-color: rgba(245, 124, 10, 0.308);
+  /* background-color: rgba(245, 124, 10, 0.308); */
   transform: scale(0);
   transition: transform 0.4s;
   color: #fff;

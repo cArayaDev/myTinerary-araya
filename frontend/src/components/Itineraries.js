@@ -1,12 +1,10 @@
-import React, { useState } from 'react'
-import { FcClock, ImCoinDollar, FcCurrencyExchange, FcLike } from "react-icons/fc";
+import React, { useEffect, useState } from 'react'
+import { FcClock, FcLike } from "react-icons/fc";
 import { BsCash } from "react-icons/bs";
 
 export const Itineraries = ({ itineraries }) => {
     const [show, setShow] = useState(true)
-// console.log(itineraries)
     return (
-
         <div>
             <div className="container Container_iti">
                 <div className="row itinerary_img">
@@ -45,6 +43,7 @@ export const Itineraries = ({ itineraries }) => {
                 <div className="col-md-12 read_less"><span  onClick={() => setShow((s) => !s)} id="read_less" style={{ display: show ? "none" : "block" }}>Read Less</span></div> 
                 <div className="col-md-12 view_more"><span onClick={() => setShow((s) => !s)} id="view_more" style={{ display: show ? "block" : "none" }}>View More</span></div> 
             </div>
-        </div>
+        </div> 
+                  
     )
 }
