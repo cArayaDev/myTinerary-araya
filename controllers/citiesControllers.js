@@ -5,7 +5,7 @@ const citiesControllers = {
         let cities
         let error = null
         try{
-             cities = await City.find({}, {__v: 0})
+             cities = await City.find({})
         }catch(error){
             error = error
              console.error(error)

@@ -4,16 +4,16 @@ import { Link } from 'react-router-dom'
 import { Footer } from '../components/Footer';
 import { connect } from 'react-redux'
 import cityActions from '../redux/actions/cityActions';
+// import itineraryActions from '../redux/actions/itineraryActions'
 
 class Cities extends Component {
-    // constructor(props){
-    //     super(props)
-    // }
     componentDidMount(){
         this.props.dataCities()
+        // this.props.dataItinerary()
     }
     
     render() {
+        // console.log(this.props.cities)
         return (
             <div>
                 <SideNav />
@@ -51,7 +51,9 @@ class Cities extends Component {
 
 const mapDispatchToProps = {
     dataCities: cityActions.getCities,  //cityActions y getCities vienen del archivo cityActios.js
-    dataFilter: cityActions.filterCities
+    dataFilter: cityActions.filterCities,
+    // dataItinerary: itineraryActions.getItineraries
+
   }
   
   const mapStateToProps = (state) => {

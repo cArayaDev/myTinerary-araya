@@ -7,6 +7,7 @@ const cityReducer = (state = initialState, action) => {
     switch(action.type){
         case 'fetch':
               return {
+                  ...state,            
                   cities: action.payload,
                   auxCities: action.payload
                 }

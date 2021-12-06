@@ -7,6 +7,7 @@ import { Provider } from 'react-redux';
 import thunk  from 'redux-thunk';
 import mainReducer from './redux/reducers/mainReducer';
 
+
 const reduxStore = createStore(mainReducer, applyMiddleware(thunk))
 
 

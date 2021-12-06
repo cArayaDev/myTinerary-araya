@@ -1,14 +1,16 @@
 const initialState = {
-    itineraries: [] //se llama en mapStateToProps 
-    // auxItineraries: []
+    itineraries: [], //se llama en mapStateToProps 
+    auxItineraries: []
 }
 
 const itineraryReducer = (state = initialState, action) => {
     switch(action.type){
         case 'fetchItineraio':
-            // console.log('holiii',action.type)
+            //  console.log('holiii',state)
             return {
-                itineraries: action.payload
+                ...state,
+                itineraries: action.payload,
+                auxItineraries: action.payload
             }
         default:
             return state 

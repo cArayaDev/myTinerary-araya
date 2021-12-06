@@ -442,7 +442,7 @@ html* {
    border-top-left-radius: 3rem;
   }
   .centerTitle h2 {
-   font-size: 4rem;
+   font-size: 4vw;
   
  }
 .grid-container {
@@ -532,7 +532,16 @@ html* {
   justify-content: center;
   align-items: center;
   text-align: center;
-  background-color: aqua;
+  background-image: linear-gradient(
+      165deg,
+      transparent 0.1%,
+      rgba(248, 245, 245, 0.541) 5%,
+      rgba(211, 241, 102, 0.431) 100%,
+      transparent 100%
+    ),
+    url(./assets/images/love.jpg);
+  background-size: cover;
+  text-align: center;
 }
 .img_city {
   width: 100%;
@@ -581,7 +590,8 @@ html* {
   margin-top: 5rem;
 }
 .itinerary_img {
-  background: url(./assets/images/losangeles2.jpg);
+  background-color: rgb(255, 145, 0);
+  /* background: url(./assets/images/losangeles1.jpg); */
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
@@ -602,17 +612,19 @@ flex-direction: column;
 align-items: center;
 }
 .div_img {
-  background: url(./assets/images/user1.jpg);
-  background-position: center; 
-  background-size: cover;
+  display: flex;
   border-radius: 24rem;
   margin-top: 3rem;
   height: 18vh;
-  width: 150px;
-  height: 150px;
   border: solid;
   border-width: 2px;
   border-color: rgba(219, 218, 217, 0.808);
+}
+.img_user {
+  border-radius: 15rem;
+  max-height: 100%;
+  max-width: 100%;
+  object-fit: cover;
 }
 .foto span {
   margin-top: 2rem;
@@ -625,10 +637,10 @@ align-items: center;
   display: flex;
   justify-content: center;
   align-items: center;
-  font-size: 2.5rem;
+  font-size: 2rem;
 }
 .title span {
-  background-color: rgba(238, 116, 71, 0.65);
+  background-color: rgba(63, 61, 61, 0.472);
   border: solid;
   border-width: 2px;
   border-color: rgba(219, 218, 217, 0.808);
@@ -637,16 +649,38 @@ align-items: center;
 }
 .price {
   display: flex;
-  justify-content: center;
+  justify-content: space-around;
   align-items: center;
-  background-color: burlywood;
+  background-color: rgb(250, 248, 246);
   height: 10rem;
+}
+FcClock {
+  width: 50px;
+  height: 100px;
 }
 .activiti {
-  background-color: rgb(135, 212, 222);
+  background-color: rgb(250, 248, 246);
   height: 10rem;
+  /* padding-top: 5rem; */
+  display: none;
+}
+.hashtags {
+  /* padding-top: 2rem; */
+  color: green;
+}
+.div_view {
+  background-color: rgba(77, 76, 76, 0.767);
+  width: 100%;
+  height: 3vh;
+  color: white;
+  align-items: center;
+  border-bottom-right-radius: 1rem;
+  border-bottom-left-radius: 1rem;
+  /* padding-top: 1rem; */
+  /* padding-top: 10rem; */
 }
 .comments {
-  background-color: rgb(219, 135, 222);
+  background-color: rgb(250, 248, 246);
   height: 10rem;
+  display: none;
 }
