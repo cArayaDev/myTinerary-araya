@@ -1,8 +1,9 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { FcClock, ImCoinDollar, FcCurrencyExchange, FcLike } from "react-icons/fc";
 import { BsCash } from "react-icons/bs";
 
 export const Itineraries = ({ itineraries }) => {
+    const [show, setShow] = useState(true)
 // console.log(itineraries)
     return (
 
@@ -36,13 +37,13 @@ export const Itineraries = ({ itineraries }) => {
                     <div className="col-md-4"><span><FcLike size={30}/> {itineraries.likes}</span></div> 
                     <div className="col-md-12 hashtags"><span>{itineraries.hashtags}</span></div>
                 </div>
-                <div className="col-md-12 div_view"><span>View More</span></div> 
-                <div className="activiti col-12 bg-primary">
+                <div className="col-md-12 div_view" style={{ display: show ? "none" : "block" }}>
                     <h2>Under Construction</h2>
+                   
+                    {/* <a href="#" id="read_less">Read Less</a> */}
                 </div>
-                <div className="comments col-12">
-                    <div></div>
-                </div>
+                <div className="col-md-12 read_less"><span  onClick={() => setShow((s) => !s)} id="read_less" style={{ display: show ? "none" : "block" }}>Read Less</span></div> 
+                <div className="col-md-12 view_more"><span onClick={() => setShow((s) => !s)} id="view_more" style={{ display: show ? "block" : "none" }}>View More</span></div> 
             </div>
         </div>
     )
