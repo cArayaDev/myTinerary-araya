@@ -47,9 +47,7 @@ export const Carrousel = ({ciudades}) => {
               ciudades.map((elem, i) => {
                   return (
                       <div className="row" key={i}>
-                        {/* <a href="#" className="test"> */}
                           <img className="d-block w-100 center transition" src={require(`../assets/ciudades/${elem.ruta}`)} alt="First slide" />
-                        {/* </a> */}
                           <h2 id="ciudad">{elem.nombre}</h2>
                   </div>
                 )

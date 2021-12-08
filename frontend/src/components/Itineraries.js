@@ -1,16 +1,16 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import { FcClock, FcLike } from "react-icons/fc";
 import { BsCash } from "react-icons/bs";
 
-export const Itineraries = ({ itineraries }) => {
+export const Itineraries = ({ itineraries, ciudad }) => {
     const [show, setShow] = useState(true)
+
     return (
         <div>
             <div className="container Container_iti">
                 <div className="row itinerary_img">
-                    {/* <img src={require('../assets/images/losangeles1.jpg')}alt="img fondo"/> */}
                     <div className="foto col-md-4 order-1 order-sm-1 order-md-0">
-                        <div className="div_img">
+                        <div className="div_img" >
                             <img src={require('../assets/images/'+itineraries.userimagen)} alt="img usuario" className="img_user"/>
                         </div>
                         <span>{itineraries.username}</span>
@@ -21,29 +21,26 @@ export const Itineraries = ({ itineraries }) => {
                     <div className="col-md-4">
                         <span>Price: 
                             {
-                                [...Array(itineraries.price)].map((e, i) => <BsCash size={30} key={i}/>)
+                                [...Array(itineraries.price)].map((e, i) => <span id="span_fa" key={i}> <BsCash size={30} /> </span>)
                             }
                         </span>
                     </div> 
                     <div className="col-md-4">
                         <span>Duration: 
                         {
-                                [...Array(itineraries.duration)].map((e, i) => <FcClock size={30} key={i}/>)
+                            [...Array(itineraries.duration)].map((e, i) => <span id="span_fa"key={i}><FcClock size={30} /></span>)
                         }
                         </span>
                     </div> 
                     <div className="col-md-4"><span><FcLike size={30}/> {itineraries.likes}</span></div> 
-                    <div className="col-md-12 hashtags"><span>{itineraries.hashtags}</span></div>
+                    <div className="col-md-12 hashtags"><span id="span_has">{itineraries.hashtags}</span></div>
                 </div>
                 <div className="col-md-12 div_view" style={{ display: show ? "none" : "block" }}>
                     <h2>Under Construction</h2>
-                   
-                    {/* <a href="#" id="read_less">Read Less</a> */}
                 </div>
                 <div className="col-md-12 read_less"><span  onClick={() => setShow((s) => !s)} id="read_less" style={{ display: show ? "none" : "block" }}>Read Less</span></div> 
                 <div className="col-md-12 view_more"><span onClick={() => setShow((s) => !s)} id="view_more" style={{ display: show ? "block" : "none" }}>View More</span></div> 
             </div>
         </div> 
-                  
     )
 }

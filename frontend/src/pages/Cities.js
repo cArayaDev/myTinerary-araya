@@ -4,16 +4,12 @@ import { Link } from 'react-router-dom'
 import { Footer } from '../components/Footer';
 import { connect } from 'react-redux'
 import cityActions from '../redux/actions/cityActions';
-// import itineraryActions from '../redux/actions/itineraryActions'
 
 class Cities extends Component {
     componentDidMount(){
         this.props.dataCities()
-        // this.props.dataItinerary()
     }
-    
     render() {
-        // console.log(this.props.cities)
         return (
             <div>
                 <SideNav />
@@ -33,7 +29,14 @@ class Cities extends Component {
                              return (
                                     <div className="grid-items" key={i} ciudad={elem.name}>
                                         <div className="centerTitle"><h2>{elem.name}</h2></div>
-                                        <Link to={`/city/${elem._id}`} className="link_items"><img className="img" src={require(`../assets/ciudades/${elem.img}`)} alt="First slide" /></Link>
+                                        <Link to={`/city/${elem._id}`} className="link_items">
+                                            <img 
+                                                className="img" 
+                                                src={require(`../assets/ciudades/${elem.img}`)} 
+                                                alt="First slide" 
+                                                // onClick={ (e)=> this.props.oneCity(elem._id) }
+                                            />
+                                        </Link>
                                     </div>
                                     )
                             }) :
@@ -52,15 +55,13 @@ class Cities extends Component {
 const mapDispatchToProps = {
     dataCities: cityActions.getCities,  //cityActions y getCities vienen del archivo cityActios.js
     dataFilter: cityActions.filterCities,
-    // dataItinerary: itineraryActions.getItineraries
-
+    // oneCity: cityActions.getOneCity,
+    
   }
-  
   const mapStateToProps = (state) => {
+    //    console.log(state)
     return { cities:state.cityReducer.cities,
-             auxCities: state.cityReducer.auxCities
+             auxCities: state.cityReducer.auxCities,
             }
-    // console.log(state)
   }
-
 export default connect(mapStateToProps, mapDispatchToProps)(Cities)

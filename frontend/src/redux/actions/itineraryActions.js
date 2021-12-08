@@ -14,6 +14,6 @@ const itineraryActions = {
             const filterCities = cities.filter((city => city.name.toLowerCase().startsWith(value.trim().toLowerCase())))
             dispatch({type:'filter', payload: filterCities})
         }
-    }
+    },
 }
 export default itineraryActions

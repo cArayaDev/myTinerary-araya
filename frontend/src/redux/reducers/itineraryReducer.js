@@ -1,6 +1,6 @@
 const initialState = {
     itineraries: [], //se llama en mapStateToProps 
-    auxItineraries: []
+    auxItineraries: [],
 }
 
 const itineraryReducer = (state = initialState, action) => {

@@ -1,6 +1,7 @@
 const initialState = {
     cities: [], //se llama en mapStateToProps 
-    auxCities: []
+    auxCities: [],
+    oneCity: []
 }
 
 const cityReducer = (state = initialState, action) => {
@@ -17,6 +18,11 @@ const cityReducer = (state = initialState, action) => {
                   ...state,
                   cities: action.payload
               }
+        case 'oneCity':
+            return {
+                ...state,
+                oneCity: action.payload
+            }
         default:
               return state 
     }

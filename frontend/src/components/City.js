@@ -8,53 +8,48 @@ import { connect } from 'react-redux'
 import itineraryActions from '../redux/actions/itineraryActions';
 import cityActions from '../redux/actions/cityActions'
 
-const City = ({cities, dataCities, dataItinerary, itineraries}) => {
-    const [city, setCity] = useState(cities)
-    // const [isControl, setIsControl] = useState(false)
+const City = ({oneCity, dataOneCity, dataItinerary, itineraries}) => {
     let { id } = useParams();
-    let isControl = null
     useEffect(() => {
+        oneCity(id)
         dataItinerary()
-        dataCities()
-        cities.filter((elem) => {
-            if(elem._id === id){
-                setCity(elem)
-            }
-        })
     },[])
-
     return (
-         cities &&
+        
+        (!dataOneCity) ? <div><h1>cargando...</h1></div> :
        <div className="container_city">
             <SideNav />
-            <div className="" ciudad={ city.name}>
-               { city.img && <img className="img_city" src={require('../assets/ciudades/'+city.img)} alt="First slide" /> }
+            <div className="img_city" ciudad={ dataOneCity.name}>
+               { dataOneCity.img && <img className="img_city" src={require('../assets/ciudades/'+dataOneCity.img)} alt="First slide" /> }
             </div>
             {
                 (itineraries.length !== 0) && 
                 itineraries.map((elem, i) => {
                     if(elem.city[0]._id === id){
-                     return   <Itineraries itineraries={ elem } key={i}/>
+                     return   <Itineraries itineraries={ elem } ciudad={ dataOneCity.img} key={i}/>
                     }
                 })
             }
             <Link to="/cities" className="link_btn"><div><button className="btn_back">Back to Cities</button></div></Link>
             <Footer />
-        </div>
+        </div>  
+        
     )
 }
 const mapDispatchToProps = {
     dataCities: cityActions.getCities,
-    dataItinerary: itineraryActions.getItineraries
+    dataItinerary: itineraryActions.getItineraries,
+    oneCity: cityActions.getOneCity,
 }
 
 const mapStateToProps = (state) => {
-    // console.log(state)
+     console.log(state)
     return { 
         cities: state.cityReducer.cities, 
-        itineraries: state.itineraryReducer.itineraries 
+        itineraries: state.itineraryReducer.itineraries,
+        dataOneCity: state.cityReducer.oneCity
+
     }
-    // console.log(state)
   }
 
 export default connect(mapStateToProps, mapDispatchToProps)(City)
