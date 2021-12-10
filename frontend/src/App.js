@@ -4,7 +4,7 @@ import Home from './pages/Home';
 import Cities from './pages/Cities';
 import  City  from './components/City';
 import { Signin } from './components/Signin';
-import { SignUp } from './components/SignUp';
+import  SignUp  from './components/SignUp';
 
 function App() {
 

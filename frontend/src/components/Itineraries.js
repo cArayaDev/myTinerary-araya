@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { FcClock, FcLike } from "react-icons/fc";
 import { BsCash } from "react-icons/bs";
 
-export const Itineraries = ({ itineraries, ciudad }) => {
+export const Itineraries = ({ itineraries }) => {
     const [show, setShow] = useState(true)
 
     return (

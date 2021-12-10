@@ -5,65 +5,73 @@ import { SideNav } from './SideNav'
 import { Link } from 'react-router-dom'
 import validator from 'validator'
 import axios from 'axios'
+import { connect } from 'react-redux'
+import authActions from '../redux/actions/authActions'
+import authReducer from '../redux/reducers/authReducer';
 
 
-export const SignUp = () => {
+ const SignUp = ({insertUser}) => {
     const [color, setColor] = useState('')
-    const [valueCountry, setValueCountry] = useState('')
+    // const [valueCountry, setValueCountry] = useState('')
     const [countries, setCountries] = useState('')
-    const [formValues, handleInputChange, reset] = useForm({
-        name: 'cristian',
-        lastname: 'araya',
-        email: 'caraya@tecnosis.cl',
-        password: '123456',
-        password2: '123456',
-        photo: 'cristian.jpg',
-        country: 'New Zeland'
+    const [newUser, setNewUser] = useState({
+        name: "",
+        lastname: "",
+        email: "",
+        password: "",
+        urlphoto: "",
+        country: ""
     })
-    const { name, lastname, email, password, password2, photo, country } = formValues
+    // const { name, lastname, email, password, password2, urlphoto, country } = formValues
 
     useEffect(() => {
         axios
           .get("https://restcountries.com/v2/all?fields=name")
           .then((res) => setCountries(res.data))
       }, []);
-console.log(country)
+// console.log(country)
     const handleLogin = (e) => {
         setColor('')
-        
+    }
 
+    const handleInputChange = (e) => {
+        setNewUser({
+            ...newUser,
+            [e.target.name]: e.target.value
+        })
     }
     const handleRegister = (e) => {
         e.preventDefault()
 
-       if(isFormValid()){
-        console.log('formulario correcto....')
-        reset()
-       } 
+        console.log('formulario correcto....', newUser)
+    //    if(isFormValid()){
+         insertUser(newUser)
+        // reset()
+    //    } 
     }
-    const isFormValid = () => {
-        if(name.trim().length === 0){
-            setColor('name')
-            return false
-        }else if(lastname.trim().length === 0){
-            setColor('lastname')
-            return false
-        }else if(!validator.isEmail(email)){
-            setColor('email')
-            return false
-        }else if(password !== password2 || password.length < 5){
-            setColor('password')
-            return false
-        }else if(photo.trim().length === 0){
-            setColor('photo')
-            return false
-        }else if(country.trim().length === 0){
-            setColor('country')
-            return false
-        }
+    // const isFormValid = () => {
+    //     if(name.trim().length === 0){
+    //         setColor('name')
+    //         return false
+    //     }else if(lastname.trim().length === 0){
+    //         setColor('lastname')
+    //         return false
+    //     }else if(!validator.isEmail(email)){
+    //         setColor('email')
+    //         return false
+    //     }else if(password !== password2 || password.length < 5){
+    //         setColor('password')
+    //         return false
+    //     }else if(urlphoto.trim().length === 0){
+    //         setColor('photo')
+    //         return false
+    //     }else if(country.trim().length === 0){
+    //         setColor('country')
+    //         return false
+    //     }
         
-        return true
-    }
+    //     return true
+    // }
 
     return (
         <div>
@@ -78,7 +86,6 @@ console.log(country)
                         <div className="col-sm-8 divinput">
                             <input 
                                 type="text" 
-                                value={name} 
                                 onChange={ handleInputChange } 
                                 className="input_user" 
                                 name="name" 
@@ -93,7 +100,6 @@ console.log(country)
                         <div className="col-sm-8 divinput">
                             <input 
                                 type="text" 
-                                value={lastname} 
                                 onChange={ handleInputChange } 
                                 className="input_user" 
                                 name="lastname" 
@@ -108,7 +114,6 @@ console.log(country)
                         <div className="col-sm-8 divinput">
                             <input 
                                 type="text" 
-                                value={email} 
                                 onChange={ handleInputChange } 
                                 className="input_user" 
                                 name="email" 
@@ -123,7 +128,6 @@ console.log(country)
                         <div className="col-sm-8 divinput">
                             <input 
                                 type="password" 
-                                value={password} 
                                 onChange={ handleInputChange } 
                                 className="input_user" 
                                 name="password" 
@@ -137,9 +141,8 @@ console.log(country)
                                 <span className="span_pass">Password must have min. 6 characters</span>
                         </div>
                         <div className="col-sm-8 divinput">
-                            <input 
+                            {/* <input 
                                 type="password" 
-                                value={password2} 
                                 onChange={ handleInputChange } 
                                 className="input_user" 
                                 name="password2" 
@@ -149,15 +152,14 @@ console.log(country)
                                     borderColor: color === 'password2' ? 'red' : 'rgba(241, 205, 157, 0.596)',
                                 }}
                                 onClick={handleLogin}
-                            />
+                            /> */}
                         </div>
                         <div className="col-sm-8 divinput">
                             <input 
                                 type="text" 
-                                value={photo} 
                                 onChange={ handleInputChange } 
                                 className="input_user" 
-                                name="photo" 
+                                name="urlphoto" 
                                 placeholder= {color === 'photo' ? 'photo is required' : 'Photo'}
                                 style={{
                                     backgroundColor: color === 'photo' ? 'red' : 'rgba(241, 205, 157, 0.596)',
@@ -167,11 +169,11 @@ console.log(country)
                             />
                         </div>
                         <div className="col-sm-8 divinput">
-                        <select name="favoriteColor" component="select" className="input_user">
+                        <select name="country" onChange={ handleInputChange } component="select" className="input_user"> 
                             <option>Slect Country</option>
                             { countries.length > 0 &&  
-                            countries.map((elem, index) => <option key={index} value={elem.name}>{elem.name}</option>) }
-                         </select>
+                            countries.map((elem, index) => <option key={index}>{elem.name}</option>) }
+                        </select> 
                         </div>
                     </div>
                     <div className="row div_btns_signup">
@@ -186,3 +188,14 @@ console.log(country)
         </div>
     )
 }
+const mapStateToProps = () =>{
+return {
+    user: authReducer.user
+}
+}
+
+const mapDispatchToProps = {
+    insertUser: authActions.insertUser
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(SignUp)
