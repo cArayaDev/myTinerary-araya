@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect } from 'react'
 import { useParams } from "react-router";
 import { SideNav } from './SideNav';
 import { Link } from 'react-router-dom';

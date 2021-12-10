@@ -743,5 +743,141 @@ cursor: pointer;
 }
 .btn_signin {
   margin-top: 3rem;
-  
 }
+
+
+/* FORMULARIO SIGNIN */
+.container_form {
+  width: 100%;
+  height: 94vh;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  background-image: linear-gradient(
+    165deg,
+    transparent 0.1%,
+    transparent 100%
+  ),
+  url(./assets/images/lasvegas.jpg);
+ background-size: cover;
+}
+.div_form {
+  margin-top: 3rem;
+}
+.row {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  text-align: center;  
+}
+/* .btn_signin {
+  margin-top: 1.5rem;
+  font-size: 1.5rem;
+} */
+
+form {
+  border: 1px solid #f1f1f1;
+  background-color: rgba(66, 64, 64, 0.774);
+  border-radius: 3rem;
+  border: solid;
+  border-width: 2px;
+  border-color: rgba(219, 218, 217, 0.466);
+}
+input[type=text], input[type=password] {
+  width: 95%;
+  padding: 18px 20px;
+  margin: 18px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+  border-radius: 0.5rem;
+  background-color: rgba(241, 205, 157, 0.596);
+  color: white;
+}
+input[type=text]::placeholder, input[type=password]::placeholder {
+  color: white;
+  font-size: 1.5rem;
+}
+button {
+  background-color: #3988f0;
+  color: white;
+  padding: 14px 20px;
+  border: none;
+  cursor: pointer;
+  width: 50%;
+}
+button:hover {
+  opacity: 0.8;
+}
+.btngoogle {
+  width: 50%;
+  padding: 10px;
+  background-color: #f1e8e8;
+  color: rgb(53, 51, 51);
+  font-size: 1.5rem;
+}
+.imgcontainer {
+  text-align: center;
+  margin: 24px 0 12px 0;
+  color: rgb(189, 186, 186);
+}
+span.psw {
+  color: white;
+  font-size: 1.5rem;
+}
+.div_btns {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  text-align: center; 
+  margin-bottom: 5rem;   
+}
+
+/* FORMULARIO SIGNIN SIGNUP */
+
+.container_form_signup {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  background-image: linear-gradient(
+    165deg,
+    transparent 0.1%,
+    transparent 100%
+  ),
+  url(./assets/images/lasvegas.jpg);
+ background-size: cover;
+ padding-bottom: 5rem;
+}
+.div_btns_signup {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  text-align: center; 
+  margin-bottom: 5rem;   
+}
+
+.div_input_signup {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  text-align: center; 
+  padding-bottom: 40.5rem;
+}
+.span_pass {
+  color: white;
+  font-size: 1.3rem;
+}
+
