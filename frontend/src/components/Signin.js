@@ -1,22 +1,30 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
-import { useForm } from '../hooks/useForm'
 import { Footer } from './Footer'
 import { SideNav } from './SideNav'
+import authActions from '../redux/actions/authActions'
+import authReducer from '../redux/reducers/authReducer'
+import { connect } from 'react-redux'
 
-export const Signin = () => {
-    const [formValues, handleInputChange] = useForm({
-        name: 'cristian',
-        password: '123'
+const Signin = ({logIn, oneUser}) => {
+    const [user, setUser] = useState({
+        email: '',
+        password: ''
     })
-    const { name, password } = formValues
 
+    const handleInputChange = (e) => {
+        setUser({
+            ...user,
+            [e.target.name]: e.target.value
+        })
+    }
     const handleLogin = (e) => {
         e.preventDefault()
-        console.log(name)
+        logIn(user)
+        // console.log(name)
     }
-
-    return (
+    
+   return (
   <div>
     <SideNav />
         <div className="container_form">
@@ -26,23 +34,23 @@ export const Signin = () => {
                     <h2>Sign in</h2>
                     </div>
                     <div className="row div_inputs">
-                        <div className="col-sm-8"><input 
-                                                    type="text" 
-                                                    className="input_user" 
-                                                    value={ name } 
-                                                    onChange={ handleInputChange } 
-                                                    placeholder="Enter Username" 
-                                                    name="name" 
-                                                    required />
+                        <div className="col-sm-8">
+                            <input 
+                                type="text" 
+                                className="input_user" 
+                                onChange={ handleInputChange } 
+                                placeholder="Email" 
+                                name="email" 
+                            />
                         </div>
-                        <div className="col-sm-8"><input 
-                                                    type="password" 
-                                                    className="input_user" 
-                                                    value={ password } 
-                                                    onChange={ handleInputChange }
-                                                    placeholder="Enter Password" 
-                                                    name="password" 
-                                                    required />
+                        <div className="col-sm-8">
+                            <input 
+                                type="password" 
+                                className="input_user" 
+                                onChange={ handleInputChange }
+                                placeholder="Password" 
+                                name="password" 
+                            />
                         </div>
                     </div>
                     <div className="row div_btns">
@@ -57,3 +65,14 @@ export const Signin = () => {
   </div>
     )
 }
+const mapStateToProps = () =>{
+    return {
+        oneUser: authReducer.oneUser
+    }
+    }
+    
+    const mapDispatchToProps = {
+        logIn: authActions.logIn
+    }
+    
+    export default connect(mapStateToProps, mapDispatchToProps)(Signin)

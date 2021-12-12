@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react'
-import { useForm } from '../hooks/useForm'
 import { Footer } from './Footer'
 import { SideNav } from './SideNav'
 import { Link } from 'react-router-dom'
@@ -12,7 +11,6 @@ import authReducer from '../redux/reducers/authReducer';
 
  const SignUp = ({insertUser}) => {
     const [color, setColor] = useState('')
-    // const [valueCountry, setValueCountry] = useState('')
     const [countries, setCountries] = useState('')
     const [newUser, setNewUser] = useState({
         name: "",
@@ -22,7 +20,6 @@ import authReducer from '../redux/reducers/authReducer';
         urlphoto: "",
         country: ""
     })
-    // const { name, lastname, email, password, password2, urlphoto, country } = formValues
 
     useEffect(() => {
         axios
@@ -40,12 +37,14 @@ import authReducer from '../redux/reducers/authReducer';
             [e.target.name]: e.target.value
         })
     }
-    const handleRegister = (e) => {
+    const handleRegister = async (e) => {
         e.preventDefault()
-
-        console.log('formulario correcto....', newUser)
-    //    if(isFormValid()){
-         insertUser(newUser)
+        //    if(isFormValid()){
+            const errors = await insertUser(newUser)
+            console.log(errors)
+         if(errors.errors){
+             errors.errors.map(e => alert(e.message))
+         }
         // reset()
     //    } 
     }
@@ -80,7 +79,7 @@ import authReducer from '../redux/reducers/authReducer';
             <div className="container div_form">
                 <form onSubmit={ handleRegister }>
                     <div className="imgcontainer">
-                    <h2>Sign in</h2>
+                    <h2>Sign Up</h2>
                     </div>
                     <div className="row div_input_signup">
                         <div className="col-sm-8 divinput">

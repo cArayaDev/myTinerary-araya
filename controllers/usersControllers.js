@@ -36,26 +36,24 @@ const usersControllers = {
     },
     inserOneUser: async (req, res) => {
           let { name, lastname, email, password, urlphoto, country } = req.body
-        //    console.log(name, lastname, email, password, urlphoto, country)
+            if(password === '') password = null
         try {
             const existUser = await User.findOne({email})
             if(existUser){
                 res.json({success: false, error:'Username already exist', response: null})
+            }else{
+                let user
+                let error = null
+                try{
+                    const hashedPassword = bcryptjs.hashSync(password, 10)
+                    user = new User({ name, lastname, email, password: hashedPassword, urlphoto, country })
+                    await user.save()
+                    res.json({success: true, response: user, error: null})
+                }catch(error){
+                    error = error
+                    console.error(error)
+                }
             }
-            let user
-            let error = null
-            try{
-                const hashedPassword = bcryptjs.hashSync(password, 10)
-                user = await new User({ name, lastname, email, password: hashedPassword, urlphoto, country }).save()
-            }catch(error){
-                error = error
-                console.error(error)
-            }
-            res.json({
-                response: error ? 'ERROR' : user,
-                success: error ? false : true,
-                error: error
-            })
         }catch(error){
             res.json({success: false, response: null, error: error})
         }
@@ -82,6 +80,24 @@ const usersControllers = {
             console.error(error)
         }
         res.json({success: update ? true : false})
+    },
+    accessUser: async (req, res) => {
+        const { email, password } = req.body
+        try{
+            const userExists = await User.findOne({email})
+            if(!userExists){
+                res.json({success: true, error: 'Email and Password incorrect'})
+            }else{
+                let passwordMatches = bcryptjs.compareSync(password, userExists.password)
+                if(passwordMatches){
+                    res.json({success: true, response:{ userExists }, error: null})
+                }else{
+                    res.json({success: true, error: 'Email and Password incorrect'})
+                }
+            }
+        }catch(error){
+            res.json({success: false, response: null, error: error})
+        }
     }
 }
 module.exports = usersControllers
