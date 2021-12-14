@@ -12,7 +12,8 @@ function App({ logInPersistent }) {
 
   useEffect(() => {
     if(localStorage.getItem('token')){
-      logInPersistent()
+      logInPersistent(localStorage.getItem('token'))
+    console.log(logInPersistent(localStorage.getItem('token')))
     }
 
     }, [])

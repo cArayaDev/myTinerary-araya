@@ -48,11 +48,11 @@ const authActions = {
         dispatch({type:'logout'})
         }
     },
-    logInPersistent:() => {
+    logInPersistent:(token) => {
         return async(dispatch, getState) => {
             try {
                 // console.log(user)
-                const token = localStorage.getItem('token')
+                // const token = localStorage.getItem('token')
                 const res = await axios.post('http://localhost:4000/api/siginPersistent/', {},{
                     headers: {
                         'Authorization':`Bearer ${token}`

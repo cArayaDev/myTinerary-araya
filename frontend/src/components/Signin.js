@@ -1,14 +1,16 @@
 import React, { useState } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { Footer } from './Footer'
 import  SideNav  from './SideNav'
 import authActions from '../redux/actions/authActions'
 import { connect } from 'react-redux'
 import validator from 'validator'
+import GoogleLogin from 'react-google-login'
 
 const Signin = ({logIn, oneUser}) => {
     const [control, setControl] = useState('')
     const [message, setMessage] = useState('')
+    let navigate = useNavigate();
     const [user, setUser] = useState({
         email: '',
         password: ''
@@ -27,7 +29,7 @@ const Signin = ({logIn, oneUser}) => {
             if(errors === undefined){
                 // console.log('Bienvenido......')
 
-               return <Link to="/"></Link>
+            //    return navigate('/')
             }else{
                 setControl(false)
                 setMessage(errors.errors[0].message)
@@ -50,8 +52,17 @@ const Signin = ({logIn, oneUser}) => {
         setControl(null)
         setMessage('')
     }
-   
-//  console.log(oneUser.userExists?.name)
+    const responseGoogle = (res) => {
+        let googleUser = {
+            email: res.profileObj.email,
+            password: res.profileObj.googleId,
+        }
+        logIn(googleUser)
+        .then((res) => res.dat.success)
+        .catch((err) => console.log(err))
+       
+    }   
+ console.log(oneUser.userExists?.urlphoto)
 // console.log(oneUser.userExists?.email.length)
 // console.log(oneUser)
    return (
@@ -99,7 +110,15 @@ const Signin = ({logIn, oneUser}) => {
                     <div className="row div_btns">
                         <div className="col-sm-8 col-xs-12"><button type="submit" className="btn_signin">Sign In</button></div>
                         <div className="col-sm-8 col-xs-12 div_a_sign"> <span className="psw">You do not have an account ? <Link to="/signup">Sign up here !</Link></span></div>
-                        <div className="col-sm-8 col-xs-12"><button type="button" className="btngoogle">Sign In with Google</button></div>
+                        <div className="col-sm-8 col-xs-12">
+                            <GoogleLogin
+                                clientId="792350581311-56brtufk0lo9c129f11vgfmlvm34qone.apps.googleusercontent.com"
+                                buttonText="Sign In with Google"
+                                onSuccess={responseGoogle}
+                                onFailure={responseGoogle}
+                                cookiePolicy={'single_host_origin'}
+                            />
+                        </div>
                     </div>
                 </form>
             </div>

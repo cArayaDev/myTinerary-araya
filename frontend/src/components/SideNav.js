@@ -14,7 +14,7 @@ import { connect } from 'react-redux'
    
 
 
-
+// console.log(name)
     return (
         <Navbar bg="primary" expand="lg" id="navbar">
           <Container fluid>

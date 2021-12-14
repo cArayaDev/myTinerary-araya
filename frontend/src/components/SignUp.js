@@ -51,8 +51,19 @@ import GoogleLogin from 'react-google-login'
         } 
     }
 
-    const responseGoogle = (response) => {
-        console.log(response);
+    const responseGoogle = (res) => {
+        let googleUser = {
+            name: res.profileObj.name,
+            lastname: 'google',
+            email: res.profileObj.email,
+            password: res.profileObj.googleId,
+            country: 'Chile',
+            urlphoto: res.profileObj.imageUrl,
+            google: true,
+        }
+        insertUser(googleUser)
+        .then((res) => res.dat.success)
+        .catch((err) => console.log(err))
       }
 
     const isFormValid = () => {
