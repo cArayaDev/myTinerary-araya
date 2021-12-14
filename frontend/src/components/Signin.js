@@ -1,12 +1,14 @@
 import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { Footer } from './Footer'
-import { SideNav } from './SideNav'
+import  SideNav  from './SideNav'
 import authActions from '../redux/actions/authActions'
-import authReducer from '../redux/reducers/authReducer'
 import { connect } from 'react-redux'
+import validator from 'validator'
 
 const Signin = ({logIn, oneUser}) => {
+    const [control, setControl] = useState('')
+    const [message, setMessage] = useState('')
     const [user, setUser] = useState({
         email: '',
         password: ''
@@ -18,16 +20,45 @@ const Signin = ({logIn, oneUser}) => {
             [e.target.name]: e.target.value
         })
     }
-    const handleLogin = (e) => {
+    const handleLogin = async (e) => {
         e.preventDefault()
-        logIn(user)
-        // console.log(name)
+        if(isFormValid()){
+            const errors = await logIn(user)
+            if(errors === undefined){
+                // console.log('Bienvenido......')
+
+               return <Link to="/"></Link>
+            }else{
+                setControl(false)
+                setMessage(errors.errors[0].message)
+                // errors.errors.map(e => console.log(errors.errors[0].message))
+            }
+        }
     }
-    
+    const isFormValid = () => {
+        if(!validator.isEmail(user.email)){
+            setControl('uno')
+            return false
+        }else if(user.password.length < 5){
+            setControl('dos')
+            return false
+        }
+        
+        return true
+    }
+    const handleControl = (e) => {
+        setControl(null)
+        setMessage('')
+    }
+   
+//  console.log(oneUser.userExists?.name)
+// console.log(oneUser.userExists?.email.length)
+// console.log(oneUser)
    return (
   <div>
-    <SideNav />
+    <SideNav name={ oneUser.userExists?.name } urlphoto={ oneUser.userExists?.urlphoto }/>
         <div className="container_form">
+            <div className="col-sm-5 col-xs-12 div_error animate__fadeInDown" ><span>{ message }</span></div>
             <div className="container ">
                 <form onSubmit={ handleLogin }>
                     <div className="imgcontainer">
@@ -41,6 +72,12 @@ const Signin = ({logIn, oneUser}) => {
                                 onChange={ handleInputChange } 
                                 placeholder="Email" 
                                 name="email" 
+                                placeholder= {control === 'uno' ? 'email is required' : 'Email'}
+                                style={{
+                                    backgroundColor: control === 'uno' ? 'red' : 'rgba(241, 205, 157, 0.596)',
+                                    borderColor: control === 'uno' ? 'red' : 'rgba(241, 205, 157, 0.596)',
+                                }}
+                                onClick={handleControl}
                             />
                         </div>
                         <div className="col-sm-8">
@@ -50,13 +87,19 @@ const Signin = ({logIn, oneUser}) => {
                                 onChange={ handleInputChange }
                                 placeholder="Password" 
                                 name="password" 
+                                placeholder= {control === 'dos' ? 'email is required' : 'Password'}
+                                style={{
+                                    backgroundColor: control === 'dos' ? 'red' : 'rgba(241, 205, 157, 0.596)',
+                                    borderColor: control === 'dos' ? 'red' : 'rgba(241, 205, 157, 0.596)',
+                                }}
+                                onClick={handleControl}
                             />
                         </div>
                     </div>
                     <div className="row div_btns">
-                        <div className="col-sm-8"><button type="submit" className="btn_signin">SIGN IN</button></div>
-                        <div className="col-sm-8 div_a_sign"> <span className="psw">You do not have an account ? <Link to="/signup">Sign up here !</Link></span></div>
-                        <div className="col-sm-8"><button type="button" className="btngoogle">Sign In with Google</button></div>
+                        <div className="col-sm-8 col-xs-12"><button type="submit" className="btn_signin">Sign In</button></div>
+                        <div className="col-sm-8 col-xs-12 div_a_sign"> <span className="psw">You do not have an account ? <Link to="/signup">Sign up here !</Link></span></div>
+                        <div className="col-sm-8 col-xs-12"><button type="button" className="btngoogle">Sign In with Google</button></div>
                     </div>
                 </form>
             </div>
@@ -65,14 +108,13 @@ const Signin = ({logIn, oneUser}) => {
   </div>
     )
 }
-const mapStateToProps = () =>{
-    return {
-        oneUser: authReducer.oneUser
+   const mapStateToProps = (state) =>{
+    // console.log(state)
+        return {
+            oneUser: state.authReducer.oneUser,
+        }
     }
-    }
-    
     const mapDispatchToProps = {
         logIn: authActions.logIn
     }
-    
-    export default connect(mapStateToProps, mapDispatchToProps)(Signin)
+ export default connect(mapStateToProps, mapDispatchToProps)(Signin)

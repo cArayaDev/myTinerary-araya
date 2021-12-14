@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react'
 import { useParams } from "react-router";
-import { SideNav } from './SideNav';
+import  SideNav  from './SideNav';
 import { Link } from 'react-router-dom';
 import { Footer } from '../components/Footer';
 import { Itineraries } from './Itineraries';
@@ -43,9 +43,9 @@ const mapDispatchToProps = {
 }
 
 const mapStateToProps = (state) => {
-     console.log(state)
+    //  console.log(state)
     return { 
-        cities: state.cityReducer.cities, 
+        // cities: state.cityReducer.cities, 
         itineraries: state.itineraryReducer.itineraries,
         dataOneCity: state.cityReducer.oneCity
 

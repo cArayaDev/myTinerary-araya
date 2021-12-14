@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { SideNav } from '../components/SideNav'
+import  SideNav  from '../components/SideNav'
 import { Link } from 'react-router-dom'
 import { Footer } from '../components/Footer';
 import { connect } from 'react-redux'

@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from 'react'
 import { Footer } from './Footer'
-import { SideNav } from './SideNav'
+import  SideNav  from './SideNav'
 import { Link } from 'react-router-dom'
 import validator from 'validator'
 import axios from 'axios'
 import { connect } from 'react-redux'
 import authActions from '../redux/actions/authActions'
-import authReducer from '../redux/reducers/authReducer';
+import GoogleLogin from 'react-google-login'
 
 
  const SignUp = ({insertUser}) => {
@@ -39,38 +39,45 @@ import authReducer from '../redux/reducers/authReducer';
     }
     const handleRegister = async (e) => {
         e.preventDefault()
-        //    if(isFormValid()){
+        if(isFormValid()){
             const errors = await insertUser(newUser)
-            console.log(errors)
-         if(errors.errors){
-             errors.errors.map(e => alert(e.message))
-         }
-        // reset()
-    //    } 
+            
+            // console.log(errors)
+            if(errors !== undefined){
+                if(errors.errors){
+                    errors.errors.map(e => console.log(e))
+                }
+            }
+        } 
     }
-    // const isFormValid = () => {
-    //     if(name.trim().length === 0){
-    //         setColor('name')
-    //         return false
-    //     }else if(lastname.trim().length === 0){
-    //         setColor('lastname')
-    //         return false
-    //     }else if(!validator.isEmail(email)){
-    //         setColor('email')
-    //         return false
-    //     }else if(password !== password2 || password.length < 5){
-    //         setColor('password')
-    //         return false
-    //     }else if(urlphoto.trim().length === 0){
-    //         setColor('photo')
-    //         return false
-    //     }else if(country.trim().length === 0){
-    //         setColor('country')
-    //         return false
-    //     }
+
+    const responseGoogle = (response) => {
+        console.log(response);
+      }
+
+    const isFormValid = () => {
+        if(newUser.name.trim().length === 0){
+            setColor('name')
+            return false
+        }else if(newUser.lastname.trim().length === 0){
+            setColor('lastname')
+            return false
+        }else if(!validator.isEmail(newUser.email)){
+            setColor('email')
+            return false
+        }else if(newUser.password.length < 5){
+            setColor('password')
+            return false
+        }else if(newUser.urlphoto.trim().length === 0){
+            setColor('photo')
+            return false
+        }else if(newUser.country.trim().length === 0){
+            setColor('country')
+            return false
+        }
         
-    //     return true
-    // }
+        return true
+    }
 
     return (
         <div>
@@ -140,18 +147,6 @@ import authReducer from '../redux/reducers/authReducer';
                                 <span className="span_pass">Password must have min. 6 characters</span>
                         </div>
                         <div className="col-sm-8 divinput">
-                            {/* <input 
-                                type="password" 
-                                onChange={ handleInputChange } 
-                                className="input_user" 
-                                name="password2" 
-                                placeholder= {color === 'password2' ? 'password is required' : 'Repeat Password'}
-                                style={{
-                                    backgroundColor: color === 'password2' ? 'red' : 'rgba(241, 205, 157, 0.596)',
-                                    borderColor: color === 'password2' ? 'red' : 'rgba(241, 205, 157, 0.596)',
-                                }}
-                                onClick={handleLogin}
-                            /> */}
                         </div>
                         <div className="col-sm-8 divinput">
                             <input 
@@ -168,8 +163,12 @@ import authReducer from '../redux/reducers/authReducer';
                             />
                         </div>
                         <div className="col-sm-8 divinput">
-                        <select name="country" onChange={ handleInputChange } component="select" className="input_user"> 
-                            <option>Slect Country</option>
+                        <select 
+                            name="country" 
+                            onChange={ handleInputChange } 
+                            component="select" 
+                            className="input_select"> 
+                             <option className="input_user">Slect Country</option>
                             { countries.length > 0 &&  
                             countries.map((elem, index) => <option key={index}>{elem.name}</option>) }
                         </select> 
@@ -178,7 +177,15 @@ import authReducer from '../redux/reducers/authReducer';
                     <div className="row div_btns_signup">
                         <div className="col-sm-8"><button type="submit" className="btn_signin">SIGN IN</button></div>
                         <div className="col-sm-8 div_a_sign"> <span className="psw">You do not have an account ? <Link to="/signin">Sign up here !</Link></span></div>
-                        <div className="col-sm-8"><button type="button" className="btngoogle">Sign In with Google</button></div>
+                        <div className="col-sm-8">
+                        <GoogleLogin
+                            clientId="792350581311-56brtufk0lo9c129f11vgfmlvm34qone.apps.googleusercontent.com"
+                            buttonText="Sign In with Google"
+                            onSuccess={responseGoogle}
+                            onFailure={responseGoogle}
+                            cookiePolicy={'single_host_origin'}
+                        />
+                        </div>
                     </div>
                 </form>
             </div>
@@ -187,9 +194,9 @@ import authReducer from '../redux/reducers/authReducer';
         </div>
     )
 }
-const mapStateToProps = () =>{
+const mapStateToProps = (state) =>{
 return {
-    user: authReducer.user
+    user: state.authReducer.user
 }
 }
 
