@@ -62,7 +62,7 @@ const Signin = ({logIn, oneUser}) => {
         .catch((err) => console.log(err))
        
     }   
- console.log(oneUser.userExists?.urlphoto)
+//  console.log(oneUser.userExists?.urlphoto)
 // console.log(oneUser.userExists?.email.length)
 // console.log(oneUser)
    return (

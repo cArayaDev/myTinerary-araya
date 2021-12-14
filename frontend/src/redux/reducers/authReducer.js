@@ -5,7 +5,7 @@ const initialState = {
 }
 
 const authReducer = (state = initialState, action) => {
-    //  console.log(action.payload)
+    //   console.log(action.payload)
     switch(action.type){
         case 'user':
             return {
@@ -13,6 +13,7 @@ const authReducer = (state = initialState, action) => {
                 user: action.payload
             }
         case 'oneUser':
+            // localStorage.setItem('name', res.data.response.token)
             return {
                 ...state,
                 oneUser: action.payload

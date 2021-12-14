@@ -10,13 +10,13 @@ import { connect } from 'react-redux'
 
 function App({ logInPersistent }) {
 
-  useEffect(() => {
-    if(localStorage.getItem('token')){
-      logInPersistent(localStorage.getItem('token'))
-    console.log(logInPersistent(localStorage.getItem('token')))
-    }
+  // useEffect(() => {
+  //   if(localStorage.getItem('token')){
+  //     logInPersistent()
+  //   console.log(logInPersistent())
+  //   }
 
-    }, [])
+  //   }, [])
 
   return (
     <Router>

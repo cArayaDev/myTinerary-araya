@@ -98,7 +98,7 @@ const usersControllers = {
         }
     },
     persistentAccessUser: async (req, res) => {
-        //  console.log(req.user)
+        console.log(req.user)
         try{
             if(req.user){
                 res.json({success: true, response: req.user, error: null})

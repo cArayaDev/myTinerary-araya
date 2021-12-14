@@ -52,14 +52,14 @@ const authActions = {
         return async(dispatch, getState) => {
             try {
                 // console.log(user)
-                // const token = localStorage.getItem('token')
+                const token = localStorage.getItem('token')
                 const res = await axios.post('http://localhost:4000/api/siginPersistent/', {},{
                     headers: {
                         'Authorization':`Bearer ${token}`
                     }
                 })
-                    //  console.log(res)
-                    dispatch({type:'oneUser', payload:{token, data: res.data.response}})
+                    // console.log(res)
+                    dispatch({type:'oneUser', payload:{name: res.data.name, imagen: res.data.urlphoto}})
                 // console.log(res)
             }catch(error){
                 console.error(error)
