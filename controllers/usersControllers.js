@@ -77,30 +77,31 @@ const usersControllers = {
         res.json({success: update ? true : false})
     },
     accessUser: async (req, res) => {
-        const { email, password } = req.body
+        const { email, password, google } = req.body
         //  console.log(req.user.email)
         try{
-                const userExists = await User.findOne({email})
-                if(!userExists){
-                    res.json({success: true, error: 'Email and Password incorrect'})
+            const userExists = await User.findOne({email})
+            if(userExists.google && !google) throw new Error ('Invalid email')
+            if(!userExists){
+                res.json({success: true, error: 'Email and Password incorrect'})
+            }else{
+                let passwordMatches = bcryptjs.compareSync(password, userExists.password)
+                if(passwordMatches){
+                    const token = jwt.sign({...userExists}, process.env.SECRET_KEY)
+                    // console.log(token)
+                    res.json({success: true, response:{ token, userExists }, error: null})
                 }else{
-                    let passwordMatches = bcryptjs.compareSync(password, userExists.password)
-                    if(passwordMatches){
-                        const token = jwt.sign({...userExists}, process.env.SECRET_KEY)
-                        // console.log(token)
-                        res.json({success: true, response:{ token, userExists }, error: null})
-                    }else{
-                        res.json({success: true, error: 'Email and Password incorrect'})
-                    }
+                    res.json({success: true, error: 'Email and Password incorrect'})
                 }
+            }
         }catch(error){
             res.json({success: false, response: null, error: error})
         }
     },
     persistentAccessUser: async (req, res) => {
-        console.log(req.user)
+        //  console.log(req.user) // Este console.log se ve en la consola del servidor.
         try{
-            if(req.user){
+            if(req.user){  // Los datos req.user biene del passport aquí es donde se hace la verificación de la data y no es necesario consultar BBDD
                 res.json({success: true, response: req.user, error: null})
             }else{
                 res.json({success: true, error: 'The user is not authenticated, try logging in again'})

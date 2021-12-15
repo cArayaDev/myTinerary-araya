@@ -8,16 +8,14 @@ import  SignUp  from './components/SignUp'
 import authActions from './redux/actions/authActions'
 import { connect } from 'react-redux'
 
-function App({ logInPersistent }) {
+function App({ logInPersistent, oneUser }) {
 
-  // useEffect(() => {
-  //   if(localStorage.getItem('token')){
-  //     logInPersistent()
-  //   console.log(logInPersistent())
-  //   }
-
-  //   }, [])
-
+  useEffect(() => {
+    if(localStorage.getItem('token')){
+      logInPersistent(localStorage.getItem('token'))
+    }
+    //console.log(oneUser.name)
+  }, [])
   return (
     <Router>
         <Routes>

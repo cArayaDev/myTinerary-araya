@@ -40,7 +40,7 @@ Router.route('/user/:id')
 .put(updateUser)
 
 Router.route('/sigin')
-.post(accessUser)
+.post(validator, accessUser)
 // .post(passport.authenticate('jwt', { session:false }), accessUser)
 Router.route('/siginPersistent')
 .post(passport.authenticate('jwt', { session:false }), persistentAccessUser)

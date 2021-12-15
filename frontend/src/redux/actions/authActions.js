@@ -23,17 +23,15 @@ const authActions = {
             try {
                 // console.log(user)
                 const token = localStorage.getItem('token')
-                const res = await axios.post('http://localhost:4000/api/sigin/', {...user},{
-                    headers: {
-                        'Authorization':`Bearer ${token}`
-                    }
-                })
-                //    console.log(res)
+                const res = await axios.post('http://localhost:4000/api/sigin/', {...user})
+                // console.log('res desde el controller',res.data.response.userExists?.name)
                 if(res.data.success && !res.data.error){
                     localStorage.setItem('token', res.data.response.token)
-                    dispatch({type:'oneUser', payload:res.data.response})
+                    dispatch({type:'oneUser', payload:{name: res.data.response.userExists?.name, 
+                                                       photo: res.data.response.userExists?.urlphoto,
+                                                       google: res.data.response.userExists?.google}})
                 }else{
-                //  console.log(res.data.error)
+                  console.log(res.data.response) 
                   return {errors: [{message: res.data.error}]}
                 }
                 // console.log(res)
@@ -50,20 +48,19 @@ const authActions = {
     },
     logInPersistent:(token) => {
         return async(dispatch, getState) => {
+            // console.log('toi en logInPersistent',token)
             try {
-                // console.log(user)
-                const token = localStorage.getItem('token')
+            //     const token = localStorage.getItem('token')
                 const res = await axios.post('http://localhost:4000/api/siginPersistent/', {},{
                     headers: {
                         'Authorization':`Bearer ${token}`
                     }
                 })
-                    // console.log(res)
-                    dispatch({type:'oneUser', payload:{name: res.data.name, imagen: res.data.urlphoto}})
-                // console.log(res)
+                // console.log(res.data.response.name)
+                dispatch({type:'oneUser', payload:{name: res.data.response.name, photo: res.data.response.urlphoto}})
             }catch(error){
-                console.error(error)
-                return dispatch({type: 'logout'})
+                 console.error(error)
+                 return dispatch({type: 'logout'})
             }
 
         }

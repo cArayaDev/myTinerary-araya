@@ -1,17 +1,16 @@
 import React from 'react';
-// import {Container, Row, Grid} from 'react-bootstrap'
-import { Header } from '../components/Header';
 import { Carrousel } from '../components/Carrousel';
 import { Footer } from '../components/Footer';
 import ciudades from '../components/Ciudades';
 import { Hero } from '../components/Hero';
+import SideNav from '../components/SideNav';
 
 class Home extends React.Component{
-
+ 
   render(){
         return (
           <>
-            <Header />
+            <SideNav />
             <div className="main animate__animated animate__backInRight">
                     <div className="container_home">
                         <h1 className="animate__animated animate__backInLeft" id="mytinerary">MyTinerary</h1>
@@ -33,4 +32,4 @@ class Home extends React.Component{
     }
 }
 
-export default Home
+export default Home 

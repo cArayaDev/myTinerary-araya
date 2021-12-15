@@ -27,12 +27,10 @@ const Signin = ({logIn, oneUser}) => {
         if(isFormValid()){
             const errors = await logIn(user)
             if(errors === undefined){
-                // console.log('Bienvenido......')
-
-            //    return navigate('/')
+                return navigate('/')
             }else{
                 setControl(false)
-                setMessage(errors.errors[0].message)
+                // setMessage(errors.errors[0].message)
                 // errors.errors.map(e => console.log(errors.errors[0].message))
             }
         }
@@ -45,7 +43,6 @@ const Signin = ({logIn, oneUser}) => {
             setControl('dos')
             return false
         }
-        
         return true
     }
     const handleControl = (e) => {
@@ -56,15 +53,14 @@ const Signin = ({logIn, oneUser}) => {
         let googleUser = {
             email: res.profileObj.email,
             password: res.profileObj.googleId,
+            google:true,
         }
         logIn(googleUser)
         .then((res) => res.dat.success)
         .catch((err) => console.log(err))
-       
+        return navigate('/')
     }   
-//  console.log(oneUser.userExists?.urlphoto)
 // console.log(oneUser.userExists?.email.length)
-// console.log(oneUser)
    return (
   <div>
     <SideNav name={ oneUser.userExists?.name } urlphoto={ oneUser.userExists?.urlphoto }/>

@@ -181,7 +181,7 @@ import GoogleLogin from 'react-google-login'
                             className="input_select"> 
                              <option className="input_user">Slect Country</option>
                             { countries.length > 0 &&  
-                            countries.map((elem, index) => <option key={index}>{elem.name}</option>) }
+                            countries.map((elem, index) => <option key={index} className="option">{elem.name}</option>) }
                         </select> 
                         </div>
                     </div>
