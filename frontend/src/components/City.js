@@ -3,7 +3,7 @@ import { useParams } from "react-router";
 import  SideNav  from './SideNav';
 import { Link } from 'react-router-dom';
 import { Footer } from '../components/Footer';
-import { Itineraries } from './Itineraries';
+import  Itineraries from './Itineraries';
 import { connect } from 'react-redux'
 import itineraryActions from '../redux/actions/itineraryActions';
 import cityActions from '../redux/actions/cityActions'
@@ -23,9 +23,10 @@ const City = ({oneCity, dataOneCity, dataItinerary, itineraries}) => {
                { dataOneCity.img && <img className="img_city" src={require('../assets/ciudades/'+dataOneCity.img)} alt="First slide" /> }
             </div>
             {
+                // console.log(itineraries)
                 (itineraries.length !== 0) && 
                 itineraries.map((elem, i) => {
-                    if(elem.city[0]._id === id){
+                    if(elem.city._id === id){
                      return   <Itineraries itineraries={ elem } ciudad={ dataOneCity.img} key={i}/>
                     }
                 })
@@ -45,7 +46,6 @@ const mapDispatchToProps = {
 const mapStateToProps = (state) => {
     //  console.log(state)
     return { 
-        // cities: state.cityReducer.cities, 
         itineraries: state.itineraryReducer.itineraries,
         dataOneCity: state.cityReducer.oneCity
 

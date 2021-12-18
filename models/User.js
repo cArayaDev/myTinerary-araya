@@ -7,7 +7,8 @@ const userSchema = new mongoose.Schema({
     password: { type:String, required: true },
     urlphoto: { type:String, required: true },
     country: { type:String, required: true },
-    google: {type:Boolean, default: false}
+    google: {type:Boolean, default: false},
+    control: {type:Boolean, default: true}
 })
 
 const User = mongoose.model('User', userSchema)

@@ -33,11 +33,11 @@ const itineraryControllers = {
         })
     },
     inserOneItinerary: async (req, res) => {
-          let { title, username, userimagen, price, duration, likes, comments, hashtags } = req.body
+          let { title, username, userimagen, price, duration, likes, comments, hashtags, city } = req.body
           let itinerary
           let error = null
           try{
-            itinerary = await new Itinerary({ title, username, userimagen, price, duration, likes, comments, hashtags }).save()
+            itinerary = await new Itinerary({ title, username, userimagen, price, duration, likes, comments, hashtags, city }).save()
           }catch(error){
             error = error
             console.error(error)
@@ -69,6 +69,23 @@ const itineraryControllers = {
             console.error(error)
         }
         res.json({success: update ? true : false})
+    },
+    changeLikes: async (req, res) => {
+        const {id_itinerary} = req.body
+        let itinerary
+        // console.log(req.user._id)
+        try {
+            itinerary = await Itinerary.findOne({_id:id_itinerary})
+            if(itinerary){
+                console.log('iti',itinerary)
+                await Itinerary.updateOne({likes: req.user._id})
+                await User.updateOne({control: !req.user.control}) 
+            }
+            // console.log(req.user.control) 
+            // res.json({success: true, response:{ itinerary }, error: null})
+        }catch(error){
+            // res.json({success: false, response: null, error: error})
+        }
     }
 }
 module.exports = itineraryControllers

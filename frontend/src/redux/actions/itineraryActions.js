@@ -15,5 +15,20 @@ const itineraryActions = {
             dispatch({type:'filter', payload: filterCities})
         }
     },
+    changeLikes:(id_itinerary) => {
+        // console.log(id_itinerary)
+        return async(dispatch, getState) => {
+            try {
+                const token = localStorage.getItem('token')
+                const res = await axios.post('http://localhost:4000/api/changeLikes/', {id_itinerary}, {
+                    headers: {
+                        Authorization:`Bearer ${token}`
+                    }
+                })
+            }catch(err){
+
+            }
+        }
+    }      
 }
 export default itineraryActions

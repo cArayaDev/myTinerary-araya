@@ -8,13 +8,12 @@ import  SignUp  from './components/SignUp'
 import authActions from './redux/actions/authActions'
 import { connect } from 'react-redux'
 
-function App({ logInPersistent, oneUser }) {
+function App({ logInPersistent }) {
 
   useEffect(() => {
     if(localStorage.getItem('token')){
       logInPersistent(localStorage.getItem('token'))
     }
-    //console.log(oneUser.name)
   }, [])
   return (
     <Router>
@@ -28,14 +27,11 @@ function App({ logInPersistent, oneUser }) {
     </Router>
   );
 }
-const mapStateToProps = (state) =>{
-  // console.log(state)
-      return {
-          oneUser: state.authReducer.oneUser,
-      }
-  }
+// const mapStateToProps = (state) =>{
+
+//   }
   const mapDispatchToProps = {
     logInPersistent: authActions.logInPersistent
   }
-export default connect(mapStateToProps, mapDispatchToProps)(App)
+export default connect(null, mapDispatchToProps)(App)
 

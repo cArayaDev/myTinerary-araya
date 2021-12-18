@@ -6,6 +6,7 @@ import authActions from '../redux/actions/authActions'
 import { connect } from 'react-redux'
 import validator from 'validator'
 import GoogleLogin from 'react-google-login'
+import Swal from 'sweetalert2'
 
 const Signin = ({logIn, oneUser}) => {
     const [control, setControl] = useState('')
@@ -26,11 +27,19 @@ const Signin = ({logIn, oneUser}) => {
         e.preventDefault()
         if(isFormValid()){
             const errors = await logIn(user)
+            // console.log(errors)
             if(errors === undefined){
+                Swal.fire({
+                    position: 'top-end',
+                    icon: 'success',
+                    title: 'Welcome, you have successfully logged in',
+                    showConfirmButton: false,
+                    timer: 1500,
+                  })                
                 return navigate('/')
             }else{
                 setControl(false)
-                // setMessage(errors.errors[0].message)
+                setMessage(errors.errors[0].message)
                 // errors.errors.map(e => console.log(errors.errors[0].message))
             }
         }
@@ -58,9 +67,16 @@ const Signin = ({logIn, oneUser}) => {
         logIn(googleUser)
         .then((res) => res.dat.success)
         .catch((err) => console.log(err))
+        Swal.fire({
+            position: 'top-end',
+            icon: 'success',
+            title: 'Welcome, you have successfully logged in',
+            showConfirmButton: false,
+            timer: 1500
+          })
         return navigate('/')
     }   
-// console.log(oneUser.userExists?.email.length)
+// console.log(errors)
    return (
   <div>
     <SideNav name={ oneUser.userExists?.name } urlphoto={ oneUser.userExists?.urlphoto }/>

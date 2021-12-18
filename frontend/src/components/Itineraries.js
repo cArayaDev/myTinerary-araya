@@ -1,10 +1,28 @@
 import React, { useState } from 'react'
-import { FcClock, FcLike } from "react-icons/fc";
-import { BsCash } from "react-icons/bs";
+import { FcClock, FcLike } from "react-icons/fc"
+import { BsCash } from "react-icons/bs"
+import { connect } from 'react-redux'
+import Swal from 'sweetalert2'
+import itineraryActions from '../redux/actions/itineraryActions'
 
-export const Itineraries = ({ itineraries }) => {
+ const Itineraries = ({ itineraries, oneUser, changeLikes, likes }) => {
     const [show, setShow] = useState(true)
 
+
+    const handleChange = () => {
+        // console.log(oneUser.name)
+         (oneUser.name) ? 
+         changeLikes(itineraries._id) 
+         :      
+          Swal.fire({
+            position: 'top-end',
+            icon: 'success',
+            title: 'User must be logged in!',
+            showConfirmButton: false,
+            timer: 1500
+          })
+       
+    } 
     return (
         <div>
             <div className="container Container_iti">
@@ -32,7 +50,7 @@ export const Itineraries = ({ itineraries }) => {
                         }
                         </span>
                     </div> 
-                    <div className="col-md-4"><span><FcLike size={30}/> {itineraries.likes}</span></div> 
+                    <div className="col-md-4"><span onClick={() => handleChange()}><FcLike size={30}/> {itineraries.likes}</span></div> 
                     <div className="col-md-12 hashtags"><span id="span_has">{itineraries.hashtags}</span></div>
                 </div>
                 <div className="col-md-12 div_view" style={{ display: show ? "none" : "block" }}>
@@ -44,3 +62,14 @@ export const Itineraries = ({ itineraries }) => {
         </div> 
     )
 }
+const mapDispatchToProps = {
+     changeLikes: itineraryActions.changeLikes,
+}
+const mapStateToProps = (state) =>{
+    // console.log(state)
+    return {
+        oneUser: state.authReducer.oneUser,
+        likes: state.authReducer.likes
+    }
+  }
+  export default connect(mapStateToProps, mapDispatchToProps)(Itineraries);

@@ -11,6 +11,7 @@ import GoogleLogin from 'react-google-login'
 
  const SignUp = ({insertUser}) => {
     const [color, setColor] = useState('')
+    const [message, setMessage] = useState('')
     const [countries, setCountries] = useState('')
     const [newUser, setNewUser] = useState({
         name: "",
@@ -45,7 +46,7 @@ import GoogleLogin from 'react-google-login'
             // console.log(errors)
             if(errors !== undefined){
                 if(errors.errors){
-                    errors.errors.map(e => console.log(e))
+                    errors.errors.map(e => setMessage((e)))
                 }
             }
         } 
@@ -186,7 +187,7 @@ import GoogleLogin from 'react-google-login'
                         </div>
                     </div>
                     <div className="row div_btns_signup">
-                        <div className="col-sm-8"><button type="submit" className="btn_signin">SIGN IN</button></div>
+                        <div className="col-sm-8"><button type="submit" className="btn_signin">SIGN UP</button></div>
                         <div className="col-sm-8 div_a_sign"> <span className="psw">You do not have an account ? <Link to="/signin">Sign up here !</Link></span></div>
                         <div className="col-sm-8">
                         <GoogleLogin

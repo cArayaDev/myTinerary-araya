@@ -160,6 +160,9 @@ html* {
   transition: transform 8s;
   margin: 5px auto 0;
 }
+.img_carrusel {
+  object-fit: center;
+}
 /* .test:active .transition {
   transform: scale(2.3);
   width: 10%;
@@ -603,7 +606,7 @@ html* {
   align-items: center;
   text-align: center;
   width: 100%;
-  height: auto;
+  /* height: auto; */
   background-size: cover;
   background-position: center; 
   border-top-left-radius: 1rem;
@@ -618,6 +621,7 @@ align-items: center;
 .div_img {
   display: flex;
   border-radius: 24rem;
+  overflow: hidden;
   margin-top: 3rem;
   height: 18vh;
   border: solid;
@@ -625,7 +629,7 @@ align-items: center;
   border-color: rgba(250, 248, 245, 0.993);
 }
 .img_user {
-  border-radius: 15rem;
+  /* border-radius: 15rem; */
   max-height: 100%;
   max-width: 100%;
   object-fit: cover;
@@ -654,6 +658,7 @@ align-items: center;
 .price {
   display: flex;
   justify-content: space-around;
+  flex-direction: column;
   align-items: center;
   background-color: rgb(250, 248, 246);
   height: 10rem;
@@ -914,4 +919,24 @@ flex-direction:column;
 }
 .option {
   color: black;
+}
+/* ACTIVITIES */
+
+.container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  text-align: center;   
+}
+.container_activity {
+  background-color: red;
+  width: 100%;
+  height: auto;
+}
+.container_comments{
+  background-color: rgb(13, 79, 235);
+  width: 100%;
+  height: auto;
 }

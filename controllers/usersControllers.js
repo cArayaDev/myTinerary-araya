@@ -1,4 +1,5 @@
 const User = require('../models/User')
+const Itinerary = require('../models/Itinerary')
 const bcryptjs = require('bcryptjs')
 const jwt = require('jsonwebtoken')
 
@@ -37,14 +38,18 @@ const usersControllers = {
     },
     inserOneUser: async (req, res) => {
           let { name, lastname, email, password, urlphoto, country, google } = req.body
+          console.log(req.body)
             if(password === '') password = null
         try {
             const existUser = await User.findOne({email})
             if(existUser){
-                res.json({success: false, error:'Username already exist', response: null})
+                //res.json({success: true, error:'Username already exist', response: null})
+                res.json({success: true, error: 'Email and Password incorrect'})
+                // console.log(res)
             }else{
                     const hashedPassword = bcryptjs.hashSync(password, 10)
                     const user = new User({ name, lastname, email, password: hashedPassword, urlphoto, country, google })
+                    console.log(user)
                     const token = jwt.sign({...user}, process.env.SECRET_KEY)
                     await user.save()
                     res.json({success: true, response:{ token, user }, error: null})
@@ -78,24 +83,18 @@ const usersControllers = {
     },
     accessUser: async (req, res) => {
         const { email, password, google } = req.body
-        //  console.log(req.user.email)
+        // console.log(email)
         try{
             const userExists = await User.findOne({email})
-            if(userExists.google && !google) throw new Error ('Invalid email')
-            if(!userExists){
-                res.json({success: true, error: 'Email and Password incorrect'})
-            }else{
-                let passwordMatches = bcryptjs.compareSync(password, userExists.password)
-                if(passwordMatches){
-                    const token = jwt.sign({...userExists}, process.env.SECRET_KEY)
-                    // console.log(token)
-                    res.json({success: true, response:{ token, userExists }, error: null})
-                }else{
-                    res.json({success: true, error: 'Email and Password incorrect'})
-                }
-            }
+            if (!userExists) throw new Error ('Email and Password incorrectyyyyyyyyyyyyyyyyyyyyyyyyyy')
+            if(userExists.google && !google) throw new Error ('Invalid email Google')
+            let passwordMatches = bcryptjs.compareSync(password, userExists.password)
+            if(!passwordMatches) throw new Error ('Email and Password incorrect')
+            //  console.log('userExists', userExists) 
+            const token = jwt.sign({...userExists}, process.env.SECRET_KEY)
+            res.json({success: true, response:{ token, userExists }, error: null})
         }catch(error){
-            res.json({success: false, response: null, error: error})
+            res.json({success: false, response: error.message})
         }
     },
     persistentAccessUser: async (req, res) => {
