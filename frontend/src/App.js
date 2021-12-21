@@ -8,7 +8,7 @@ import  SignUp  from './components/SignUp'
 import authActions from './redux/actions/authActions'
 import { connect } from 'react-redux'
 
-function App({ logInPersistent }) {
+function App({ logInPersistent, oneUser }) {
 
   useEffect(() => {
     if(localStorage.getItem('token')){
@@ -21,17 +21,20 @@ function App({ logInPersistent }) {
           <Route path="/" element={ <Home /> } />
           <Route path="/cities" element={ <Cities /> } />
           <Route path="/city/:id" element={ <City /> } />
-          <Route path="/signin" element={ <Signin /> } />
-          <Route path="/signup" element={ <SignUp /> } />
+          { !oneUser.name &&  <Route path="/signup" element={ <SignUp /> } />} 
+          { !oneUser.name &&  <Route path="/signin" element={ <Signin /> } /> }
+          <Route path="*" element={ <Home /> } />
         </Routes>    
     </Router>
   );
 }
-// const mapStateToProps = (state) =>{
-
-//   }
+const mapStateToProps = (state) =>{
+  return {
+    oneUser: state.authReducer.oneUser,
+  }
+}
   const mapDispatchToProps = {
     logInPersistent: authActions.logInPersistent
   }
-export default connect(null, mapDispatchToProps)(App)
+export default connect(mapStateToProps, mapDispatchToProps)(App)
 

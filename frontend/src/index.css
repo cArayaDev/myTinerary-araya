@@ -585,54 +585,116 @@ html* {
 }
 /*=========== ITINERARIES ===========*/
 
-.Container_iti {
+.container_iti {
   display: flex;
-  flex-direction: row;
   flex-wrap: wrap;
   justify-content: center;
   align-items: center;
-  text-align: center;
   width: 100%;
+}
+.contenedor_caja {
+  width: 100%;
+  box-shadow: 2px 2px 30px rgba(0,0,0,0.1);
+  padding: 20px;
+  margin: 15px;
+  /* cursor: pointer; */
+}
+.perfil_img {
+  max-width: 100%;
   height: auto;
-  margin-top: 5rem;
+  border-radius: 50%;
+  overflow: hidden;
+  margin-right: 30px;
 }
-.itinerary_img {
-  background-color: rgb(255, 145, 0);
-  /* background: url(./assets/images/losangeles1.jpg); */
+.img_user {
+  width: 100%;
+  height: 100%;
+  object-fit: center;
+}
+.perfil {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  flex-wrap: wrap;
+}
+.name_user {
+  display: flex;
+  flex-direction: column;
+}
+.caja_top {
+display: flex;
+flex-wrap: wrap;
+justify-content: space-around;
+align-items: center;
+height: 20vh;
+background-color: rgb(255, 145, 0);
+}
+.container_duration {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  background-color: rgb(242, 245, 237);
+  height: auto;
+}
+.container_price {
   display: flex;
   flex-direction: row;
-  flex-wrap: wrap;
-  justify-content: center;
+  justify-content: space-around;
   align-items: center;
-  text-align: center;
   width: 100%;
-  /* height: auto; */
-  background-size: cover;
-  background-position: center; 
-  border-top-left-radius: 1rem;
-  border-top-right-radius: 1rem;
+  padding: 2rem 0 2rem 0;
 }
-.foto{
-height: auto;
-display: flex;
-flex-direction: column;
-align-items: center;
+.likes {
+  cursor: pointer;
 }
-.div_img {
+.span_has {
+  padding-bottom: 2rem;
+}
+.activity {
   display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  flex-wrap: wrap;
+}
+.container_img {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  flex-wrap: wrap;
+
+}
+.img1 {
+  background-color: red;
+  height: 20vh;
+}
+.img2 {
+  background-color: greenyellow;
+  height: 20vh;
+}
+.img3 {
+  background-color: blue;
+  height: 20vh;
+}
+.commentary {
+  display: flex;
+  flex-direction: column;
+}
+
+.div_img {
   border-radius: 24rem;
   overflow: hidden;
-  margin-top: 3rem;
-  height: 18vh;
+  height: 50px;
+  width: 50px;
   border: solid;
-  border-width: 4px;
   border-color: rgba(250, 248, 245, 0.993);
 }
 .img_user {
-  /* border-radius: 15rem; */
-  max-height: 100%;
-  max-width: 100%;
-  object-fit: cover;
+  height: 100%;
+  width: 100%;
+  object-fit: center;
 }
 .foto span {
   margin-top: 2rem;
@@ -913,8 +975,8 @@ flex-direction:column;
 }
 .img_user_nav {
   border-radius: 15rem;
-  max-height: 100%;
-  max-width: 100%;
+  width: 5vw;
+  height: 9.5vh;
   object-fit: cover;  
 }
 .option {
@@ -935,7 +997,7 @@ flex-direction:column;
   width: 100%;
   height: auto;
 }
-.container_comments{
+.commentary{
   background-color: rgb(13, 79, 235);
   width: 100%;
   height: auto;

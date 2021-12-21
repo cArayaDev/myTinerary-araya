@@ -6,11 +6,11 @@ const authActions = {
         return async(dispatch, getState) => {
             try {
                 const res = await axios.post('http://localhost:4000/api/users', {...newUser})// --> userController --> insertOneUser
+                // console.log(res.data.error) //response vienen los datos de errores de validator.js
                 if(res.data.success && !res.data.error){
                     localStorage.setItem('token', res.data.response.token)
                     dispatch({type:'user', payload:res.data.response})
                 }else{
-                    //  console.error(res.data.response) //response vienen los datos de errores de validator.js
                     return { errors: [{message: res.data.error}] }
                 }
             }catch(error){
@@ -23,13 +23,14 @@ const authActions = {
             try {
                 // console.log(user)
                 const res = await axios.post('http://localhost:4000/api/sigin/', {...user})// va a --> usersControllers --> accessUser
-                 console.log('res desde el controller',res.data.response)
+                //   console.log('res desde el controller',res.data.response.token)
               
                 if(res.data.success && !res.data.error){
                     localStorage.setItem('token', res.data.response.token)
                     dispatch({type:'oneUser', payload:{name: res.data.response.userExists?.name, 
                                                        photo: res.data.response.userExists?.urlphoto,
-                                                       google: res.data.response.userExists?.google}})
+                                                       google: res.data.response.userExists?.google,
+                                                       id: res.data.response.userExists?._id}})
                 }else{
                         // console.log('res.data.response', res.data.response) 
                   return {errors: [{message: res.data.response}]}
@@ -58,8 +59,9 @@ const authActions = {
                 })
                 //  console.log(res.data.response.name)
                 dispatch({type:'oneUser', payload:{name: res.data.response.name, 
-                                          photo: res.data.response.urlphoto,
-                                          google: res.data.response.google}})
+                                                   photo: res.data.response.urlphoto,
+                                                   google: res.data.response.google,
+                                                   id: res.data.response._id}})
             }catch(error){
                  console.error(error)
                  return dispatch({type: 'logout'})

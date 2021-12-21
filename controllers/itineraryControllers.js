@@ -70,22 +70,23 @@ const itineraryControllers = {
         }
         res.json({success: update ? true : false})
     },
-    changeLikes: async (req, res) => {
-        const {id_itinerary} = req.body
-        let itinerary
-        // console.log(req.user._id)
-        try {
-            itinerary = await Itinerary.findOne({_id:id_itinerary})
-            if(itinerary){
-                console.log('iti',itinerary)
-                await Itinerary.updateOne({likes: req.user._id})
-                await User.updateOne({control: !req.user.control}) 
+    changeLikesUsers: async (req, res) => {
+        let idItinerary = req.body.idItineray
+        let idUser = req.user.id
+        Itinerary.findOne({_id: idItinerary})
+        .then((itinerary) =>{
+            if(itinerary.likes.includes(idUser)){
+               Itinerary.findOneAndUpdate({_id:idItinerary}, {$pull:{likes:idUser}},{new:true})
+               .then((itinerary)=> res.json({success: true, response:{ itinerary }, error: null}))
+               .catch((error) => console.log(error))
+            }else{
+                Itinerary.findOneAndUpdate({_id: idItinerary}, {$push:{likes:idUser}},{new:true})
+                .then((itinerary) => res.json({success: true, response:{ itinerary }, error: null}))
+                .catch((error) => console.log(error))
             }
-            // console.log(req.user.control) 
-            // res.json({success: true, response:{ itinerary }, error: null})
-        }catch(error){
-            // res.json({success: false, response: null, error: error})
-        }
+        })
+        .catch((error) => res.json({success: false, response: null, error: error}))
+ 
     }
 }
 module.exports = itineraryControllers

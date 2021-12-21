@@ -42,7 +42,7 @@ import Swal from 'sweetalert2'
               <Dropdown.Item as={Link} to="/signin">Sign In</Dropdown.Item>
               </Dropdown.Menu>
             </Dropdown>
-            :  oneUser.photo && <img src={ oneUser.google ? oneUser.photo : require('../assets/images/'+oneUser.photo)} alt="img usuario" className="img_user_nav"/>
+            :  oneUser.photo && <img src={ oneUser.photo } alt="img usuario" className="img_user_nav"/>
             
             }
           </Container>

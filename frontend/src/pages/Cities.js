@@ -39,9 +39,9 @@ class Cities extends Component {
                                     </div>
                                     )
                             }) :
-                                <div className="no_data">
-                                   <h2>City not found...</h2>
-                                </div>
+                            <div className="no_data">
+                                <h2>City not found...</h2>
+                            </div>
                         }
                     </div>
                 </div>

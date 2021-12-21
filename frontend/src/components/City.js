@@ -14,8 +14,8 @@ const City = ({oneCity, dataOneCity, dataItinerary, itineraries}) => {
         oneCity(id)
         dataItinerary()
     },[])
+    
     return (
-        
         (!dataOneCity) ? <div><h1>cargando...</h1></div> :
        <div className="container_city">
             <SideNav />
@@ -27,7 +27,7 @@ const City = ({oneCity, dataOneCity, dataItinerary, itineraries}) => {
                 (itineraries.length !== 0) && 
                 itineraries.map((elem, i) => {
                     if(elem.city._id === id){
-                     return   <Itineraries itineraries={ elem } ciudad={ dataOneCity.img} key={i}/>
+                     return <Itineraries itineraries={ elem } ciudad={ dataOneCity.img} key={i}/>
                     }
                 })
             }

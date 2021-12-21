@@ -14,18 +14,6 @@ app.use(bodyparser.urlencoded({extended: true}));
 app.use(cors())
 app.use(passport.initialize())
 
-
-
-// app.get("/pruebas/datos", (req, res) => {
-//     console.log('me llego un pedido get...')
-//     res.json({respuesta:'holiiii'})
-// })
-
-// app.get("/api/cities", (req, res) => {
-//     res.json({response: cities})
-// })
-
-
 app.use('/api', Router)
 
 

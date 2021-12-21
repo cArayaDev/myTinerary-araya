@@ -1,65 +1,87 @@
-import React, { useState } from 'react'
-import { FcClock, FcLike } from "react-icons/fc"
+import React, { useEffect, useState } from 'react'
+import { FcClock, FcLike, FcLikePlaceholder } from "react-icons/fc"
 import { BsCash } from "react-icons/bs"
 import { connect } from 'react-redux'
 import Swal from 'sweetalert2'
 import itineraryActions from '../redux/actions/itineraryActions'
 
- const Itineraries = ({ itineraries, oneUser, changeLikes, likes }) => {
+ const Itineraries = ({ itineraries, oneUser, changeLikes }) => {
+    const [likes, setLikes]= useState(itineraries.likes) 
     const [show, setShow] = useState(true)
+    const [activo, setActivo] = useState(null)
 
-
-    const handleChange = () => {
-        // console.log(oneUser.name)
-         (oneUser.name) ? 
-         changeLikes(itineraries._id) 
-         :      
-          Swal.fire({
-            position: 'top-end',
-            icon: 'success',
-            title: 'User must be logged in!',
-            showConfirmButton: false,
-            timer: 1500
-          })
-       
-    } 
+    const handleChange = async () => {
+        if(!oneUser.name){
+            Swal.fire({
+                position: 'top-end',
+                icon: 'error',
+                title: 'User must be logged in!',
+                showConfirmButton: false,
+                timer: 1500
+               })
+        }else{
+         let res = await changeLikes(itineraries._id)
+           setLikes(res.data.response.itinerary.likes) //Viene directamente del itinerayActons
+        } 
+      console.log(itineraries)         
+        } 
     return (
-        <div>
-            <div className="container Container_iti">
-                <div className="row itinerary_img">
-                    <div className="foto col-md-4 order-1 order-sm-1 order-md-0">
-                        <div className="div_img" >
-                            <img src={require('../assets/images/'+itineraries.userimagen)} alt="img usuario" className="img_user"/>
+            <div className="container container_iti">
+                <div className="contenedor_caja">
+                    <div className="caja_top">
+                        <div className="perfil">
+                            <div className="perfil_img">
+                            <img src={require('../assets/users/'+itineraries.userimagen)} alt="img usuario" className="img_user"/>
+                            </div>
+                            <div className="name_user">
+                                <strong>{itineraries.username}</strong>
+                               
+                            </div>
                         </div>
-                        <span>{itineraries.username}</span>
+                        <div className="titulo">
+                        <span>{itineraries.title}</span>
+                        </div>
                     </div>
-                    <div className="title col-md-8 order-0 order-sm-0 order-md-1"><span>{itineraries.title}</span></div>
-                </div>
-                <div className="row price col-12">
-                    <div className="col-md-4">
-                        <span>Price: 
-                            {
-                                [...Array(itineraries.price)].map((e, i) => <span id="span_fa" key={i}> <BsCash size={30} /> </span>)
-                            }
-                        </span>
-                    </div> 
-                    <div className="col-md-4">
-                        <span>Duration: 
-                        {
-                            [...Array(itineraries.duration)].map((e, i) => <span id="span_fa"key={i}><FcClock size={30} /></span>)
-                        }
-                        </span>
-                    </div> 
-                    <div className="col-md-4"><span onClick={() => handleChange()}><FcLike size={30}/> {itineraries.likes}</span></div> 
-                    <div className="col-md-12 hashtags"><span id="span_has">{itineraries.hashtags}</span></div>
-                </div>
-                <div className="col-md-12 div_view" style={{ display: show ? "none" : "block" }}>
-                    <h2>Under Construction</h2>
-                </div>
-                <div className="col-md-12 read_less"><span  onClick={() => setShow((s) => !s)} id="read_less" style={{ display: show ? "none" : "block" }}>Read Less</span></div> 
-                <div className="col-md-12 view_more"><span onClick={() => setShow((s) => !s)} id="view_more" style={{ display: show ? "block" : "none" }}>View More</span></div> 
+                        <div className="container_duration">
+                            <div className="container_price">
+                                <div className="">
+                                    <span>Price: 
+                                        {
+                                            [...Array(itineraries.price)].map((e, i) => <span id="span_fa" key={i}> <BsCash size={30} /> </span>)
+                                        }
+                                    </span>
+                                </div> 
+                                <div className="">
+                                    <span>Duration: 
+                                    {
+                                        [...Array(itineraries.duration)].map((e, i) => <span id="span_fa"key={i}><FcClock size={30} /></span>)
+                                    }
+                                    </span>
+                                </div> 
+                                <div className="lokes"><span onClick={() => handleChange()}>{likes.includes(oneUser.id) ? <FcLike size={30} /> : <FcLikePlaceholder size={30} />} {likes.length}</span></div> 
+                            </div>
+                            <div className="span_has"><span id="span_has">{itineraries.hashtags}</span></div>
+                            <div className="activity">
+                                <div><h2>Activity</h2></div>
+                                <div className="container_img">
+                                    <div className="img1"><img src={require('../assets/users/user1.jpg')}/></div>
+                                    <div className="img2"><img src={require('../assets/users/user1.jpg')}/></div>
+                                    <div className="img3"><img src={require('../assets/users/user1.jpg')}/></div>
+                                </div>
+                            </div>
+                            <div className="container_commentary">
+                            <div><h2>Commentaries</h2></div>
+                                <div className="commentary">
+                                    <input type="text" className="commentsInputs" autoComplete="nope"
+                                        name="comment"
+                                        placeholder={"You have to log in to comment"}
+                                    />
+                                    <button className="sendComment">Send</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
             </div>
-        </div> 
     )
 }
 const mapDispatchToProps = {
@@ -69,7 +91,6 @@ const mapStateToProps = (state) =>{
     // console.log(state)
     return {
         oneUser: state.authReducer.oneUser,
-        likes: state.authReducer.likes
     }
   }
   export default connect(mapStateToProps, mapDispatchToProps)(Itineraries);

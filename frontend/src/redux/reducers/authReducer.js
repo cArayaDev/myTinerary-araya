@@ -24,11 +24,6 @@ const authReducer = (state = initialState, action) => {
                 ...state,
                 userPersistent: action.payload
             }
-        // case 'likes':
-        //     return {
-        //         ...state,
-        //         likes: action.payload
-        //     } 
         case 'logout':
             localStorage.removeItem('token');
             return initialState

@@ -15,16 +15,19 @@ const itineraryActions = {
             dispatch({type:'filter', payload: filterCities})
         }
     },
-    changeLikes:(id_itinerary) => {
-        // console.log(id_itinerary)
-        return async(dispatch, getState) => {
+    changeLikes:(idItineray) => {
+        //  console.log(id_itinerary)
+        return async (dispatch, getState) => {
             try {
                 const token = localStorage.getItem('token')
-                const res = await axios.post('http://localhost:4000/api/changeLikes/', {id_itinerary}, {
+                const res = await axios.put('http://localhost:4000/api/changeLikes', {idItineray}, {
                     headers: {
                         Authorization:`Bearer ${token}`
                     }
                 })
+                return res
+                // console.log(res.data.response.itinerary.likes.length)
+                // dispatch({type:'likes', payload:res.data.response.itinerary.likes})
             }catch(err){
 
             }

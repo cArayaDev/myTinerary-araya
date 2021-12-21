@@ -6,7 +6,7 @@ const usersControllers = require('../controllers/usersControllers')
 const passport = require('../config/passport')
 
 const { getCities, getOneCity, inserOneCity, deleteCity, updateCity } = citiesControllers
-const { getItineraries, getOneItinerary, inserOneItinerary, deleteItinerary, updateItinerary, changeLikes } = itineraryControllers
+const { getItineraries, getOneItinerary, inserOneItinerary, deleteItinerary, updateItinerary, changeLikesUsers } = itineraryControllers
 const { getUsers, getOneUser, inserOneUser, deleteUser, updateUser, accessUser, persistentAccessUser } = usersControllers
 
 Router.route('/cities')
@@ -45,6 +45,6 @@ Router.route('/sigin')
 Router.route('/siginPersistent')
 .post(passport.authenticate('jwt', { session:false }), persistentAccessUser)
 Router.route('/changeLikes')
-.post(passport.authenticate('jwt', { session:false }), changeLikes)
+.put(passport.authenticate('jwt', { session:false }), changeLikesUsers)
 
 module.exports = Router

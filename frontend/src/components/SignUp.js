@@ -1,18 +1,19 @@
 import React, { useState, useEffect } from 'react'
 import { Footer } from './Footer'
 import  SideNav  from './SideNav'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import validator from 'validator'
 import axios from 'axios'
 import { connect } from 'react-redux'
 import authActions from '../redux/actions/authActions'
 import GoogleLogin from 'react-google-login'
-
+import Swal from 'sweetalert2'
 
  const SignUp = ({insertUser}) => {
     const [color, setColor] = useState('')
     const [message, setMessage] = useState('')
     const [countries, setCountries] = useState('')
+    let navigate = useNavigate();
     const [newUser, setNewUser] = useState({
         name: "",
         lastname: "",
@@ -43,12 +44,30 @@ import GoogleLogin from 'react-google-login'
         if(isFormValid()){
             const errors = await insertUser(newUser)
             
-            // console.log(errors)
-            if(errors !== undefined){
-                if(errors.errors){
-                    errors.errors.map(e => setMessage((e)))
-                }
+            if(errors === undefined){
+                Swal.fire({
+                    position: 'top-end',
+                    icon: 'success',
+                    title: 'Welcome, you have successfully logged in',
+                    showConfirmButton: false,
+                    timer: 1500,
+                  })                
+                return navigate('/')
+            }else{
+                Swal.fire({
+                    position: 'top-end',
+                    icon: 'error',
+                    title: 'Email and Password incorrecty',
+                    showConfirmButton: false,
+                    timer: 2000,
+                  }) 
             }
+            // console.log(errors)
+            // if(errors !== undefined){
+            //     if(errors.errors){
+            //         errors.errors.map(e => setMessage((e)))
+            //     }
+            // }
         } 
     }
 
@@ -94,6 +113,7 @@ import GoogleLogin from 'react-google-login'
     return (
         <div>
             <SideNav />
+            {/* <div className="col-sm-5 col-xs-12 div_error animate__fadeInDown" ><span>{ message }</span></div> */}
             <div className="container_form_signup">
             <div className="container div_form">
                 <form onSubmit={ handleRegister }>

@@ -86,7 +86,8 @@ const usersControllers = {
         // console.log(email)
         try{
             const userExists = await User.findOne({email})
-            if (!userExists) throw new Error ('Email and Password incorrectyyyyyyyyyyyyyyyyyyyyyyyyyy')
+            // console.log(userExists)
+            if (!userExists) throw new Error ('Email and Password incorrecty')
             if(userExists.google && !google) throw new Error ('Invalid email Google')
             let passwordMatches = bcryptjs.compareSync(password, userExists.password)
             if(!passwordMatches) throw new Error ('Email and Password incorrect')
