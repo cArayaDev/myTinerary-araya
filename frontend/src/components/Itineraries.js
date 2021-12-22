@@ -4,11 +4,21 @@ import { BsCash } from "react-icons/bs"
 import { connect } from 'react-redux'
 import Swal from 'sweetalert2'
 import itineraryActions from '../redux/actions/itineraryActions'
+import activityActions from '../redux/actions/activityActions'
+import Activity from '../components/Activity'
 
- const Itineraries = ({ itineraries, oneUser, changeLikes }) => {
+ const Itineraries = ({ itineraries, oneUser, changeLikes, getActivities }) => {
     const [likes, setLikes]= useState(itineraries.likes) 
     const [show, setShow] = useState(true)
     const [activo, setActivo] = useState(null)
+    const [activities, setActivities] = useState([])
+
+    useEffect(() => {
+        getActivities(itineraries._id)
+        .then((response) => {
+            setActivities(response)
+        })
+    }, [])
 
     const handleChange = async () => {
         if(!oneUser.name){
@@ -23,7 +33,7 @@ import itineraryActions from '../redux/actions/itineraryActions'
          let res = await changeLikes(itineraries._id)
            setLikes(res.data.response.itinerary.likes) //Viene directamente del itinerayActons
         } 
-      console.log(itineraries)         
+      console.log(activities)         
         } 
     return (
             <div className="container container_iti">
@@ -38,7 +48,7 @@ import itineraryActions from '../redux/actions/itineraryActions'
                                
                             </div>
                         </div>
-                        <div className="titulo">
+                        <div className="title">
                         <span>{itineraries.title}</span>
                         </div>
                     </div>
@@ -61,13 +71,14 @@ import itineraryActions from '../redux/actions/itineraryActions'
                                 <div className="lokes"><span onClick={() => handleChange()}>{likes.includes(oneUser.id) ? <FcLike size={30} /> : <FcLikePlaceholder size={30} />} {likes.length}</span></div> 
                             </div>
                             <div className="span_has"><span id="span_has">{itineraries.hashtags}</span></div>
-                            <div className="activity">
-                                <div><h2>Activity</h2></div>
-                                <div className="container_img">
-                                    <div className="img1"><img src={require('../assets/users/user1.jpg')}/></div>
-                                    <div className="img2"><img src={require('../assets/users/user1.jpg')}/></div>
-                                    <div className="img3"><img src={require('../assets/users/user1.jpg')}/></div>
-                                </div>
+                            <div className="container_activity">
+                               <div><h2>Activities</h2></div>
+                                <div className="activity">
+                                    {
+                                        activities.map((activites) => <Activity activites={activites} key={activites._id}/>)
+                                    }
+                                      
+                                 </div>
                             </div>
                             <div className="container_commentary">
                             <div><h2>Commentaries</h2></div>
@@ -86,6 +97,7 @@ import itineraryActions from '../redux/actions/itineraryActions'
 }
 const mapDispatchToProps = {
      changeLikes: itineraryActions.changeLikes,
+     getActivities: activityActions.getActivities,
 }
 const mapStateToProps = (state) =>{
     // console.log(state)

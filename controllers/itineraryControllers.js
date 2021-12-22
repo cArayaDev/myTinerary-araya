@@ -87,6 +87,22 @@ const itineraryControllers = {
         })
         .catch((error) => res.json({success: false, response: null, error: error}))
  
-    }
+    },
+    itineraryByCity: async (req, res) => {
+        let id = req.params.id
+        let itineraryCity
+        let error = null
+        try{
+            itineraryCity = await Itinerary.find({city:id})
+        }catch(error){
+            error = error
+            console.error(error)
+        }
+        res.json({
+            response: error ? 'ERROR' : itineraryCity,
+            success: error ? false : true,
+            error: error
+        })
+    },
 }
 module.exports = itineraryControllers

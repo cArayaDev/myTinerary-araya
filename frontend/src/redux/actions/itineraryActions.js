@@ -8,6 +8,13 @@ const itineraryActions = {
             dispatch({type:'fetchItineraio', payload:res.data.response})
         }
     },
+    itineraryByCity: (id) => {
+        return async (dispatch, getState) => {
+            const res = await axios.get('http://localhost:4000/api/itinerary/'+id)
+            // console.log(res)
+            dispatch({type:'itinerayCity', payload:res.data.response})
+        }
+    },
     filterItineraries: (cities, value) => {
         return (dispatch, getState) => {
            // console.log(cities, value)

@@ -3,11 +3,22 @@ const validator = require('../config/validator')
 const citiesControllers = require('../controllers/citiesControllers')
 const itineraryControllers = require('../controllers/itineraryControllers')
 const usersControllers = require('../controllers/usersControllers')
+const activityControllers = require('../controllers/activityControllers')
 const passport = require('../config/passport')
 
 const { getCities, getOneCity, inserOneCity, deleteCity, updateCity } = citiesControllers
-const { getItineraries, getOneItinerary, inserOneItinerary, deleteItinerary, updateItinerary, changeLikesUsers } = itineraryControllers
+const { getItineraries, getOneItinerary, inserOneItinerary, deleteItinerary, updateItinerary, changeLikesUsers, itineraryByCity } = itineraryControllers
 const { getUsers, getOneUser, inserOneUser, deleteUser, updateUser, accessUser, persistentAccessUser } = usersControllers
+const { getActivities, getActivitiesByItinerary, inserOneActivity, deleteActivity, updateActivity } = activityControllers
+
+Router.route('/activities')
+.get(getActivities)
+.post(inserOneActivity)
+
+Router.route('/activity/:id')
+.get(getActivitiesByItinerary)
+.delete(deleteActivity)
+.put(updateActivity)
 
 Router.route('/cities')
 .get(getCities)
@@ -23,7 +34,7 @@ Router.route('/itineraries')
 .post(inserOneItinerary)
 
 Router.route('/itinerary/:id')
-// .get(getOneItinerary)
+.get(itineraryByCity)
 .delete(deleteItinerary)
 .put(updateItinerary)
 
