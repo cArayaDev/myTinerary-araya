@@ -104,5 +104,34 @@ const itineraryControllers = {
             error: error
         })
     },
+    addComment: async (req, res) => {
+        try {
+            const newComment = await Itinerary.findOneAndUpdate({_id: req.params.id}, {$push: {comments: {comment: req.body.newComment, userId: req.user._id}}}, {new: true}).populate("comments.userId")
+                res.json({success: true, response: newComment.comments})
+        } catch (error) {
+            res.json({success: false, response: error.message})
+        }
+    },
+    deleteComment: async (req, res) => {
+        // console.log('req.params', req.params)
+        // console.log('req.body', req.body)
+        try {
+            let deletedComment = await Itinerary.findOneAndUpdate({"comments._id": req.body.idNewComment}, {$pull: {comments: {_id: req.body.idNewComment}}}, {new: true})
+                res.json({success: true})
+        } catch (error) {
+            res.json({success: false, response: error.message})
+        }        
+    },
+    editComment:  async (req, res) => {
+        // console.log('req.params', req.params)
+        // console.log('req.body', req.body)
+        try {
+            let edit = await Itinerary.findOneAndUpdate({"comments._id": req.params.id}, {$set: {"comments.$.comment": req.body.comment}}, {new: true})
+                res.json({success: true, response: edit.comments})
+        } catch (error) {
+            res.json({success: false, response: error.message})
+        }        
+    }
+
 }
 module.exports = itineraryControllers

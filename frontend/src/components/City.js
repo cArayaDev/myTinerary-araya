@@ -9,14 +9,16 @@ import itineraryActions from '../redux/actions/itineraryActions'
 import cityActions from '../redux/actions/cityActions'
 // import itineraryActions from '../redux/actions/itineraryActions'
 
-const City = ({oneCity, dataOneCity, dataItinerary, itineraries, getItineraryByCity, itineraryByCity}) => {
+const City = ({oneCity, dataOneCity, dataItinerary, getItineraryByCity, itineraryByCity}) => {
     let { id } = useParams();
+    
     useEffect(() => {
          oneCity(id)
-        // dataItinerary()
+         dataItinerary()
         getItineraryByCity(id)
     },[])
-    // console.log(id)
+
+    // console.log(likesCurrent)
     return (
         (!dataOneCity) ? <div><h1>cargando...</h1></div> :
        <div className="container_city">
@@ -25,11 +27,11 @@ const City = ({oneCity, dataOneCity, dataItinerary, itineraries, getItineraryByC
                { dataOneCity.img && <img className="img_city" src={require('../assets/ciudades/'+dataOneCity.img)} alt="First slide" /> }
             </div>
             {
-                //  console.log(itineraryByCity)
+                
                 itineraryByCity.length !== 0 ? 
                 itineraryByCity.map((elem, i) => {
-                     return <Itineraries itineraries={ elem } ciudad={ dataOneCity.img} key={i}/>
-                }) : <h2>Not Itineraries</h2>
+                     return <Itineraries itineraries={ elem } ciudad={ dataOneCity.img } key={ i }/>
+                }) : <h2 className="noItineraries">Not Itineraries</h2>
             }
             <Link to="/cities" className="link_btn"><div><button className="btn_back">Back to Cities</button></div></Link>
             <Footer />
@@ -47,9 +49,9 @@ const mapDispatchToProps = {
 const mapStateToProps = (state) => {
     //  console.log(state)
     return { 
-        itineraries: state.itineraryReducer.itineraries,
+        // itineraries: state.itineraryReducer.itineraries,
         dataOneCity: state.cityReducer.oneCity,
-        itineraryByCity: state.itineraryReducer.itineraryByCity
+        itineraryByCity: state.itineraryReducer.itineraryByCity,
     }
   }
 

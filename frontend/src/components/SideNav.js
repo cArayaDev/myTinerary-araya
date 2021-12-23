@@ -20,7 +20,7 @@ import Swal from 'sweetalert2'
         timer: 1500
       })
     }
-    // console.log(oneUser)
+      // console.log(oneUser)
     return (
         <Navbar bg="primary" expand="lg" id="navbar">
           <Container fluid>
