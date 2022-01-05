@@ -1,5 +1,6 @@
 const Router = require('express').Router()
 const validator = require('../config/validator')
+const roles = require('../config/roles')
 const citiesControllers = require('../controllers/citiesControllers')
 const itineraryControllers = require('../controllers/itineraryControllers')
 const usersControllers = require('../controllers/usersControllers')
@@ -56,6 +57,7 @@ Router.route('/sigin')
 // .post(passport.authenticate('jwt', { session:false }), accessUser)
 Router.route('/siginPersistent')
 .post(passport.authenticate('jwt', { session:false }), persistentAccessUser)
+
 Router.route('/changeLikes')
 .put(passport.authenticate('jwt', { session:false }), changeLikesUsers)
 

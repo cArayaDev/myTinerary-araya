@@ -34,6 +34,7 @@ import  Comments  from './Comments'
                })
         }else{
          let res = await changeLikes(itineraries._id)
+        //  console.log(res.data.response.itinerary.likes)
            setLikes(res.data.response.itinerary.likes) //Viene directamente del itinerayActons
         } 
     } 

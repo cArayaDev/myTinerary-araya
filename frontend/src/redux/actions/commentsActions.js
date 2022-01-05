@@ -39,7 +39,7 @@ const commentsActions = {
                         Authorization:`Bearer ${token}`
                     }
                 })
-                console.log(response)
+                // console.log(response)
                 if (response.data.success){
                     dispatch({type: "comment", payload: response.data.response})
                 }

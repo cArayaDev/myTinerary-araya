@@ -38,7 +38,7 @@ const usersControllers = {
     },
     inserOneUser: async (req, res) => {
           let { name, lastname, email, password, urlphoto, country, google } = req.body
-          console.log(req.body)
+        //   console.log(req.body)
             if(password === '') password = null
         try {
             const existUser = await User.findOne({email})
@@ -49,10 +49,10 @@ const usersControllers = {
             }else{
                     const hashedPassword = bcryptjs.hashSync(password, 10)
                     const user = new User({ name, lastname, email, password: hashedPassword, urlphoto, country, google })
-                    console.log(user)
+                   // console.log(user)
                     const token = jwt.sign({...user}, process.env.SECRET_KEY)
                     await user.save()
-                    res.json({success: true, response:{ token, user }, error: null})
+                    res.json({success: true, response:{ token, ...user }, error: null})
             }
         }catch(error){
             res.json({success: false, response: null, error: error})

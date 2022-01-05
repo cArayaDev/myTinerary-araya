@@ -32,7 +32,7 @@ const itineraryActions = {
                         Authorization:`Bearer ${token}`
                     }
                 })
-                // console.log(res.data.response.itinerary.likes.length)
+                // console.log('res', res)
                 dispatch({type:'likes', payload:res.data.response.itinerary.likes})
                 return res
             }catch(err){

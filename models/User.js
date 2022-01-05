@@ -8,7 +8,7 @@ const userSchema = new mongoose.Schema({
     urlphoto: { type:String, required: true },
     country: { type:String, required: true },
     google: {type:Boolean, default: false},
-    control: {type:Boolean, default: true}
+    control: {type:Boolean, default: true},
 })
 
 const User = mongoose.model('User', userSchema)

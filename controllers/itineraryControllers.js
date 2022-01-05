@@ -72,6 +72,7 @@ const itineraryControllers = {
     },
     changeLikesUsers: async (req, res) => {
         let idItinerary = req.body.idItineray
+        // console.log('jwt', req.user)
         let idUser = req.user.id
         Itinerary.findOne({_id: idItinerary})
         .then((itinerary) =>{
