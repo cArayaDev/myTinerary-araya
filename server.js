@@ -8,9 +8,10 @@ const passport = require('passport')
 const app = express()
 
 /* Se agrego estos 3 items para mostrar los datos */
-const bodyparser = require('body-parser');
-app.use(bodyparser.json());
-app.use(bodyparser.urlencoded({extended: true}));
+// const bodyparser = require('body-parser');
+// app.use(bodyparser.json());
+// app.use(bodyparser.urlencoded({extended: true}));
+app.use(express.json());
 app.use(cors())
 app.use(passport.initialize())
 
