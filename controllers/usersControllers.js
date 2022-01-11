@@ -37,7 +37,7 @@ const usersControllers = {
         })
     },
     inserOneUser: async (req, res) => {
-          let { firstname, lastname, username, mail, password, image, google, cart, address, wishList } = req.body
+          let { firstName, lastName, userName, mail, password, image, google, cart, address, wishList } = req.body
           //  console.log(req.body)
             if(password === '') password = null
         try {
@@ -48,7 +48,7 @@ const usersControllers = {
                 // console.log(res)
             }else{
                 const hashedPassword = bcryptjs.hashSync(password, 10)
-                const user = new Usuario({ firstname, lastname, username, mail, password: hashedPassword, image, google, cart, address, wishList })
+                const user = new Usuario({ firstName, lastName, userName, mail, password: hashedPassword, image, google, cart, address, wishList })
                 // console.log(user)
                 const token = jwt.sign({...user}, process.env.SECRET_KEY)
                 await user.save()
