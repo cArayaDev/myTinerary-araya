@@ -48,7 +48,7 @@ import  Comments  from './Comments'
                     <div className="caja_top">
                         <div className="perfil">
                             <div className="perfil_img">
-                                 <img src={require('../assets/users/'+itineraries.userimagen)} alt="img usuario" className="img_user"/>
+                                 <img src={itineraries.userimagen} alt="img usuario" className="img_user"/>
                             </div>
                             <div className="name_user">
                                 <strong>{itineraries.username}</strong>
@@ -77,6 +77,8 @@ import  Comments  from './Comments'
                                 <div className="lokes"><span onClick={() => handleChange()}>{likes.includes(oneUser.id) ? <FcLike size={30} /> : <FcLikePlaceholder size={30} />} {likes.length}</span></div> 
                             </div>
                             <div className="span_has"><span id="span_has">{itineraries.hashtags}</span></div>
+                            
+                            {/* ACTIVITIES */}
                             <div className={close ? "hide" : "show"}>
                                <div><h2>Activities</h2></div>
                                 <div className="activity">

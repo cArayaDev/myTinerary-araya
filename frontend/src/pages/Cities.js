@@ -32,7 +32,7 @@ class Cities extends Component {
                                         <Link to={`/city/${elem._id}`} className="link_items">
                                             <img 
                                                 className="img" 
-                                                src={require(`../assets/ciudades/${elem.img}`)} 
+                                                src={elem.img} 
                                                 alt="First slide" 
                                             />
                                         </Link>

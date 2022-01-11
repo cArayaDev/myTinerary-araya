@@ -24,7 +24,7 @@ const City = ({oneCity, dataOneCity, dataItinerary, getItineraryByCity, itinerar
        <div className="container_city">
             <SideNav />
             <div className="img_city" ciudad={ dataOneCity.name}>
-               { dataOneCity.img && <img className="img_city" src={require('../assets/ciudades/'+dataOneCity.img)} alt="First slide" /> }
+               { dataOneCity.img && <img className="img_city" src={dataOneCity.img} alt="First slide" /> }
             </div>
             {
                 
