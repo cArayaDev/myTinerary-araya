@@ -1,4 +1,4 @@
-const User = require('../models/User')
+const Usuario = require('../models/Usuario')
 const Itinerary = require('../models/Itinerary')
 const bcryptjs = require('bcryptjs')
 const jwt = require('jsonwebtoken')
@@ -9,7 +9,7 @@ const usersControllers = {
         let users
         let error = null
         try{
-             users = await User.find({})
+             users = await Usuario.find({})
         }catch(error){
             error = error
              console.error(error)
@@ -25,7 +25,7 @@ const usersControllers = {
         let user
         let error = null
         try{
-            user = await User.findOne({_id:id})
+            user = await Usuario.findOne({_id:id})
         }catch(error){
             error = error
             console.error(error)
@@ -37,18 +37,18 @@ const usersControllers = {
         })
     },
     inserOneUser: async (req, res) => {
-          let { name, lastname, email, password, urlphoto, country, google } = req.body
-        //   console.log(req.body)
+          let { firstname, lastname, username, mail, password, image, google } = req.body
+          //  console.log(req.body)
             if(password === '') password = null
         try {
-            const existUser = await User.findOne({email})
+            const existUser = await Usuario.findOne({email})
             if(existUser){
                 //res.json({success: true, error:'Username already exist', response: null})
                 res.json({success: true, error: 'Email and Password incorrect'})
                 // console.log(res)
             }else{
                     const hashedPassword = bcryptjs.hashSync(password, 10)
-                    const user = new User({ name, lastname, email, password: hashedPassword, urlphoto, country, google })
+                    const user = new Usuario({ firstname, lastname, username, mail, password: hashedPassword, image, google })
                    // console.log(user)
                     const token = jwt.sign({...user}, process.env.SECRET_KEY)
                     await user.save()
@@ -62,7 +62,7 @@ const usersControllers = {
         const id = req.params.id
         let error = null
         try{
-            await User.findOneAndDelete({_id:id})
+            await Usuario.findOneAndDelete({_id:id})
         }catch(error){
             error = error
             console.error(error)
@@ -74,7 +74,7 @@ const usersControllers = {
         let user = req.body
         let update
         try{
-            update = await User.findOneAndUpdate({_id:id}, user, {new:true})
+            update = await Usuario.findOneAndUpdate({_id:id}, user, {new:true})
             console.log(update) 
         }catch(error){
             console.error(error)
@@ -85,7 +85,7 @@ const usersControllers = {
         const { email, password, google } = req.body
         // console.log(email)
         try{
-            const userExists = await User.findOne({email})
+            const userExists = await Usuario.findOne({email})
             // console.log(userExists)
             if (!userExists) throw new Error ('Email and Password incorrecty')
             if(userExists.google && !google) throw new Error ('Invalid email Google')
