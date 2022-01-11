@@ -45,7 +45,7 @@ Router.route('/itinerary/:idCiudad')
 
 Router.route('/users')
 .get(getUsers)
-.post(validator, inserOneUser)
+.post(inserOneUser)
 
 Router.route('/user/:id')
 .get(getOneUser)
