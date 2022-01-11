@@ -37,22 +37,22 @@ const usersControllers = {
         })
     },
     inserOneUser: async (req, res) => {
-          let { firstname, lastname, username, mail, password, image, google } = req.body
+          let { firstname, lastname, username, mail, password, image, google, cart, address, wishList } = req.body
           //  console.log(req.body)
             if(password === '') password = null
         try {
-            const existUser = await Usuario.findOne({email})
+            const existUser = await Usuario.findOne({mail})
             if(existUser){
                 //res.json({success: true, error:'Username already exist', response: null})
                 res.json({success: true, error: 'Email and Password incorrect'})
                 // console.log(res)
             }else{
-                    const hashedPassword = bcryptjs.hashSync(password, 10)
-                    const user = new Usuario({ firstname, lastname, username, mail, password: hashedPassword, image, google })
-                   // console.log(user)
-                    const token = jwt.sign({...user}, process.env.SECRET_KEY)
-                    await user.save()
-                    res.json({success: true, response:{ token, ...user }, error: null})
+                const hashedPassword = bcryptjs.hashSync(password, 10)
+                const user = new Usuario({ firstname, lastname, username, mail, password: hashedPassword, image, google, cart, address, wishList })
+                // console.log(user)
+                const token = jwt.sign({...user}, process.env.SECRET_KEY)
+                await user.save()
+                res.json({success: true, response:{ token, ...user }, error: null})
             }
         }catch(error){
             res.json({success: false, response: null, error: error})
