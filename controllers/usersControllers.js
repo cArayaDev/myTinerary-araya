@@ -82,10 +82,10 @@ const usersControllers = {
         res.json({success: update ? true : false})
     },
     accessUser: async (req, res) => {
-        const { email, password, google } = req.body
+        const { mail, password, google } = req.body
         // console.log(email)
         try{
-            const userExists = await Usuario.findOne({email})
+            const userExists = await Usuario.findOne({mail})
             // console.log(userExists)
             if (!userExists) throw new Error ('Email and Password incorrecty')
             if(userExists.google && !google) throw new Error ('Invalid email Google')
