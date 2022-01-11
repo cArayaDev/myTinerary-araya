@@ -6,7 +6,7 @@ const userSchema = new mongoose.Schema({
     email: { type:String, required: true }, 
     password: { type:String, required: true },
     urlphoto: { type:String, required: true },
-    country: { type:String, required: true },
+    country: { type:String, required: false },
     google: {type:Boolean, default: false},
     control: {type:Boolean, default: true},
 })
