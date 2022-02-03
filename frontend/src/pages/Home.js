@@ -23,8 +23,8 @@ class Home extends React.Component{
             <div className="div_carrusel" id="carrusel">
               <h1>Popular MyTineraries</h1>
                   <Carrousel ciudades={ciudades} />
-            <div className="container_up">
-            </div>
+              <div className="container_up">
+              </div>
             </div>
                 <Footer />
           </> 

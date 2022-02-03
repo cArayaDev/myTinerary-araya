@@ -82,13 +82,13 @@ const Signin = ({logIn, oneUser}) => {
     <SideNav name={ oneUser.userExists?.name } urlphoto={ oneUser.userExists?.urlphoto }/>
         <div className="container_form">
             <div className="col-sm-5 col-xs-12 div_error animate__fadeInDown" ><span>{ message }</span></div>
-            <div className="container ">
+            <div className="container">
                 <form onSubmit={ handleLogin }>
                     <div className="imgcontainer">
-                    <h2>Sign in</h2>
+                         <h2>Sign in</h2>
                     </div>
-                    <div className="row div_inputs">
-                        <div className="col-sm-8">
+                    <div className="div_inputs">
+                        <div className="col-sm-8 div_input_user">
                             <input 
                                 type="text" 
                                 className="input_user" 
@@ -103,7 +103,7 @@ const Signin = ({logIn, oneUser}) => {
                                 onClick={handleControl}
                             />
                         </div>
-                        <div className="col-sm-8">
+                        <div className="col-sm-8 div_input_user">
                             <input 
                                 type="password" 
                                 className="input_user" 

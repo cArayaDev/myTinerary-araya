@@ -17,10 +17,10 @@ class Cities extends Component {
                     <div className="welcome">
                        <h1>MyTinerary</h1>
                     </div>
-                    <div className="row div_input">
-                       <form onChange={ (e)=> this.props.dataFilter(this.props.auxCities, e.target.value) }>
-                           <input className="form-control form-control-lg input" ref={this.inputValue} type="" placeholder="Search Cities..." />
-                       </form>
+                    <div className="div_input">
+                       <div className="form_serch" onChange={ (e)=> this.props.dataFilter(this.props.auxCities, e.target.value) }>
+                           <input className="form-control-lg input" ref={this.inputValue} type="text" placeholder="Search Cities..." />
+                       </div>
                     </div>
                     <div className="grid-container">
                         {
@@ -50,11 +50,9 @@ class Cities extends Component {
         )
     }
 }
-
 const mapDispatchToProps = {
     dataCities: cityActions.getCities,  //cityActions y getCities vienen del archivo cityActios.js
     dataFilter: cityActions.filterCities,
-    
   }
   const mapStateToProps = (state) => {
     //    console.log(state)

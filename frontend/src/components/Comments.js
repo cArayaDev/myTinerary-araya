@@ -3,8 +3,9 @@ import { connect } from 'react-redux'
 import Swal from 'sweetalert2'
 import Comment from './Comment'
 import commentsActions from '../redux/actions/commentsActions'
+import authActions from '../redux/actions/authActions'
 
-const Comments = ({ idItinerary, comments, addComment, deleteComment, editComment, oneUser }) => {
+const Comments = ({ idItinerary, comments, addComment, deleteComment, editComment, oneUser, close, getUsers }) => {
     const inputComment = useRef()
     const [newComments, setNewComments] = useState(comments)
     const [control, setControl] = useState (false)
@@ -18,6 +19,7 @@ const Comments = ({ idItinerary, comments, addComment, deleteComment, editCommen
                 showConfirmButton: false,
                 timer: 1500
                })
+               inputComment.current.value = ''
         }else{
             let value = inputComment.current.value
             if(value !== ''){
@@ -26,6 +28,7 @@ const Comments = ({ idItinerary, comments, addComment, deleteComment, editCommen
                     // console.log(res.data.response)
                     setNewComments(res.data.response)
                     inputComment.current.value = ''
+                    // getUsers()
                 })
                 .catch(err => console.error(err))
             }
@@ -64,37 +67,44 @@ const Comments = ({ idItinerary, comments, addComment, deleteComment, editCommen
         })
         .catch(error =>console.log(error))
     }
-
+    // console.log(newComments)
     return (
-    <div className="container_commentary">
+    <>
         <div><h2>Comments</h2></div>
         <div className="div_comment">
-         {
-            newComments.map((elem ) => <Comment 
-                                           idNewComment={elem._id}
-                                           newComment={elem.comment} 
-                                           deleteCommentItineray={deleteCommentItineray}  
-                                           editCommentItineray={editCommentItineray}
-                                           idItinerary={idItinerary} 
-                                           control={control}
-                                           key={ elem._id }
+            <div>
+                {
+                newComments.map((elem) => <Comment 
+                                            idNewComment={ elem._id }
+                                            idUserComments={ elem.userId }
+                                            newComment={ elem.comment } 
+                                            deleteCommentItineray={ deleteCommentItineray }  
+                                            editCommentItineray={ editCommentItineray }
+                                            idItinerary={ idItinerary } 
+                                            control={ control }
+                                            key={ elem._id }
+                                            close={ close }
                                         />) 
-         }   
+                } 
+            </div>  
         </div>
-        <div className="commentary">
-            <input type="text" className="commentsInputs" autoComplete="nope"
-                name="comment"
-                placeholder={"Write comment here..."}
-                ref={ inputComment } 
-            />
-            <button className="btnSend" onClick={ addCommentItineray }>Send</button>
+        <div className="newCommentary">
+            {/* <div className="commentary_input_btn"> */}
+                <textarea type="text" className="commentsInputs" autoComplete="nope"
+                    name="comment"
+                    placeholder={"Write comment here..."}
+                    ref={ inputComment } 
+                    rows="2"
+                ></textarea>
+                <button className="btnSend" onClick={ addCommentItineray }>Send</button>
+            {/* </div> */}
         </div>
-    </div>
+    </>
     )
 }
 const mapStateToProps = (state) => {
     return {
-        oneUser: state.authReducer.oneUser
+        oneUser: state.authReducer.oneUser,
         //   token: state.users.token
     }   
 }
@@ -102,7 +112,8 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = {
     addComment: commentsActions.addComment,
     editComment: commentsActions.editComment,
-    deleteComment: commentsActions.deleteComment
+    deleteComment: commentsActions.deleteComment,
+    getUsers: authActions.getUsers
 
 }
 

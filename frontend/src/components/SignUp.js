@@ -43,7 +43,7 @@ import Swal from 'sweetalert2'
         e.preventDefault()
         if(isFormValid()){
             const errors = await insertUser(newUser)
-            
+            // console.log(errors)
             if(errors === undefined){
                 Swal.fire({
                     position: 'top-end',
@@ -62,12 +62,6 @@ import Swal from 'sweetalert2'
                     timer: 2000,
                   }) 
             }
-            // console.log(errors)
-            // if(errors !== undefined){
-            //     if(errors.errors){
-            //         errors.errors.map(e => setMessage((e)))
-            //     }
-            // }
         } 
     }
 
@@ -115,114 +109,114 @@ import Swal from 'sweetalert2'
             <SideNav />
             {/* <div className="col-sm-5 col-xs-12 div_error animate__fadeInDown" ><span>{ message }</span></div> */}
             <div className="container_form_signup">
-            <div className="container div_form">
-                <form onSubmit={ handleRegister }>
-                    <div className="imgcontainer">
-                    <h2>Sign Up</h2>
-                    </div>
-                    <div className="row div_input_signup">
-                        <div className="col-sm-8 divinput">
-                            <input 
-                                type="text" 
-                                onChange={ handleInputChange } 
-                                className="input_user" 
-                                name="name" 
-                                placeholder= {color === 'name' ? 'name is required' : 'First Name'}
-                                style={{
-                                    backgroundColor: color === 'name' ? 'red' : 'rgba(241, 205, 157, 0.596)',
-                                    borderColor: color === 'name' ? 'red' : 'rgba(241, 205, 157, 0.596)',
-                                }}
-                                onClick={handleLogin}
-                            />
+                <div className="container div_form">
+                    <form onSubmit={ handleRegister }>
+                        <div className="imgcontainer">
+                        <h2>Sign Up</h2>
                         </div>
-                        <div className="col-sm-8 divinput">
-                            <input 
-                                type="text" 
-                                onChange={ handleInputChange } 
-                                className="input_user" 
-                                name="lastname" 
-                                placeholder= {color === 'lastname' ? 'last name is required' : 'Last Name'}
-                                style={{
-                                    backgroundColor: color === 'lastname' ? 'red' : 'rgba(241, 205, 157, 0.596)',
-                                    borderColor: color === 'lastname' ? 'red' : 'rgba(241, 205, 157, 0.596)',
-                                }}
-                                onClick={handleLogin}
-                            />
-                        </div>
-                        <div className="col-sm-8 divinput">
-                            <input 
-                                type="text" 
-                                onChange={ handleInputChange } 
-                                className="input_user" 
-                                name="email" 
-                                placeholder= {color === 'email' ? 'email is required' : 'Email'}
-                                style={{
-                                    backgroundColor: color === 'email' ? 'red' : 'rgba(241, 205, 157, 0.596)',
-                                    borderColor: color === 'email' ? 'red' : 'rgba(241, 205, 157, 0.596)',
-                                }}
-                                onClick={handleLogin}
-                            />
-                        </div>
-                        <div className="col-sm-8 divinput">
-                            <input 
-                                type="password" 
-                                onChange={ handleInputChange } 
-                                className="input_user" 
-                                name="password" 
-                                placeholder= {color === 'password' ? 'password is required' : 'Password'}
-                                style={{
-                                    backgroundColor: color === 'password' ? 'red' : 'rgba(241, 205, 157, 0.596)',
-                                    borderColor: color === 'password' ? 'red' : 'rgba(241, 205, 157, 0.596)',
-                                }}
-                                onClick={handleLogin}
+                        <div className="row div_input_signup">
+                            <div className="col-sm-8 divinput">
+                                <input 
+                                    type="text" 
+                                    onChange={ handleInputChange } 
+                                    className="input_user" 
+                                    name="name" 
+                                    placeholder= {color === 'name' ? 'name is required' : 'First Name'}
+                                    style={{
+                                        backgroundColor: color === 'name' ? 'red' : 'rgba(241, 205, 157, 0.596)',
+                                        borderColor: color === 'name' ? 'red' : 'rgba(241, 205, 157, 0.596)',
+                                    }}
+                                    onClick={handleLogin}
                                 />
-                                <span className="span_pass">Password must have min. 6 characters</span>
+                            </div>
+                            <div className="col-sm-8 divinput">
+                                <input 
+                                    type="text" 
+                                    onChange={ handleInputChange } 
+                                    className="input_user" 
+                                    name="lastname" 
+                                    placeholder= {color === 'lastname' ? 'last name is required' : 'Last Name'}
+                                    style={{
+                                        backgroundColor: color === 'lastname' ? 'red' : 'rgba(241, 205, 157, 0.596)',
+                                        borderColor: color === 'lastname' ? 'red' : 'rgba(241, 205, 157, 0.596)',
+                                    }}
+                                    onClick={handleLogin}
+                                />
+                            </div>
+                            <div className="col-sm-8 divinput">
+                                <input 
+                                    type="text" 
+                                    onChange={ handleInputChange } 
+                                    className="input_user" 
+                                    name="email" 
+                                    placeholder= {color === 'email' ? 'email is required' : 'Email'}
+                                    style={{
+                                        backgroundColor: color === 'email' ? 'red' : 'rgba(241, 205, 157, 0.596)',
+                                        borderColor: color === 'email' ? 'red' : 'rgba(241, 205, 157, 0.596)',
+                                    }}
+                                    onClick={handleLogin}
+                                />
+                            </div>
+                            <div className="col-sm-8 divinput">
+                                <input 
+                                    type="password" 
+                                    onChange={ handleInputChange } 
+                                    className="input_user" 
+                                    name="password" 
+                                    placeholder= {color === 'password' ? 'password is required' : 'Password'}
+                                    style={{
+                                        backgroundColor: color === 'password' ? 'red' : 'rgba(241, 205, 157, 0.596)',
+                                        borderColor: color === 'password' ? 'red' : 'rgba(241, 205, 157, 0.596)',
+                                    }}
+                                    onClick={handleLogin}
+                                    />
+                                    <span className="span_pass">Password must have min. 6 characters</span>
+                            </div>
+                            <div className="col-sm-8 divinput">
+                            </div>
+                            <div className="col-sm-8 divinput">
+                                <input 
+                                    type="text" 
+                                    onChange={ handleInputChange } 
+                                    className="input_user" 
+                                    name="urlphoto" 
+                                    placeholder= {color === 'photo' ? 'photo is required' : 'Photo'}
+                                    style={{
+                                        backgroundColor: color === 'photo' ? 'red' : 'rgba(241, 205, 157, 0.596)',
+                                        borderColor: color === 'photo' ? 'red' : 'rgba(241, 205, 157, 0.596)',
+                                    }}
+                                    onClick={handleLogin}
+                                />
+                            </div>
+                            <div className="divinput">
+                                <select 
+                                    name="country" 
+                                    onChange={ handleInputChange } 
+                                    component="select" 
+                                    className="input_select"> 
+                                    <option className="input_user">Slect Country</option>
+                                    { countries.length > 0 &&  
+                                    countries.map((elem, index) => <option key={index} className="option">{elem.name}</option>) }
+                                </select> 
+                            </div>
                         </div>
-                        <div className="col-sm-8 divinput">
-                        </div>
-                        <div className="col-sm-8 divinput">
-                            <input 
-                                type="text" 
-                                onChange={ handleInputChange } 
-                                className="input_user" 
-                                name="urlphoto" 
-                                placeholder= {color === 'photo' ? 'photo is required' : 'Photo'}
-                                style={{
-                                    backgroundColor: color === 'photo' ? 'red' : 'rgba(241, 205, 157, 0.596)',
-                                    borderColor: color === 'photo' ? 'red' : 'rgba(241, 205, 157, 0.596)',
-                                }}
-                                onClick={handleLogin}
+                        <div className="row div_btns_signup">
+                            <div className="col-sm-8"><button type="submit" className="btn_signin">SIGN UP</button></div>
+                            <div className="col-sm-8 div_a_sign"> <span className="psw">You do not have an account ? <Link to="/signin">Sign up here !</Link></span></div>
+                            <div className="col-sm-8">
+                            <GoogleLogin
+                                clientId="792350581311-56brtufk0lo9c129f11vgfmlvm34qone.apps.googleusercontent.com"
+                                buttonText="Sign In with Google"
+                                onSuccess={responseGoogle}
+                                onFailure={responseGoogle}
+                                cookiePolicy={'single_host_origin'}
                             />
+                            </div>
                         </div>
-                        <div className="col-sm-8 divinput">
-                        <select 
-                            name="country" 
-                            onChange={ handleInputChange } 
-                            component="select" 
-                            className="input_select"> 
-                             <option className="input_user">Slect Country</option>
-                            { countries.length > 0 &&  
-                            countries.map((elem, index) => <option key={index} className="option">{elem.name}</option>) }
-                        </select> 
-                        </div>
-                    </div>
-                    <div className="row div_btns_signup">
-                        <div className="col-sm-8"><button type="submit" className="btn_signin">SIGN UP</button></div>
-                        <div className="col-sm-8 div_a_sign"> <span className="psw">You do not have an account ? <Link to="/signin">Sign up here !</Link></span></div>
-                        <div className="col-sm-8">
-                        <GoogleLogin
-                            clientId="792350581311-56brtufk0lo9c129f11vgfmlvm34qone.apps.googleusercontent.com"
-                            buttonText="Sign In with Google"
-                            onSuccess={responseGoogle}
-                            onFailure={responseGoogle}
-                            cookiePolicy={'single_host_origin'}
-                        />
-                        </div>
-                    </div>
-                </form>
-            </div>
-        </div> 
-         <Footer />
+                    </form>
+                </div>
+            </div> 
+            <Footer />
         </div>
     )
 }

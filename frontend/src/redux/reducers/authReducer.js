@@ -2,7 +2,8 @@ const initialState = {
     user: [], //se llama en mapStateToProps 
     oneUser:[],
     userPersistent: [],
-    likes: []
+    likes: [],
+    allUsers: []
 }
 
 const authReducer = (state = initialState, action) => {
@@ -27,6 +28,11 @@ const authReducer = (state = initialState, action) => {
         case 'logout':
             localStorage.removeItem('token');
             return initialState
+        case 'getUsers':
+            return {
+                ...state,
+                allUsers: action.payload
+            }
         default:
             return state
     }
