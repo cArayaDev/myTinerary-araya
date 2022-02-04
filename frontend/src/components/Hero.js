@@ -10,7 +10,7 @@ export const Hero = () => {
         <div className="container_margen">
           <div className="mapa"></div>
           <div className="col-4 call_a"><h1>The experience begins now</h1></div>
-          <Button href="/cities" className="btnGo">go there!</Button> 
+          <Link to="/cities"><h4 className="btnGo">Click Here</h4> </Link>
         </div>
       </div>
   )

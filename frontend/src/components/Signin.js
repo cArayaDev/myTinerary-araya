@@ -124,7 +124,7 @@ const Signin = ({logIn, oneUser}) => {
                         <div className="col-sm-8 col-xs-12 div_a_sign"> <span className="psw">You do not have an account ? <Link to="/signup">Sign up here !</Link></span></div>
                         <div className="col-sm-8 col-xs-12">
                             <GoogleLogin
-                                clientId="792350581311-56brtufk0lo9c129f11vgfmlvm34qone.apps.googleusercontent.com"
+                                clientId="792350581311-avphpodf5esl1n6ktmlrv13038gpblph.apps.googleusercontent.com"
                                 buttonText="Sign In with Google"
                                 onSuccess={responseGoogle}
                                 onFailure={responseGoogle}
