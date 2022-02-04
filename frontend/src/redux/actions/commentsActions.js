@@ -5,7 +5,7 @@ const commentsActions = {
         return async (dispatch, getState) => {
             const token = localStorage.getItem('token')
             // console.log(newComment)
-            let res = await axios.post('http://localhost:4000/api/comments/'+itineraryId, {newComment}, {
+            let res = await axios.post('https://mytinerary-coquimbo.herokuapp.com/api/comments/'+itineraryId, {newComment}, {
                 headers: {
                     Authorization:`Bearer ${token}`
                 }
@@ -19,7 +19,7 @@ const commentsActions = {
     deleteComment: (idItinerary, idNewComment) => {
         return async (dispatch, getState) => {
             const token = localStorage.getItem('token')
-            let res = await axios.put('http://localhost:4000/api/comments/'+idItinerary, {idNewComment}, {
+            let res = await axios.put('https://mytinerary-coquimbo.herokuapp.com/api/comments/'+idItinerary, {idNewComment}, {
                 headers: {
                     Authorization:`Bearer ${token}`
                 }
@@ -34,7 +34,7 @@ const commentsActions = {
     editComment:  (commentId, comment) => {
         return async (dispatch, getState) => {
                 const token = localStorage.getItem('token')
-                let response = await axios.put('http://localhost:4000/api/editcomments/'+commentId, {comment}, {
+                let response = await axios.put('https://mytinerary-coquimbo.herokuapp.com/api/editcomments/'+commentId, {comment}, {
                     headers: {
                         Authorization:`Bearer ${token}`
                     }

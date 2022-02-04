@@ -61,13 +61,14 @@ const Comment = ({ oneUser, idItinerary, newComment, idNewComment, deleteComment
                             src={require("../assets/images/pencil.svg")} 
                             alt="img_pencil" 
                             onClick={()=>setModify(!modify)} 
-                            className="img_pencilxx"
+                            className="img_pencil"
                             />
+                            
                             <img 
                             src={require("../assets/images/trash.svg")} 
                             alt="img_trash" 
                             onClick={handleDelete} 
-                            className="img_trashxx"
+                            className="img_trash"
                             />   
                         </div>                        
                     </div>

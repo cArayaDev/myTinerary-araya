@@ -6,7 +6,7 @@ const authActions = {
         return async(dispatch, getState) => {
             // console.log(newUser)
             try {
-                const res = await axios.post('http://localhost:4000/api/users', {...newUser})// --> userController --> insertOneUser
+                const res = await axios.post('https://mytinerary-coquimbo.herokuapp.com/api/users', {...newUser})// --> userController --> insertOneUser
                   console.log(res.data.error) //response vienen los datos de errores de validator.js
                 if(res.data.success && !res.data.error){
                     localStorage.setItem('token', res.data.response.token)
@@ -23,7 +23,7 @@ const authActions = {
         return async(dispatch, getState) => {
             try {
                 // console.log(user)
-                const res = await axios.post('http://localhost:4000/api/sigin/', {...user})// va a --> usersControllers --> accessUser
+                const res = await axios.post('https://mytinerary-coquimbo.herokuapp.com/api/sigin/', {...user})// va a --> usersControllers --> accessUser
                 console.log('res desde el controller',res.data.response.token)
               
                 if(res.data.success && !res.data.error){
@@ -53,7 +53,7 @@ const authActions = {
             // console.log('toi en logInPersistent',token)
             try {
             //     const token = localStorage.getItem('token')
-                const res = await axios.post('http://localhost:4000/api/siginPersistent/', {},{
+                const res = await axios.post('https://mytinerary-coquimbo.herokuapp.com/api/siginPersistent/', {},{
                     headers: {
                         Authorization:`Bearer ${token}`
                     }
@@ -72,7 +72,7 @@ const authActions = {
     },
     getUsers:() => {
         return async(dispatch, getState) => {
-            const res = await axios.get('http://localhost:4000/api/users')
+            const res = await axios.get('https://mytinerary-coquimbo.herokuapp.com/api/users')
             // console.log(res.data.response)
             dispatch({type:'getUsers', payload:res.data.response})
         }
