@@ -5,7 +5,6 @@ import commentsActions from '../redux/actions/commentsActions'
 const Comment = ({ oneUser, idItinerary, newComment, idNewComment, deleteCommentItineray, editCommentItineray, idUserComments, allUsers, control, close }) => {
     const [newComments, setNewComments] = useState(newComment)
     const [modify, setModify] = useState(false)
-    // const [dataUsers, setDataUsers] = useState([])
     const [name, setName] = useState('')
     const [photo, setPhoto] = useState('')
     const input = useRef()
@@ -31,7 +30,6 @@ const Comment = ({ oneUser, idItinerary, newComment, idNewComment, deleteComment
          })    
     }
     const useControl = idUserComments._id === oneUser.id
-    // console.log(useControl) 
 
     const comment = <div className="div_text">
                         { 
@@ -45,7 +43,6 @@ const Comment = ({ oneUser, idItinerary, newComment, idNewComment, deleteComment
                                         row="3"
                                         styles="display: none"
                                     >
-                                        
                                     </textarea>
                                     <button 
                                         onClick={()=> editCommentItineray(idNewComment, input.current.value)} 
@@ -54,7 +51,6 @@ const Comment = ({ oneUser, idItinerary, newComment, idNewComment, deleteComment
                                         Confirm
                                     </button>                                
                               </div>
-                           
                         }
                         <div className="comments_buttons">
                             <img 
@@ -63,7 +59,6 @@ const Comment = ({ oneUser, idItinerary, newComment, idNewComment, deleteComment
                             onClick={()=>setModify(!modify)} 
                             className="img_pencil"
                             />
-                            
                             <img 
                             src={require("../assets/images/trash.svg")} 
                             alt="img_trash" 
@@ -72,9 +67,7 @@ const Comment = ({ oneUser, idItinerary, newComment, idNewComment, deleteComment
                             />   
                         </div>                        
                     </div>
-
      const renderComment = useControl ? comment : <div className="new_comment"><p styles="display: block" >{ newComment }</p></div>
-
     return (
                 <div className="comment">
                     <div className="user_pic_comment" style={{ backgroundImage:`url("${ idUserComments.urlphoto ? idUserComments.urlphoto : photo }")` }}> </div>

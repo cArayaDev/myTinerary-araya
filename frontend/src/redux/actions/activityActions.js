@@ -7,7 +7,7 @@ const activityActions = {
         return async (dispatch, getState) => {
             try{
                 const res = await axios.get('https://mytinerary-coquimbo.herokuapp.com/api/activity/'+idItinerary)
-                //  console.log(res)
+                // console.log(res)
                 return  res.data.response
             }catch(err){
                 return {

@@ -43,7 +43,7 @@ import  Comments  from './Comments'
            setLikes(res.data.response.itinerary.likes) 
         } 
     } 
-    // console.log('likes',likes)         
+    console.log('activities',activities)         
     const changeClose = () => {
         setClose(!close)
     }
